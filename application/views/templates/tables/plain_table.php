@@ -16,10 +16,10 @@
             $no = (isset($number) && ($number != NULL))  ? $number : 1;
             foreach ($rows as $ind => $row) :
                 ?>
-                <tr>
+                <tr >
                     <td> <?php echo $no++ ?> </td>
                     <?php foreach ($header as $key => $value) : ?>
-                        <td>
+                        <td  >
                             <?php
                                     $attr = "";
                                     if (is_numeric($row->$key) && ($key != 'phone' && $key != 'username'))

@@ -8,33 +8,19 @@ class Home extends Uadmin_Controller {
 	private $current_page = 'uadmin/';
 	public function __construct(){
 		parent::__construct();
-
+		$this->load->model(array(
+			'savings_model',
+			'student_model',
+		));
 	}
 	public function index()
 	{
-		$add_menu = array(
-			"name" => "Tambah Group",
-			"modal_id" => "add_group_",
-			"button_color" => "primary",
-			"url" => site_url($this->current_page . "add/"),
-			"form_data" => array(
-				"name" => array(
-					'type' => 'text',
-					'label' => "Nama Group",
-					'value' => "",
-				),
-				"description" => array(
-					'type' => 'textarea',
-					'label' => "Deskripsi",
-					'value' => "-",
-				),
-				'data' => NULL
-			),
-		);
-
-		$add_menu = $this->load->view('templates/actions/modal_form', $add_menu, true);
-
-		$this->data["header_button"] =  $add_menu;
+		$this->data["student_count"] = $this->student_model->record_count() ;
+		
+		$month_accumulation = $this->savings_model->accumulation( "month", NULL, date("m") )->row();
+		$total_accumulation = $this->savings_model->accumulation(  )->row();
+		$this->data[ "month_accumulation" ] = ( $month_accumulation != null )? number_format( $month_accumulation->nominal ) : 0 ;
+		$this->data[ "total_accumulation" ] = ( $total_accumulation != null )? number_format( $total_accumulation->nominal ) : 0 ;
 		
 		#################################################################3
 		$alert = $this->session->flashdata('alert');
@@ -44,6 +30,6 @@ class Home extends Uadmin_Controller {
 		$this->data["block_header"] = "Group";
 		$this->data["header"] = "Group";
 		$this->data["sub_header"] = 'Klik Tombol Action Untuk Aksi Lebih Lanjut';
-		$this->render( "admin/dashboard/content" );
+		$this->render( "uadmin/dashboard/content" );
 	}
 }
