@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="<?= base_url('front-assets/plugins/') ?>bootstrap/css/bootstrap.min.css">
     <!-- <link rel="stylesheet" href="<?= base_url('front-assets/plugins/') ?>bootstrap/css/bootstrap.min.cs"> -->
     <link rel="stylesheet" href="<?= base_url('front-assets/plugins/') ?>bootstrap/css/style.css">
+    <link rel="stylesheet" href="<?= base_url('front-assets/plugins/') ?>bootstrap/css/floating-label.css">
 
     <title>Nurul Iman</title>
   </head>
