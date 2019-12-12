@@ -146,3 +146,15 @@ class Public_Controller extends MY_Controller{
 	}
 
 }
+
+class Home_Controller extends MY_Controller{
+
+	function __construct(){
+		  parent::__construct();
+	}
+  
+	protected function render($the_view = NULL, $template = 'visitor_master'){
+		  parent::render($the_view, $template);
+	  }
+  
+  }
