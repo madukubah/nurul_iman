@@ -1,263 +1,107 @@
-    <div class="hero-area">
-
-    	<!-- Hero Slides Area -->
-    	<div class="hero-slides owl-carousel">
-    		<!-- Single Slide -->
-    		<div class="single-hero-slide bg-img background-overlay" id="bg2"></div>
-    		<!-- Single Slide -->
-    		<div class="single-hero-slide bg-img background-overlay" id="bg1"></div>
-    	</div>
-
-    	<!-- Hero Post Slide -->
+    <!-- jumbotron -->
+    <div class="jumbotron jumbotron-fluid" >
+      <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <!-- <div class="img-jumbotron" style="background-image: url(<?= base_url('front-assets/img/')?>blog-img/bg1.jpg)"></div> -->
+              <img src="<?= base_url('front-assets/img/')?>blog-img/bg1.jpg" class="d-block w-100 img-jumbotron" alt="">
+          </div>
+          <div class="carousel-item">
+            <!-- <div class="img-jumbotron" style="background-image: url(<?= base_url('front-assets/img/')?>blog-img/bg2.jpg)"></div> -->
+            <img src="<?= base_url('front-assets/img/')?>blog-img/bg2.jpg" class="img-jumbotron d-block w-100" alt="">
+          </div>
+        </div>
+      </div>
     </div>
-    <!-- ********** Hero Area End ********** -->
+    <!-- end jumbotron -->
 
-    <div class="main-content-wrapper section-padding-100">
-    	<div class="container">
-    		<div class="row justify-content-center">
-    			<!-- ============= Post Content Area Start ============= -->
-    			<div class="col-sm-12 col-lg-6">
-    				<div class="post-content-area mb-50">
-    					<!-- Catagory Area -->
-    					<div class="world-catagory-area">
-    						<ul class="nav nav-tabs" id="myTab" role="tablist">
-    							<li class="title">Remaja Mesjid</li>
-    						</ul>
+    <!-- content -->
+    <div class="container content-banner">
+      <div class="row justify-content-center">
+        <div class="col-lg-4 col-sm-8 col-md-8 banner">
+          <div class="row text-center">
+            <div class="col-sm-2 col-md-4 col-lg-4">
+              <img src="<?= base_url('front-assets/img/') ?>core-img/logo.png" width="60" height="60" alt="">
+            </div>
+            <div class="col-sm-4 col-md-8 col-lg-8">
+              <h4>TPA Nurul Iman</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end content -->
 
-    						<div class="tab-content" id="myTabContent">
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-lg">
+          <ul class="list-inline">
+            <li class="list-inline-item"><h4>Remaja Mesjid</h4></li>
+          </ul>
+          <div class="container-fluid">
+            <?php for($i = 0; $i < 4; $i++):?>
+              <div class="card mb-4">
+                <div class="card-header">
+                  Nama Kegiatan
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-lg">
+                      <img src="<?= base_url('front-assets/img/')?>blog-img/b1.jpg" class="rounded" alt="gambar">
+                    </div>
+                    <div class="col-lg">
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                      <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <?php endfor;?>
+          </div>
+        </div>
+        <div class="col-lg">
+          <ul class="list-inline">
+            <li class="list-inline-item"><h4>Majelis Ta'lim</h4></li>
+          </ul>
+          <div class="container-fluid">
+          <?php for($i = 0; $i < 4; $i++):?>
+              <div class="card mb-4">
+                <div class="card-header">
+                  Nama Kegiatan
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-lg">
+                      <img src="<?= base_url('front-assets/img/')?>blog-img/b2.jpg" class="rounded" alt="gambar">
+                    </div>
+                    <div class="col-lg">
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                      <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <?php endfor;?>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    							<div class="tab-pane fade show active" id="world-tab-1" role="tabpanel" aria-labelledby="tab1">
-    								<div class="row">
-    									<div class="col-12 col-lg-12">
-    										<!-- Single Blog Post -->
-    										<div class="single-blog-post post-style-4 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.2s">
-    											<!-- Post Thumbnail -->
-    											<div class="post-thumbnail">
-    												<img src="<?= base_url('front-assets/') ?>img/blog-img/b18.jpg" alt="">
-    											</div>
-    											<!-- Post Content -->
-    											<div class="post-content">
-    												<a href="#" class="headline">
-    													<h5>Akhwat Gaul, Berjilbab Tapi Pacaran</h5>
-    												</a>
-    												<p>Inilah fenomena miris di akhir zaman; banyak wanita berjilbab tapi ‘demen’ pacaran....</p>
-    												<!-- Post Meta -->
-    												<div class="post-meta">
-    													<p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-    												</div>
-    											</div>
-    										</div>
-
-    										<!-- Single Blog Post -->
-    										<div class="single-blog-post post-style-4 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.3s">
-    											<!-- Post Thumbnail -->
-    											<div class="post-thumbnail">
-    												<img src="<?= base_url('front-assets/') ?>img/blog-img/b19.jpg" alt="">
-    											</div>
-    											<!-- Post Content -->
-    											<div class="post-content">
-    												<a href="#" class="headline">
-    													<h5>Orang-Orang yang Meraup Kekayaan dari Perang Suriah</h5>
-    												</a>
-    												<p>Sejak berkuasa pada tahun 1971, keluarga Assad telah menjalin berbagai aliansi dengan elit Suriah. Di bawah Hafez Assad, dan partai Ba'ath-nya...</p>
-    												<!-- Post Meta -->
-    												<div class="post-meta">
-    													<p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-    												</div>
-    											</div>
-    										</div>
-
-    										<!-- Single Blog Post -->
-    										<div class="single-blog-post post-style-4 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.4s">
-    											<!-- Post Thumbnail -->
-    											<div class="post-thumbnail">
-    												<img src="<?= base_url('front-assets/') ?>img/blog-img/b20.jpg" alt="">
-    											</div>
-    											<!-- Post Content -->
-    											<div class="post-content">
-    												<a href="#" class="headline">
-    													<h5>Kisah Masjid dan Jamaah Jogokariyan Melayani Peserta Muslim United</h5>
-    												</a>
-    												<p>SEPERTI Kampoeng Ramadhan, kali ini kesibukan pengurus Masjid Jogokariyan kembali meningkat drastis. Segenap SDM yang ada dilibatkan...</p>
-    												<!-- Post Meta -->
-    												<div class="post-meta">
-    													<p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-    												</div>
-    											</div>
-    										</div>
-
-    										<!-- Single Blog Post -->
-    										<div class="single-blog-post post-style-4 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.5s">
-    											<!-- Post Thumbnail -->
-    											<div class="post-thumbnail">
-    												<img src="<?= base_url('front-assets/') ?>img/blog-img/b21.jpg" alt="">
-    											</div>
-    											<!-- Post Content -->
-    											<div class="post-content">
-    												<a href="#" class="headline">
-    													<h5>Operasi Militer Turki Lebih Besar Dari yang Diperkirakan</h5>
-    												</a>
-    												<p>Presiden Rusia Vladimir Putin menelepon Ankara setelah operasi Turki dimulai, menekankan bahwa ...</p>
-    												<!-- Post Meta -->
-    												<div class="post-meta">
-    													<p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-    												</div>
-    											</div>
-    										</div>
-    									</div>
-    								</div>
-    							</div>
-    						</div>
-    					</div>
-    				</div>
-    			</div>
-
-    			<!-- ========== Sidebar Area ========== -->
-    			<div class="col-sm-12 col-lg-6">
-    				<div class="post-content-area mb-50">
-    					<!-- Catagory Area -->
-    					<div class="world-catagory-area">
-    						<ul class="nav nav-tabs" id="myTab" role="tablist">
-    							<li class="title">Majelis Ta'lim</li>
-    						</ul>
-
-    						<div class="tab-content" id="myTabContent">
-
-    							<div class="tab-pane fade show active" id="world-tab-1" role="tabpanel" aria-labelledby="tab1">
-    								<div class="row">
-    									<div class="col-12 col-lg-12">
-    										<!-- Single Blog Post -->
-    										<div class="single-blog-post post-style-4 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.2s">
-    											<!-- Post Thumbnail -->
-    											<div class="post-thumbnail">
-    												<img src="<?= base_url('front-assets/') ?>img/blog-img/b18.jpg" alt="">
-    											</div>
-    											<!-- Post Content -->
-    											<div class="post-content">
-    												<a href="#" class="headline">
-    													<h5>Akhwat Gaul, Berjilbab Tapi Pacaran</h5>
-    												</a>
-    												<p>Inilah fenomena miris di akhir zaman; banyak wanita berjilbab tapi ‘demen’ pacaran....</p>
-    												<!-- Post Meta -->
-    												<div class="post-meta">
-    													<p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-    												</div>
-    											</div>
-    										</div>
-
-    										<!-- Single Blog Post -->
-    										<div class="single-blog-post post-style-4 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.3s">
-    											<!-- Post Thumbnail -->
-    											<div class="post-thumbnail">
-    												<img src="<?= base_url('front-assets/') ?>img/blog-img/b19.jpg" alt="">
-    											</div>
-    											<!-- Post Content -->
-    											<div class="post-content">
-    												<a href="#" class="headline">
-    													<h5>Orang-Orang yang Meraup Kekayaan dari Perang Suriah</h5>
-    												</a>
-    												<p>Sejak berkuasa pada tahun 1971, keluarga Assad telah menjalin berbagai aliansi dengan elit Suriah. Di bawah Hafez Assad, dan partai Ba'ath-nya...</p>
-    												<!-- Post Meta -->
-    												<div class="post-meta">
-    													<p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-    												</div>
-    											</div>
-    										</div>
-
-    										<!-- Single Blog Post -->
-    										<div class="single-blog-post post-style-4 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.4s">
-    											<!-- Post Thumbnail -->
-    											<div class="post-thumbnail">
-    												<img src="<?= base_url('front-assets/') ?>img/blog-img/b20.jpg" alt="">
-    											</div>
-    											<!-- Post Content -->
-    											<div class="post-content">
-    												<a href="#" class="headline">
-    													<h5>Kisah Masjid dan Jamaah Jogokariyan Melayani Peserta Muslim United</h5>
-    												</a>
-    												<p>SEPERTI Kampoeng Ramadhan, kali ini kesibukan pengurus Masjid Jogokariyan kembali meningkat drastis. Segenap SDM yang ada dilibatkan...</p>
-    												<!-- Post Meta -->
-    												<div class="post-meta">
-    													<p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-    												</div>
-    											</div>
-    										</div>
-
-    										<!-- Single Blog Post -->
-    										<div class="single-blog-post post-style-4 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.5s">
-    											<!-- Post Thumbnail -->
-    											<div class="post-thumbnail">
-    												<img src="<?= base_url('front-assets/') ?>img/blog-img/b21.jpg" alt="">
-    											</div>
-    											<!-- Post Content -->
-    											<div class="post-content">
-    												<a href="#" class="headline">
-    													<h5>Operasi Militer Turki Lebih Besar Dari yang Diperkirakan</h5>
-    												</a>
-    												<p>Presiden Rusia Vladimir Putin menelepon Ankara setelah operasi Turki dimulai, menekankan bahwa ...</p>
-    												<!-- Post Meta -->
-    												<div class="post-meta">
-    													<p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-    												</div>
-    											</div>
-    										</div>
-    									</div>
-    								</div>
-    							</div>
-    						</div>
-    					</div>
-    				</div>
-    			</div>
-    		</div>
-
-    		<!-- Load More btn -->
-    	</div>
-    	<div class="mt-2 container">
-    		<div class="row justify-content-center">
-    			<!-- ========== Single Blog Post ========== -->
-    			<div class="col-12 col-md-6 col-lg-6">
-    				<div class="single-blog-post post-style-3 mt-50 wow fadeInUpBig" data-wow-delay="0.2s">
-    					<!-- Post Thumbnail -->
-    					<div class="post-thumbnail">
-    						<img src="<?= base_url('front-assets/') ?>img/blog-img/b4.jpg" alt="">
-    						<!-- Post Content -->
-    						<div class="post-content d-flex align-items-center justify-content-between">
-    							<!-- Catagory -->
-    							<div class="post-tag"><a href="#">JENDELA KELUARGA</a></div>
-    							<!-- Headline -->
-    							<a href="#" class="headline">
-    								<h5>Jadilah Orang Tua Sayang Anak, Bukan Sayang HP</h5>
-    							</a>
-    							<!-- Post Meta -->
-    							<div class="post-meta">
-    								<p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-    							</div>
-    						</div>
-    					</div>
-    				</div>
-    			</div>
-    			<!-- ========== Single Blog Post ========== -->
-    			<div class="col-12 col-md-6 col-lg-6">
-    				<div class="single-blog-post post-style-3 mt-50 wow fadeInUpBig" data-wow-delay="0.4s">
-    					<!-- Post Thumbnail -->
-    					<div class="post-thumbnail">
-    						<img src="<?= base_url('front-assets/') ?>img/blog-img/b5.jpg" alt="">
-    						<!-- Post Content -->
-    						<div class="post-content d-flex align-items-center justify-content-between">
-    							<!-- Catagory -->
-    							<div class="post-tag"><a href="#">GHAZWUL FIKR</a></div>
-    							<!-- Headline -->
-    							<a href="#" class="headline">
-    								<h5>Milenial: Generasi Keseimbangan Otak dan Otot</h5>
-    							</a>
-    							<!-- Post Meta -->
-    							<div class="post-meta">
-    								<p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-    							</div>
-    						</div>
-    					</div>
-    				</div>
-    			</div>
-    		</div>
-    	</div>
+    <!-- ketua organisasi -->
+    <div class="container mt-5 mb-5">
+      <div class="text-center">
+        <ul class="list-inline">
+          <li class="list-inline-item"><h4>Ketua Organisasi</h4></li>
+        </ul>
+      </div>
+      <div class="row justify-content-between">
+        <div class="col-lg text-center">
+          <p class="">Ketua Majelis</p>
+          <img src="<?= base_url('front-assets/img/')?>blog-img/b2.jpg" class="rounded" alt="ketua majelis">
+        </div>
+        <div class="col-lg text-center">
+            <p class="">Ketua Remaja Mesjid</p>
+          <img src="<?= base_url('front-assets/img/')?>blog-img/b1.jpg" class="rounded " alt="ketua remas">
+        </div>
+      </div>
     </div>

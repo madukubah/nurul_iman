@@ -10,7 +10,7 @@ class Home extends Home_Controller {
 	public function index()
 	{
 		// TODO : tampilkan landing page bagi user yang belum daftar
-		$this->render("public/index2");
+		$this->render("public/index");
 
 
 	}
@@ -25,6 +25,13 @@ class Home extends Home_Controller {
 	{
 		// TODO : tampilkan landing page bagi user yang belum daftar
 		$this->render("public/majelis");
+
+
+	}
+	public function profile()
+	{
+		// TODO : tampilkan landing page bagi user yang belum daftar
+		$this->render("public/profile");
 
 
 	}

@@ -1,5 +1,5 @@
-<footer class="footer bg-grey">
-      <div class="text-center">
+<footer class="footer fixed-bottom" style="background-color: rgba(0, 100, 20, 0.7); color: #fff;">
+      <div class="text-center pt-2">
         <p>&copy2019 ~FIXLabs</p>
       </div>
     </footer>
