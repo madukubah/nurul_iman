@@ -108,6 +108,7 @@ class Savings extends Uadmin_Controller {
 
 	public function student( $student_id = null )
 	{
+		$year = $this->input->get("year", TRUE );
 		// var_dump( $this->savings_model->accumulation( "month" )->result() );die;
 		if( $student_id == null ) redirect(site_url(  $this->current_page ));  
 		$student 				= $this->student_model->student( $student_id )->row();
@@ -128,7 +129,7 @@ class Savings extends Uadmin_Controller {
 		if( isset( $search ) )
 			$table[ "rows" ] = $this->savings_model->search( $search )->result(  );
 		else
-			$table[ "rows" ] = $this->savings_model->savings( $pagination['start_record'], $pagination['limit_per_page'], $student_id )->result();
+			$table[ "rows" ] = $this->savings_model->savings( $pagination['start_record'], $pagination['limit_per_page'], $student_id, $year )->result();
 			
 		$table = $this->load->view('templates/tables/plain_table', $table, true);
 		$this->data[ "contents" ] = $table;

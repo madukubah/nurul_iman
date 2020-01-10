@@ -13,7 +13,9 @@ class Student_services
 	protected $entry_date;
 	protected $parent_job;
 	protected $study;
-	protected $status;
+  protected $status;
+  protected $student_id;
+  protected $description;
   
 
   function __construct(){
@@ -29,6 +31,8 @@ class Student_services
         $this->parent_job= "";
         $this->study= "";
         $this->status= "";
+        $this->student_id= "";
+        $this->description= "";
   }
 
   public function __get($var)
@@ -111,7 +115,37 @@ class Student_services
     );
     return $table;
   }
-
+  public function get_table_config_savings_( $_page, $start_number = 1 )
+  {
+      $table["header"] = array(
+        'year' => 'Tahun',
+        'jan' => 'jan',
+        'feb' => 'feb',
+        'mar' => 'mar',
+        'apr' => 'apr',
+        'mei' => 'mei',
+        'jun' => 'jun',
+        'jul' => 'jul',
+        'ags' => 'ags',
+        'sep' => 'sep',
+        'okt' => 'okt',
+        'nov' => 'nov',
+        'des' => 'des',
+      );
+      $table["number"] = $start_number;
+      $table[ "action" ] = array(
+        array(
+          "name" => "Detail",
+          "type" => "link",
+          "url" => site_url("uadmin/savings/student/"),
+          "button_color" => "primary",
+          "param" => "student_id",
+          'get' => '?year=',
+          "param_get" => "year",
+        ),
+      );
+    return $table;
+  }
   public function validation_config( ){
     $config = array(
         array(
@@ -227,6 +261,44 @@ class Student_services
 				'type' => 'file',
 				'label' => "Foto",
 			),
+    );
+		return $_data;
+  }
+
+  public function get_form_estimation( $student_id = NULL )
+	{
+		if( isset( $student_id ) )
+		{
+      $this->load->model('estimation_model');
+      $student 				              = $this->estimation_model->estimation_by_student_id( $student_id )->row();
+      if($student){
+        $this->id                     = $student->id;
+        $this->student_id             = $student_id;
+        $this->description             = $student->description;
+      }else {
+        $this->id                     = '';
+        $this->student_id             = $student_id;
+        $this->description             = '';
+      }
+    }
+
+
+		$_data["form_data"] = array(
+			"id" => array(
+				'type' => 'hidden',
+				'label' => "ID",
+				'value' => $this->form_validation->set_value('id', $this->id),
+      ),
+      "student_id" => array(
+				'type' => 'hidden',
+				'label' => "ID",
+				'value' => $this->form_validation->set_value('student_id', $this->student_id),
+      ),
+      "description" => array(
+        'type' => 'textarea',
+        'label' => "Penilaian",
+        'value' => $this->form_validation->set_value('description', $this->description),
+      ),
     );
 		return $_data;
   }

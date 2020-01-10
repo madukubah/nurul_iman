@@ -12,6 +12,8 @@ class Student extends Uadmin_Controller {
 		$this->services = new Student_services;
 		$this->load->model(array(
 			'student_model',
+			'savings_model',
+			'estimation_model',
 		));
 		$this->data["menu_list_id"] = "student_index";
 
@@ -281,16 +283,74 @@ class Student extends Uadmin_Controller {
 
 	public function detail( $student_id = null )
 	{
+		$year = $this->input->get("year", TRUE );
+		$year || $year = date('Y');
+		$month = (int) date('m');
 		if( $student_id == null ) redirect(site_url(  $this->current_page ));  
+
+		$table = $this->services->get_table_config_savings_( $this->current_page );
+		$table[ "rows" ] = $this->savings_model->savings_( 0, null, null, $student_id )->result();
+		// var_dump($table[ "rows" ]); die;
+		$table = $this->load->view('uadmin/student/savings_table', $table, true);
+
+		$add_savings = array(
+			"name" => "Tambah Iuran",
+			"modal_id" => "add_saving_",
+			"button_color" => "primary",
+			"url" => site_url( $this->current_page."add_saving/"),
+			"form_data" => array(
+				"student_id" => array(
+					'type' => 'hidden',
+					'label' => "Nama Group",
+					'value' => $student_id,
+				),
+				"nominal" => array(
+					'type' => 'number',
+					'label' => "Iuran",
+					'value' => '',
+				),
+				"date" => array(
+					'type' => 'date',
+					'label' => "Tanggal",
+					'value' => date( "m/d/Y" ),
+				),
+				'month' => array(
+					'type' => 'select',
+					'label' => "Bulan",
+					'options' => Util::MONTH,
+					'selected' => $month
+				),
+				'year' => array(
+					'type' => 'select',
+					'label' => "Tahun",
+					'options' => array(
+						2019 => "2019",
+						2020 => "2020",
+						2021 => "2021",
+						2022 => "2022",
+					),
+					'selected' => $year,
+				)
+			),
+			'data' => NULL
+		);
+
+		$add_savings= $this->load->view('templates/actions/modal_form', $add_savings, true );
 
 		$form_data = $this->services->get_form_data( $student_id );
 		unset( $form_data["form_data"]["photo"] );
 		$form_data = $this->load->view('templates/form/plain_form_readonly', $form_data , TRUE ) ;
 
+		$form_estimation = $this->services->get_form_estimation( $student_id );
+		$form_estimation = $this->load->view('templates/form/plain_form_readonly', $form_estimation , TRUE ) ;
+
 		$student 				= $this->student_model->student( $student_id )->row();
 
+		$this->data[ "btn_saving" ] =  $add_savings;
 		$this->data[ "contents" ] 	=  $form_data;
+		$this->data[ "estimation" ] =  $form_estimation;
 		$this->data[ "student" ] 	=  $student;
+		$this->data[ "savings" ] 	=  $table;
 
 		#################################################################3
 
@@ -379,6 +439,10 @@ class Student extends Uadmin_Controller {
 	
 			$change_photo= $this->load->view('templates/actions/modal_form_multipart', $change_photo, true ); 
 			
+			$form_estimation = $this->services->get_form_estimation( $student_id );
+			$form_estimation = $this->load->view('templates/form/plain_form', $form_estimation , TRUE ) ;
+			$this->data[ "estimation" ] =  $form_estimation;
+
 			$this->data[ "change_photo" ] 	=  $change_photo;
 			$this->data[ "student" ] 		=  $student;
             $alert = $this->session->flashdata('alert');
@@ -392,6 +456,61 @@ class Student extends Uadmin_Controller {
             $this->data[ "contents" ] =  $form_data;
             $this->render( "uadmin/student/edit" );
 		}
+	}
+	public function edit_estimation(  )
+	{
+		if( !($_POST) ) redirect( site_url($this->current_page) );
+
+		$this->form_validation->set_rules( 'description', 'Penilaian', 'required|trim' );
+		if ($this->form_validation->run() === TRUE )
+        {
+			$data['student_id'] = $this->input->post('student_id');
+			$data['description'] = $this->input->post('description');
+			
+			$data_param['id'] = $this->input->post('id');
+			if(!$data_param['id']){
+				$id = $this->estimation_model->create($data);
+			}else {
+				$id = $this->estimation_model->update($data, $data_param);
+			}
+
+			if ( $id ) 
+			{
+				$this->session->set_flashdata('alert', $this->alert->set_alert(Alert::SUCCESS, $this->estimation_model->messages()));
+			} else {
+				$this->session->set_flashdata('alert', $this->alert->set_alert(Alert::DANGER, $this->estimation_model->errors()));
+			}
+			redirect(site_url($this->current_page) . "detail/" . $this->input->post('student_id') );
+		}
+	}
+	public function add_saving(  )
+	{
+		if( !($_POST) ) redirect(site_url(  $this->current_page ));  
+
+		// echo var_dump( $data );return;
+		$this->form_validation->set_rules( 'nominal', 'Iuran', 'required|trim' );
+		$this->form_validation->set_rules( 'date', 'Tanggal', 'required|trim' );
+        if ($this->form_validation->run() === TRUE )
+        {
+			$data['student_id'] = $this->input->post( 'student_id' );
+			$data['nominal'] = $this->input->post( 'nominal' );
+			$data['date'] = date("Y-m-d", strtotime( $this->input->post('date') ) ) ;
+			$data['timestamp'] = time();
+
+
+			if( $this->savings_model->create( $data ) ){
+				$this->session->set_flashdata('alert', $this->alert->set_alert( Alert::SUCCESS, $this->savings_model->messages() ) );
+			}else{
+				$this->session->set_flashdata('alert', $this->alert->set_alert( Alert::DANGER, $this->savings_model->errors() ) );
+			}
+		}
+        else
+        {
+          $this->data['message'] = (validation_errors() ? validation_errors() : ($this->m_account->errors() ? $this->savings_model->errors() : $this->session->flashdata('message')));
+          if(  validation_errors() || $this->savings_model->errors() ) $this->session->set_flashdata('alert', $this->alert->set_alert( Alert::DANGER, $this->data['message'] ) );
+		}
+		
+		redirect( site_url($this->current_page) . "detail/" . $this->input->post( 'student_id' ) );
 	}
 
 	public function delete(  ) {

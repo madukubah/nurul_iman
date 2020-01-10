@@ -189,7 +189,7 @@ class Savings_model extends MY_Model
    * @return static
    * @author madukubah
    */
-  public function savings( $start = 0 , $limit = NULL, $student_id = NULL )
+  public function savings( $start = 0 , $limit = NULL, $student_id = NULL, $year= null )
   {
       if (isset( $limit ))
       {
@@ -198,6 +198,10 @@ class Savings_model extends MY_Model
       if (isset($student_id))
       {
         $this->where($this->table.'.student_id', $student_id);
+      }
+      if (isset($year))
+      {
+        $this->where($this->table.'.year', $year);
       }
       $this->select($this->table.'.*');
       $this->select($this->table.'.date as _date' );
@@ -215,12 +219,14 @@ class Savings_model extends MY_Model
      return $this->savings_( 0, NULL, $year );
   }
 
-  public function savings_( $start = 0 , $limit = NULL, $year = NULL )
+  public function savings_( $start = 0 , $limit = NULL, $year = NULL, $student_id = null )
   {
-    $year || $year = date('Y');
+    // $year || $year = date('Y');
     $this->db->select([
       "CONCAT( student.registration_number, ' '  ) as _registration_number",
       "student.name",
+      "savings.year",
+      "savings.student_id",
       "SUM( CASE WHEN savings.month = 1 THEN  savings.nominal ELSE 0 end  ) as jan",
       "SUM( CASE WHEN savings.month = 2 THEN  savings.nominal ELSE 0 end ) as feb ",
       "SUM( CASE WHEN savings.month = 3 THEN  savings.nominal ELSE 0 end ) as mar ",
@@ -238,8 +244,10 @@ class Savings_model extends MY_Model
     $this->db->join( "student","on student.id = savings.student_id", "inner" );
     if ( isset( $year ) )
         $this->db->where( $this->table.'.year', $year);
-
+    if ( isset( $student_id ) )
+        $this->db->where( $this->table.'.student_id', $student_id);
     $this->db->group_by( $this->table.".student_id" );
+    $this->db->group_by( $this->table.".year" );
 
     return $this->db->get( $this->table );
 

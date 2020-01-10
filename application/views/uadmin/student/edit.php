@@ -62,6 +62,17 @@
                   <?= $change_photo?>
               </div>
             </div>
+            <div class="card">
+              <div class="card-body">
+                <?php echo form_open($current_page . 'edit_estimation/');  ?>
+                <?php echo (isset($estimation)) ? $estimation : '';  ?>
+                <button class="btn btn-bold btn-success btn-sm " style="margin-left: 5px;" type="submit">
+                  Simpan
+                </button>
+
+                <?php echo form_close()  ?>
+              </div>
+          </div>
         </div>
 
       </div>

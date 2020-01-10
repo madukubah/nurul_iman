@@ -58,8 +58,40 @@
           <!--  -->
           <div class="card">
               <div class="card-body">
+                <?php echo (isset($estimation)) ? $estimation : '';  ?>
+              </div>
+          </div>
+          <!--  -->
+          <div class="card">
+              <div class="card-body">
                   <a href="<?php echo site_url( $current_page )."edit/".$student->id ?>" class="btn btn-block btn-md btn-primary waves-effect">Edit</a>
               </div> 
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <div class="row">
+                <div class="col-6">
+                  <h5>
+                    <?php echo strtoupper('iuran') ?>
+                  </h5>
+                </div>
+                <div class="col-6">
+                  <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-10">
+                      <div class="float-right">
+                        <?php echo (isset( $btn_saving )) ? $btn_saving : '';  ?>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> 
+            <div class="card-body">
+              <?php echo (isset($savings)) ? $savings : '';  ?>
+            </div> 
           </div>
         </div>
       </div>
