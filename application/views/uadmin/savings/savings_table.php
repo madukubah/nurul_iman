@@ -40,6 +40,8 @@
                                     if ($key == 'date' || $key == 'create_date' || $key == 'time')
                                         $attr =  date("d/m/Y", $row->$key);
 
+                                    if ($key == 'name' )
+                                        $attr =  '<a href="'.site_url( '/uadmin/student/detail/'.$row->student_id ).'">'.$row->$key.'</a>';
                                     echo $attr;
                                     ?>
                         </td>

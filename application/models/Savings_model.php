@@ -33,6 +33,35 @@ class Savings_model extends MY_Model
       $this->set_error("gagal");
           return FALSE;
   }
+   /**
+   * create_batch
+   *
+   * @param array  $data
+   * @return static 
+   * @author madukubah
+   */
+  public function create_batch( $entries )
+  {
+      // echo var_dump( $entries )."<br><br>";die;
+      if( empty( $entries ) ) return TRUE;
+
+      $this->db->trans_begin();
+      
+      $this->db->insert_batch( $this->table , $entries);
+
+      if ($this->db->trans_status() === FALSE)
+      {
+        $this->db->trans_rollback();
+
+        $this->set_error("gagal");
+        return FALSE;
+      }
+
+      $this->db->trans_commit();
+
+      $this->set_message("berhasil");
+      return TRUE;
+  }
   /**
    * update
    *
@@ -225,9 +254,10 @@ class Savings_model extends MY_Model
     $this->db->select([
       "CONCAT( student.registration_number, ' '  ) as _registration_number",
       "student.name",
+      "student.id as student_id",
       "savings.year",
       "savings.student_id",
-      "SUM( CASE WHEN savings.month = 1 THEN  savings.nominal ELSE 0 end  ) as jan",
+      "SUM( CASE WHEN savings.month = 1 THEN  savings.nominal ELSE 0 end ) as jan",
       "SUM( CASE WHEN savings.month = 2 THEN  savings.nominal ELSE 0 end ) as feb ",
       "SUM( CASE WHEN savings.month = 3 THEN  savings.nominal ELSE 0 end ) as mar ",
       "SUM( CASE WHEN savings.month = 4 THEN  savings.nominal ELSE 0 end ) as apr ",

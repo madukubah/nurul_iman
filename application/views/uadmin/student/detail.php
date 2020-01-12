@@ -11,8 +11,8 @@
 
   <section class="content">
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-7">
+      <div class="row ">
+        <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12  ">
           <div class="card">
             <div class="card-header">
               <div class="col-12">
@@ -42,31 +42,68 @@
             <div class="card-body">
               <!--  -->
               <?php echo (isset($contents)) ? $contents : '';  ?>
+              <br>
+              <a href="<?php echo site_url( $current_page )."edit/".$student->id ?>" class="btn btn-block btn-md btn-primary waves-effect">Edit</a>
+
               <!--  -->
             </div>
           </div>
         </div>
         <!-- photo -->
-        <div class="col-5">
-          <div class="card">
-              <div class="card-body">
-                  <label for="">Foto</label>
-                  <br>
-                  <img  class="img-fluid" src="<?= $student->image; ?>" alt="">
+        <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
+          <div class="card" >
+              <div class="card-body  ">
+                  <div class="row justify-content-md-center" >
+                      <div class="col-12">
+                          <label for="">Foto</label>
+                      </div>
+                      <div class="col-md-auto" >
+                          <br>
+                          <img class="img-fluid" src="<?php echo $student->image  ?>" alt="" height="400" width="auto" >
+                      </div>
+                  </div>
               </div>
           </div>
           <!--  -->
           <div class="card">
-              <div class="card-body">
-                <?php echo (isset($estimation)) ? $estimation : '';  ?>
-              </div>
-          </div>
-          <!--  -->
-          <div class="card">
-              <div class="card-body">
-                  <a href="<?php echo site_url( $current_page )."edit/".$student->id ?>" class="btn btn-block btn-md btn-primary waves-effect">Edit</a>
+              <div class="card-header text-center">
+                <b> Hasil Belajar </b> 
               </div> 
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-6 text-center">
+                    <input type="text" class="knob" value="<?= $student_assessment->knowledge?>" data-width="100" data-height="100" readonly data-fgColor="#932ab6">
+                    <div class="knob-label">Pengetahuan</div>
+                  </div>
+                  <!-- ./col -->
+                  <div class="col-6 text-center">
+                    <input type="text" class="knob" value="<?= $student_assessment->attitude?>" data-width="100" data-height="100" readonly data-fgColor="#39CCCC">
+                    <div class="knob-label">Sikap</div>
+                  </div>
+                  <!-- ./col -->
+                </div>
+                <div class="row">
+                  <div class="col-4 text-center">
+                  </div>
+                  <!-- ./col -->
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center ">
+                      <h5> <b>Kelas</b> </h5>
+                      <div class="card bg-red text-center">
+                        <h3> <b><?= $student_assessment->class?></b> </h3>
+                        <!-- /.info-box-content -->
+                      </div>
+                  </div>
+                  <!-- ./col -->
+                </div>
+                <label for=""> Keterangan </label>
+                <p><?= $student_assessment->description?></p>
+              </div>
+              <div class="card-footer" >
+                  <?= $edit_assessment ?>
+              </div>
           </div>
+          <!--  -->
+         
         </div>
         <div class="col-12">
           <div class="card">
@@ -89,7 +126,7 @@
                 </div>
               </div>
             </div> 
-            <div class="card-body">
+            <div class="card-body ">
               <?php echo (isset($savings)) ? $savings : '';  ?>
             </div> 
           </div>

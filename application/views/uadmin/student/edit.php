@@ -12,7 +12,7 @@
   <section class="content">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-7">
+        <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12 ">
           <div class="card">
             <div class="card-header">
               <div class="col-12">
@@ -53,7 +53,7 @@
           </div>
         </div>
         <!--  -->
-        <div class="col-5">
+        <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12 ">
             <div class="card" >
               <div class="card-body" >
                   <img class=" img-fluid" src="<?php echo $student->image  ?>" alt="" height="auto" width="500">
@@ -62,17 +62,6 @@
                   <?= $change_photo?>
               </div>
             </div>
-            <div class="card">
-              <div class="card-body">
-                <?php echo form_open($current_page . 'edit_estimation/');  ?>
-                <?php echo (isset($estimation)) ? $estimation : '';  ?>
-                <button class="btn btn-bold btn-success btn-sm " style="margin-left: 5px;" type="submit">
-                  Simpan
-                </button>
-
-                <?php echo form_close()  ?>
-              </div>
-          </div>
         </div>
 
       </div>

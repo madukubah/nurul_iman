@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table table-striped table-bordered table-hover  ">
+    <table  class="table table-striped table-bordered table-hover  ">
         <thead>
             <tr>
                 <td rowspan="2" align="center" ><strong>No</strong></td>
@@ -39,7 +39,7 @@
                                         $attr = $row->$key;
                                     if ($key == 'date' || $key == 'create_date' || $key == 'time')
                                         $attr =  date("d/m/Y", $row->$key);
-
+                                        
                                     echo $attr;
                                     ?>
                         </td>

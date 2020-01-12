@@ -134,15 +134,74 @@ class Student_services
       );
       $table["number"] = $start_number;
       $table[ "action" ] = array(
-        array(
-          "name" => "Detail",
-          "type" => "link",
-          "url" => site_url("uadmin/savings/student/"),
-          "button_color" => "primary",
-          "param" => "student_id",
-          'get' => '?year=',
-          "param_get" => "year",
-        ),
+          array(
+            "name" => 'Edit Iuran',
+            "type" => "modal_form",
+            "modal_id" => "edit_",
+            "url" => site_url( "uadmin/savings/edit_yearly/"),
+            "button_color" => "primary",
+            "param" => "id",
+            "form_data" => array(
+                "student_id" => array(
+                  'type' => 'hidden',
+                  'label' => "ID",
+                ),
+                "year" => array(
+                  'type' => 'hidden',
+                  'label' => "Tahun",
+                ),
+                "jan" => array(
+                  'type' => 'number' ,
+                  'label' => "Januari" ,
+                ),
+                "feb" => array(
+                  'type' => 'number' ,
+                  'label' => "Februari" ,
+                ),
+                "mar" => array(
+                  'type' => 'number' ,
+                  'label' => "Maret" ,
+                ),
+                "apr" => array(
+                  'type' => 'number' ,
+                  'label' => "April" ,
+                ),
+                "mei" => array(
+                  'type' => 'number' ,
+                  'label' => "Mei" ,
+                ),
+                "jun" => array(
+                  'type' => 'number' ,
+                  'label' => "Juni" ,
+                ),
+                "jul" => array(
+                  'type' => 'number' ,
+                  'label' => "Juli" ,
+                ),
+                "ags" => array(
+                  'type' => 'number' ,
+                  'label' => "Agustus" ,
+                ),
+                "sep" => array(
+                  'type' => 'number' ,
+                  'label' => "September" ,
+                ),
+                "okt" => array(
+                  'type' => 'number' ,
+                  'label' => "Oktober" ,
+                ),
+                "nov" => array(
+                  'type' => 'number' ,
+                  'label' => "November" ,
+                ),
+                "des" => array(
+                  'type' => 'number' ,
+                  'label' => "Desember" ,
+                ),
+            ),
+            "title" => "Edit Iuran",
+            "data_name" => "name",
+          ),
       );
     return $table;
   }
@@ -265,39 +324,97 @@ class Student_services
 		return $_data;
   }
 
-  public function get_form_estimation( $student_id = NULL )
+  public function get_form_assessment(  )
 	{
-		if( isset( $student_id ) )
-		{
-      $this->load->model('estimation_model');
-      $student 				              = $this->estimation_model->estimation_by_student_id( $student_id )->row();
-      if($student){
-        $this->id                     = $student->id;
-        $this->student_id             = $student_id;
-        $this->description             = $student->description;
-      }else {
-        $this->id                     = '';
-        $this->student_id             = $student_id;
-        $this->description             = '';
-      }
-    }
-
 
 		$_data["form_data"] = array(
 			"id" => array(
 				'type' => 'hidden',
 				'label' => "ID",
-				'value' => $this->form_validation->set_value('id', $this->id),
       ),
       "student_id" => array(
 				'type' => 'hidden',
 				'label' => "ID",
-				'value' => $this->form_validation->set_value('student_id', $this->student_id),
+      ),
+      "knowledge" => array(
+				'type' => 'number',
+				'label' => "Pengetahuan",
+      ),
+      "attitude" => array(
+				'type' => 'number' ,
+				'label' => "Sikap" ,
+      ),
+      "class" => array(
+				'type' => 'text',
+				'label' => "Kelas",
       ),
       "description" => array(
         'type' => 'textarea',
-        'label' => "Penilaian",
-        'value' => $this->form_validation->set_value('description', $this->description),
+        'label' => "Keterangan",
+      ),
+    );
+		return $_data;
+  }
+
+  public function get_form_savings(  )
+	{
+
+		$_data["form_data"] = array(
+      "student_id" => array(
+				'type' => 'hidden',
+				'label' => "ID",
+      ),
+      "year" => array(
+				'type' => 'number',
+				'label' => "Tahun",
+      ),
+      "jan" => array(
+				'type' => 'number' ,
+				'label' => "jan" ,
+      ),
+      "feb" => array(
+				'type' => 'number' ,
+				'label' => "feb" ,
+      ),
+      "mar" => array(
+				'type' => 'number' ,
+				'label' => "mar" ,
+      ),
+      "apr" => array(
+				'type' => 'number' ,
+				'label' => "apr" ,
+      ),
+      "mei" => array(
+				'type' => 'number' ,
+				'label' => "mei" ,
+      ),
+      "jun" => array(
+				'type' => 'number' ,
+				'label' => "jun" ,
+      ),
+      "jul" => array(
+				'type' => 'number' ,
+				'label' => "jul" ,
+      ),
+      "ags" => array(
+				'type' => 'number' ,
+				'label' => "ags" ,
+      ),
+      "sep" => array(
+				'type' => 'number' ,
+				'label' => "sep" ,
+      ),
+      "okt" => array(
+				'type' => 'number' ,
+				'label' => "okt" ,
+      ),
+      "nov" => array(
+				'type' => 'number' ,
+				'label' => "nov" ,
+      ),
+      "des" => array(
+				'type' => 'number' ,
+				'label' => "des" ,
       ),
     );
 		return $_data;

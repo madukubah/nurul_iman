@@ -122,3 +122,24 @@
         </tbody>
     </table>
 </div>
+<script>
+
+    var width = window.innerWidth;
+
+    console.log(width);
+
+    var element = document.getElementById('table');
+
+
+
+    if (width <= 600) {
+
+        element.classList.add('rg-table');
+
+    } else {
+
+        element.classList.remove('rg-table');
+
+    }
+
+</script>

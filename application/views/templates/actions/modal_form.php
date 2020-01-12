@@ -1,6 +1,7 @@
 
 <?php
 $data = (isset($data) && $data != NULL) ? $data : '';
+$param = (isset($param) ) ? $param : '';
 $data_param = ($data != '') ? (isset($data->$param) ? $data->$param : '')   : '';
 ?>
 <button type="button" class="btn btn-<?= $button_color; ?> btn-sm" data-toggle="modal" style="margin-left: 5px;" data-target="#<?= $modal_id . $data_param; ?>">

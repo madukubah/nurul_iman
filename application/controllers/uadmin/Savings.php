@@ -24,7 +24,6 @@ class Savings extends Uadmin_Controller {
 		$year = $this->input->get("year", TRUE );
 		$year || $year = date('Y');
 
-		// $this->load->library('services/Student_services');
 		// $this->services = new Student_services;
 		$page = ($this->uri->segment(4)) ? ($this->uri->segment(4) -  1 ) : 0;
 		// echo $page; return;
@@ -190,9 +189,11 @@ class Savings extends Uadmin_Controller {
         if ($this->form_validation->run() === TRUE )
         {
 			$data['student_id'] = $this->input->post( 'student_id' );
-			$data['nominal'] = $this->input->post( 'nominal' );
-			$data['date'] = date("Y-m-d", strtotime( $this->input->post('date') ) ) ;
-			$data['timestamp'] = time();
+			$data['nominal'] 	= $this->input->post( 'nominal' );
+			$data['date'] 		= date("Y-m-d", strtotime( $this->input->post('date') ) ) ;
+			$data['month'] 		= date("m", strtotime( $this->input->post('date') ) ) ;
+			$data['year'] 		= date("Y", strtotime( $this->input->post('date') ) ) ;
+			$data['timestamp'] 	= strtotime( $this->input->post('date'));
 
 
 			if( $this->savings_model->create( $data ) ){
@@ -208,6 +209,63 @@ class Savings extends Uadmin_Controller {
 		}
 		
 		redirect( site_url($this->current_page) . "student/" . $this->input->post( 'student_id' ) );
+	}
+
+	public function edit_yearly(  )
+	{
+		if( !($_POST) ) redirect(site_url(  $this->current_page ));  
+
+		$this->form_validation->set_rules( 'student_id', 'student_id', 'required|trim' );
+        if ($this->form_validation->run() === TRUE )
+        {
+
+			$data_array = [];
+			$months = array(
+				1 => 'jan',
+				2 => 'feb',
+				3 => 'mar',
+				4 => 'apr',
+				5 => 'mei',
+				6 => 'jun',
+				7 => 'jul',
+				8 => 'ags',
+				9 => 'sep',
+				10 => 'okt',
+				11 => 'nov',
+				12 => 'des',
+			);
+			foreach( $months as $ind => $month )
+			{
+				$data_array []= [
+					'student_id' 	=> $this->input->post( 'student_id' ),
+					'nominal' 		=> $this->input->post( $month ),
+					'date' 			=> $this->input->post( 'year' ).'-'.$ind.'-15',
+					'timestamp' 	=> strtotime( $this->input->post( 'year' ).'-'.$ind.'-15' ) ,
+					'month' 		=> $ind ,
+					'year' 			=> $this->input->post( 'year' ) ,
+					
+				];
+			}
+			// echo var_dump( $data_array );die;
+
+			$this->savings_model->delete( [ 
+				'year' => $this->input->post( 'year' ) , 
+				'student_id' 	=> $this->input->post( 'student_id' ) 
+			] );
+
+			if( $this->savings_model->create_batch( $data_array ) ){
+				$this->session->set_flashdata('alert', $this->alert->set_alert( Alert::SUCCESS, $this->savings_model->messages() ) );
+			}else{
+				$this->session->set_flashdata('alert', $this->alert->set_alert( Alert::DANGER, $this->savings_model->errors() ) );
+			}
+		}
+        else
+        {
+          $this->data['message'] = (validation_errors() ? validation_errors() : ($this->m_account->errors() ? $this->savings_model->errors() : $this->session->flashdata('message')));
+          if(  validation_errors() || $this->savings_model->errors() ) $this->session->set_flashdata('alert', $this->alert->set_alert( Alert::DANGER, $this->data['message'] ) );
+		}
+		
+		redirect( site_url( ) . "uadmin/student/detail/" . $this->input->post( 'student_id' ) );
 	}
 
 	public function edit(  )

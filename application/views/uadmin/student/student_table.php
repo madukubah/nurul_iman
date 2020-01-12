@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table table-striped table-bordered table-hover  ">
+    <table class="table  table-striped table-bordered table-hover  ">
         <thead>
             <tr>
                 <th style="width:50px">No</th>
@@ -87,3 +87,25 @@
         </tbody>
     </table>
 </div>
+
+<script>
+
+    var width = window.innerWidth;
+
+    console.log(width);
+
+    var element = document.getElementsByClassName('table')[0];
+
+
+
+    if (width <= 600) {
+
+        element.classList.add('rg-table');
+
+    } else {
+
+        element.classList.remove('rg-table');
+
+    }
+
+</script>

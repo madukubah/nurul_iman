@@ -98,7 +98,7 @@ class Student_model extends MY_Model
   {
     //foreign
     //delete_foreign( $data_param. $models[]  )
-    if( !$this->delete_foreign( $data_param, [ 'savings_model' ]) )
+    if( !$this->delete_foreign( $data_param, [ 'savings_model', 'assessment_model' ]) )
     {
       $this->set_error("gagal");//('group_delete_unsuccessful');
       return FALSE;
@@ -134,12 +134,26 @@ class Student_model extends MY_Model
       {
         $this->where($this->table.'.id', $id);
       }
+      $this->limit(1);
+      $this->order_by($this->table.'.id', 'desc');
+      $this->students(  );
+      return $this;
+  }
+
+   /**
+   * group
+   *
+   * @param int|array|null $id = id_students
+   * @return static
+   * @author madukubah
+   */
+  public function student_by_registration_number( $registration_number  )
+  {
+      $this->where($this->table.'.registration_number', $registration_number);
 
       $this->limit(1);
       $this->order_by($this->table.'.id', 'desc');
-
       $this->students(  );
-
       return $this;
   }
 
@@ -150,7 +164,7 @@ class Student_model extends MY_Model
      $this->db->select( "CONCAT( '".base_url()."uploads/student/' , ".$this->table.".photo  ) as image" );
 
      $this->db->like( $this->table.'.registration_number', $key, 'both' );
-    //  $this->db->or_like( $this->table.'.name', $key, 'both' );
+     $this->db->or_like( $this->table.'.name', $key, 'both' );
 
      return $this->db->get( $this->table );
   }

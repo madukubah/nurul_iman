@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Estimation_model extends MY_Model
+class Assessment_model extends MY_Model
 {
-  protected $table = "estimation";
+  protected $table = "assessment";
 
   function __construct() {
       parent::__construct( $this->table );
@@ -93,7 +93,7 @@ class Estimation_model extends MY_Model
    * @return static
    * @author madukubah
    */
-  public function estimation( $id = NULL  )
+  public function assessment( $id = NULL  )
   {
       if (isset($id))
       {
@@ -103,11 +103,11 @@ class Estimation_model extends MY_Model
       $this->limit(1);
       $this->order_by($this->table.'.id', 'desc');
 
-      $this->estimations(  );
+      $this->assessments(  );
 
       return $this;
   }
-  public function estimation_by_student_id( $student_id = NULL  )
+  public function assessment_by_student_id( $student_id = NULL  )
   {
       if (isset($student_id))
       {
@@ -117,18 +117,18 @@ class Estimation_model extends MY_Model
       $this->limit(1);
       $this->order_by($this->table.'.id', 'desc');
 
-      $this->estimations(  );
+      $this->assessments(  );
 
       return $this;
   }
   /**
-   * estimations
+   * assessments
    *
    *
    * @return static
    * @author madukubah
    */
-  public function estimations( $start = 0 , $limit = NULL )
+  public function assessments( $start = 0 , $limit = NULL )
   {
       if (isset( $limit ))
       {

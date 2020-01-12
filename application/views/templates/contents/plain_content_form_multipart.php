@@ -21,18 +21,18 @@
                 ?>
               </div>
               <div class="row">
-                <div class="col-6">
+                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                   <h5>
                     <?php echo strtoupper($header) ?>
                     <p class="text-secondary"><small><?php echo $sub_header ?></small></p>
                   </h5>
                 </div>
-                <div class="col-6">
+                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                   <div class="row">
                     <div class="col-2"></div>
                     <div class="col-10">
                       <div class="float-right">
-                        <?php echo (isset($header_button)) ? $header_button : '';  ?>
+                        <?php echo (isset( $header_button )) ? $header_button : '';  ?>
                       </div>
                     </div>
                   </div>

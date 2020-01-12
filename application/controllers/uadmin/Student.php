@@ -13,7 +13,6 @@ class Student extends Uadmin_Controller {
 		$this->load->model(array(
 			'student_model',
 			'savings_model',
-			'estimation_model',
 		));
 		$this->data["menu_list_id"] = "student_index";
 
@@ -190,6 +189,7 @@ class Student extends Uadmin_Controller {
 					$student_data["address"] = $row['I'];
 					$student_data["phone"] = $row['J'];
 					$student_data["phone"] || $student_data["phone"] = '-' ;
+					$student_data["status"] = 1;
 
 					$student_data['photo'] = "default.jpg";
 
@@ -197,17 +197,18 @@ class Student extends Uadmin_Controller {
 					
 					##########################################################
 					// echo var_dump( $student_data ).'<br>' ;
-					$entries[]= $student_data;
+					if( $this->student_model->student_by_registration_number( $student_data["registration_number"]  )->row() == NULL  )
+						$entries[]= $student_data;
 				}
 				
 				$numrow++; // Tambah 1 setiap kali looping
 			}
-
-			if( $this->student_model->create_batch( $entries ) ){
-				$this->session->set_flashdata('alert', $this->alert->set_alert( Alert::SUCCESS, $this->student_model->messages() ) );
-			}else{
-				$this->session->set_flashdata('alert', $this->alert->set_alert( Alert::DANGER, $this->student_model->errors() ) );
-			}
+			if( ! empty( $entries ) ) 
+				if( $this->student_model->create_batch( $entries ) ){
+					$this->session->set_flashdata('alert', $this->alert->set_alert( Alert::SUCCESS, $this->student_model->messages() ) );
+				}else{
+					$this->session->set_flashdata('alert', $this->alert->set_alert( Alert::DANGER, $this->student_model->errors() ) );
+				}
 		}
 		else
 		{
@@ -288,10 +289,9 @@ class Student extends Uadmin_Controller {
 		$month = (int) date('m');
 		if( $student_id == null ) redirect(site_url(  $this->current_page ));  
 
-		$table = $this->services->get_table_config_savings_( $this->current_page );
-		$table[ "rows" ] = $this->savings_model->savings_( 0, null, null, $student_id )->result();
-		// var_dump($table[ "rows" ]); die;
-		$table = $this->load->view('uadmin/student/savings_table', $table, true);
+		$table_savings 				= $this->services->get_table_config_savings_( $this->current_page );
+		$table_savings[ "rows" ] 	= $this->savings_model->savings_( 0, null, null, $student_id )->result();
+		$table_savings 				= $this->load->view('uadmin/student/savings_table', $table_savings, true);
 
 		$add_savings = array(
 			"name" => "Tambah Iuran",
@@ -306,7 +306,7 @@ class Student extends Uadmin_Controller {
 				),
 				"nominal" => array(
 					'type' => 'number',
-					'label' => "Iuran",
+					'label' => "Nominal",
 					'value' => '',
 				),
 				"date" => array(
@@ -314,43 +314,48 @@ class Student extends Uadmin_Controller {
 					'label' => "Tanggal",
 					'value' => date( "m/d/Y" ),
 				),
-				'month' => array(
-					'type' => 'select',
-					'label' => "Bulan",
-					'options' => Util::MONTH,
-					'selected' => $month
-				),
-				'year' => array(
-					'type' => 'select',
-					'label' => "Tahun",
-					'options' => array(
-						2019 => "2019",
-						2020 => "2020",
-						2021 => "2021",
-						2022 => "2022",
-					),
-					'selected' => $year,
-				)
 			),
 			'data' => NULL
 		);
 
 		$add_savings= $this->load->view('templates/actions/modal_form', $add_savings, true );
 
+		####################################
+		# assessment
+		####################################
+		$this->load->model('assessment_model');
+		$student_assessment      	= $this->assessment_model->assessment_by_student_id( $student_id )->row();
+		if( $student_assessment == NULL ) 
+			$student_assessment = ( object ) [ 
+				'student_id' => $student_id,
+				'knowledge' => 0,
+				'attitude' => 0,
+				'class' => '-',
+				'description' => '-',
+			] ;
+		$edit_assessment = array(
+			"name" => "Edit Penilaian",
+			"modal_id" => "edit_assessment",
+			"button_color" => "primary",
+			"url" => site_url( $this->current_page."edit_assessment/"),
+			"form_data" => $this->services->get_form_assessment(  )[ "form_data" ],
+			'data' => $student_assessment
+		);
+
+		$edit_assessment= $this->load->view('templates/actions/modal_form', $edit_assessment, true );
+
 		$form_data = $this->services->get_form_data( $student_id );
 		unset( $form_data["form_data"]["photo"] );
-		$form_data = $this->load->view('templates/form/plain_form_readonly', $form_data , TRUE ) ;
-
-		$form_estimation = $this->services->get_form_estimation( $student_id );
-		$form_estimation = $this->load->view('templates/form/plain_form_readonly', $form_estimation , TRUE ) ;
+		$form_data =  $this->load->view('templates/form/plain_form_readonly', $form_data , TRUE ) ;
 
 		$student 				= $this->student_model->student( $student_id )->row();
 
-		$this->data[ "btn_saving" ] =  $add_savings;
-		$this->data[ "contents" ] 	=  $form_data;
-		$this->data[ "estimation" ] =  $form_estimation;
-		$this->data[ "student" ] 	=  $student;
-		$this->data[ "savings" ] 	=  $table;
+		$this->data[ "edit_assessment" ] 	=  $edit_assessment;
+		$this->data[ "student_assessment" ] =  $student_assessment;
+		$this->data[ "btn_saving" ] 		=  $add_savings;
+		$this->data[ "contents" ] 			=  $form_data;
+		$this->data[ "student" ] 			=  $student;
+		$this->data[ "savings" ] 			=  $table_savings;
 
 		#################################################################3
 
@@ -439,9 +444,6 @@ class Student extends Uadmin_Controller {
 	
 			$change_photo= $this->load->view('templates/actions/modal_form_multipart', $change_photo, true ); 
 			
-			$form_estimation = $this->services->get_form_estimation( $student_id );
-			$form_estimation = $this->load->view('templates/form/plain_form', $form_estimation , TRUE ) ;
-			$this->data[ "estimation" ] =  $form_estimation;
 
 			$this->data[ "change_photo" ] 	=  $change_photo;
 			$this->data[ "student" ] 		=  $student;
@@ -449,39 +451,46 @@ class Student extends Uadmin_Controller {
 			$this->data["key"] = $this->input->get('key', FALSE);
 			$this->data["alert"] = (isset($alert)) ? $alert : NULL ;
 			$this->data["current_page"] = $this->current_page;
-			$this->data["block_header"] = "Tambah Santri ";
-			$this->data["header"] = "Tambah Santri";
+			$this->data["block_header"] = "Edit Santri ";
+			$this->data["header"] = "Edit Santri";
 			$this->data["sub_header"] = 'Klik Tombol Action Untuk Aksi Lebih Lanjut';
 
             $this->data[ "contents" ] =  $form_data;
             $this->render( "uadmin/student/edit" );
 		}
 	}
-	public function edit_estimation(  )
+	public function edit_assessment(  )
 	{
 		if( !($_POST) ) redirect( site_url($this->current_page) );
 
 		$this->form_validation->set_rules( 'description', 'Penilaian', 'required|trim' );
+		$this->form_validation->set_rules( 'student_id', 'student_id', 'required|trim' );
 		if ($this->form_validation->run() === TRUE )
         {
-			$data['student_id'] = $this->input->post('student_id');
-			$data['description'] = $this->input->post('description');
+			$this->load->model('assessment_model');
+
+			$data['student_id'] 	= $this->input->post('student_id');
+			$data['knowledge'] 		= $this->input->post('knowledge');
+			$data['attitude'] 		= $this->input->post('attitude');
+			$data['class'] 			= $this->input->post('class');
+			$data['description'] 	= $this->input->post('description');
 			
 			$data_param['id'] = $this->input->post('id');
-			if(!$data_param['id']){
-				$id = $this->estimation_model->create($data);
+			if(! $data_param['id']  ){
+				$id = $this->assessment_model->create($data);
 			}else {
-				$id = $this->estimation_model->update($data, $data_param);
+				$id = $this->assessment_model->update($data, $data_param);
 			}
 
-			if ( $id ) 
+			if ( $id )
 			{
-				$this->session->set_flashdata('alert', $this->alert->set_alert(Alert::SUCCESS, $this->estimation_model->messages()));
+				$this->session->set_flashdata('alert', $this->alert->set_alert(Alert::SUCCESS, $this->assessment_model->messages()));
 			} else {
-				$this->session->set_flashdata('alert', $this->alert->set_alert(Alert::DANGER, $this->estimation_model->errors()));
+				$this->session->set_flashdata('alert', $this->alert->set_alert(Alert::DANGER, $this->assessment_model->errors()));
 			}
-			redirect(site_url($this->current_page) . "detail/" . $this->input->post('student_id') );
 		}
+		redirect(site_url($this->current_page) . "detail/" . $this->input->post('student_id') );
+
 	}
 	public function add_saving(  )
 	{
@@ -493,11 +502,13 @@ class Student extends Uadmin_Controller {
         if ($this->form_validation->run() === TRUE )
         {
 			$data['student_id'] = $this->input->post( 'student_id' );
-			$data['nominal'] = $this->input->post( 'nominal' );
-			$data['date'] = date("Y-m-d", strtotime( $this->input->post('date') ) ) ;
-			$data['timestamp'] = time();
+			$data['nominal'] 	= $this->input->post( 'nominal' );
+			$data['date'] 		= date("Y-m-d", strtotime( $this->input->post('date') ) ) ;
+			$data['month'] 		= date("m", strtotime( $this->input->post('date') ) ) ;
+			$data['year'] 		= date("Y", strtotime( $this->input->post('date') ) ) ;
+			$data['timestamp'] 	= time();
 
-
+			// var_dump( $data );die;
 			if( $this->savings_model->create( $data ) ){
 				$this->session->set_flashdata('alert', $this->alert->set_alert( Alert::SUCCESS, $this->savings_model->messages() ) );
 			}else{
