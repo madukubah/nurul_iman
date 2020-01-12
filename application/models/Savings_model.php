@@ -278,6 +278,12 @@ class Savings_model extends MY_Model
         $this->db->where( $this->table.'.student_id', $student_id);
     $this->db->group_by( $this->table.".student_id" );
     $this->db->group_by( $this->table.".year" );
+    
+    if (isset( $limit ))
+    {
+      $this->db->limit( $limit );
+    }
+    $this->db->offset( $start );
 
     return $this->db->get( $this->table );
 

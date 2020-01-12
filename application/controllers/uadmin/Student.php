@@ -193,8 +193,6 @@ class Student extends Uadmin_Controller {
 
 					$student_data['photo'] = "default.jpg";
 
-
-					
 					##########################################################
 					// echo var_dump( $student_data ).'<br>' ;
 					if( $this->student_model->student_by_registration_number( $student_data["registration_number"]  )->row() == NULL  )
