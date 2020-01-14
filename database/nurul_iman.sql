@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 12, 2020 at 08:07 AM
+-- Generation Time: Jan 14, 2020 at 07:55 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.8
 
@@ -107,7 +107,19 @@ INSERT INTO `menus` (`id`, `menu_id`, `name`, `link`, `list_id`, `icon`, `status
 (106, 103, 'Menu', 'admin/menus', 'menus_index', 'circle', 1, 1, '-'),
 (107, 2, 'Beranda', 'uadmin/home', 'home_index', 'home', 1, 1, '-'),
 (108, 2, 'Santri', 'uadmin/student', 'student_index', 'home', 1, 2, '-'),
-(109, 2, 'Iuran', 'uadmin/savings', 'savings_index', 'home', 1, 3, '-');
+(109, 2, 'Iuran', 'uadmin/savings', 'savings_index', 'home', 1, 3, '-'),
+(110, 2, 'BLOGS', 'header', '-', 'home', 1, 10, '-'),
+(111, 2, 'TPA', 'uadmin/', '-', 'home', 1, 11, '-'),
+(112, 2, 'Majelis Taklim', 'uadmin/', '-', 'home', 1, 12, '-'),
+(113, 2, 'RIMNIS', 'uadmin/', '-', 'home', 1, 13, '-'),
+(114, 111, 'Kegiatan TPA', 'uadmin/', '-', 'home', 1, 1, '-'),
+(115, 111, 'Data Guru', 'uadmin/', '-', 'home', 1, 1, '-'),
+(116, 112, 'Kegiatan', 'uadmin/', '-', 'home', 1, 1, '-'),
+(117, 112, 'Bagan Struktur', 'uadmin/', '-', 'home', 1, 1, '-'),
+(118, 112, 'Data Pengurus', 'uadmin/', '-', 'home', 1, 1, '-'),
+(119, 113, 'Kegiatan', 'uadmin/', '-', 'home', 1, 1, '-'),
+(120, 113, 'Bagan Struktur', 'uadmin/', '-', 'home', 1, 1, '-'),
+(121, 113, 'Data Pengurus', 'uadmin/', '-', 'home', 1, 1, '-');
 
 -- --------------------------------------------------------
 
@@ -130,7 +142,8 @@ CREATE TABLE `savings` (
 --
 
 INSERT INTO `savings` (`id`, `student_id`, `nominal`, `date`, `timestamp`, `month`, `year`) VALUES
-(1, 174, 50000, '2020-01-12', 1578812789, 1, 2020);
+(1, 174, 50000, '2020-01-12', 1578812789, 1, 2020),
+(2, 174, 2000, '2020-02-12', 1578981982, 2, 2020);
 
 -- --------------------------------------------------------
 
@@ -333,7 +346,7 @@ INSERT INTO `student` (`id`, `registration_number`, `name`, `ttl`, `address`, `p
 (171, '1910 1075', 'RIFAL ALI ', '1-Feb-08', 'GUNUNG JATI', 'LA ODE FILIU', '-', 0, 'default.jpg', 1, '2019-10-12', 'BURUH', 'SD', 1),
 (172, '1910 1076', 'RAFKA ADITYA', 'KENDARI, 08 JULI 2012', 'JL. IR SOEKARNO', 'ZAKARIA', '-', 0, 'default.jpg', 1, '2019-10-12', 'WIRASWASTA', 'SLTA', 1),
 (173, '1910 1077', 'MUH. RASYA RAMADHAN', 'KENDARI, 3 SEPTEMBER 2012', 'JL. LASOLO', 'JISMA JINAS', '-', 0, 'default.jpg', 1, '2019-10-12', 'POLISI', 'SLTA', 1),
-(174, '1910 1078', 'SAHWA NUR KHALIFAH', 'KENDARI, ', 'JL. BETE-BETE NO. 4', 'ERNA NINGSIH', '-', 0, 'student_SAHWA_NUR_KHALIFAH_1578812821.png', 0, '2019-10-16', 'WIRASWASTA', 'SLTA', 1);
+(174, '1910 1078', 'SAHWA NUR KHALIFAH', 'KENDARI,', 'JL. BETE-BETE NO. 4', 'ERNA NINGSIH', '-', 1578981861, 'student_SAHWA_NUR_KHALIFAH_1578812821.png', 0, '2019-10-16', 'WIRASWASTA', 'SLTA', 1);
 
 -- --------------------------------------------------------
 
@@ -369,8 +382,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `phone`, `image`, `address`) VALUES
-(1, '127.0.0.1', 'admin@fixl.com', '$2y$12$XpBgMvQ5JzfvN3PTgf/tA.XwxbCOs3mO0a10oP9/11qi1NUpv46.u', 'admin@fixl.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1573732643, 1, 'Admin', 'istrator', '081342989185', 'USER_1_1571554027.jpeg', 'admin'),
-(13, '::1', 'uadmin@gmail.com', '$2y$10$78SZyvKRKMU7nPCew9w4nOpEUmJ1SeTV4L4ZG2NXXSfbEaswqoepq', 'uadmin@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1568678256, 1578793416, 1, 'admin', 'TPA', '00', 'USER_13_1568678463.jpg', 'jln mutiara no 8');
+(1, '127.0.0.1', 'admin@fixl.com', '$2y$12$XpBgMvQ5JzfvN3PTgf/tA.XwxbCOs3mO0a10oP9/11qi1NUpv46.u', 'admin@fixl.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1578982911, 1, 'Admin', 'istrator', '081342989185', 'USER_1_1571554027.jpeg', 'admin'),
+(13, '::1', 'uadmin@gmail.com', '$2y$10$78SZyvKRKMU7nPCew9w4nOpEUmJ1SeTV4L4ZG2NXXSfbEaswqoepq', 'uadmin@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1568678256, 1578981821, 1, 'admin', 'TPA', '00', 'USER_13_1568678463.jpg', 'jln mutiara no 8');
 
 -- --------------------------------------------------------
 
@@ -479,13 +492,13 @@ ALTER TABLE `login_attempts`
 -- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
 
 --
 -- AUTO_INCREMENT for table `savings`
 --
 ALTER TABLE `savings`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `student`

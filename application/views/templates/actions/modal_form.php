@@ -21,7 +21,6 @@ $data_param = ($data != '') ? (isset($data->$param) ? $data->$param : '')   : ''
             </div>
             <div class="modal-body">
                 <!--  -->
-
                 <?php
                 $_data["form_data"] = $form_data;
                 $_data["data"] = $data;
