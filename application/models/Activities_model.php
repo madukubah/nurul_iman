@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Assessment_model extends MY_Model
+class Activities_model extends MY_Model
 {
-  protected $table = "assessment";
+  protected $table = "activities";
 
   function __construct() {
       parent::__construct( $this->table );
@@ -93,7 +93,7 @@ class Assessment_model extends MY_Model
    * @return static
    * @author madukubah
    */
-  public function assessment( $id = NULL  )
+  public function activity( $id = NULL  )
   {
       if (isset($id))
       {
@@ -103,32 +103,19 @@ class Assessment_model extends MY_Model
       $this->limit(1);
       $this->order_by($this->table.'.id', 'desc');
 
-      $this->assessments(  );
+      $this->activities(  );
 
       return $this;
   }
-  public function assessment_by_student_id( $student_id = NULL  )
-  {
-      if (isset($student_id))
-      {
-        $this->where($this->table.'.student_id', $student_id);
-      }
-
-      $this->limit(1);
-      $this->order_by($this->table.'.id', 'desc');
-
-      $this->assessments(  );
-
-      return $this;
-  }
+ 
   /**
-   * assessments
+   * activities
    *
    *
    * @return static
    * @author madukubah
    */
-  public function assessments( $start = 0 , $limit = NULL )
+  public function activities( $start = 0 , $limit = NULL )
   {
       if (isset( $limit ))
       {
@@ -138,6 +125,30 @@ class Assessment_model extends MY_Model
       $this->order_by($this->table.'.id', 'asc');
       return $this->fetch_data();
   }
+  public function activities_by_organization_id ( $start = 0 , $limit = NULL, $organization_id = NULL )
+  {
+    $this->select( $this->table . '.*' );
+    $this->select( $this->table . '.image AS image_old' );
+    $this->select( $this->table . '.date AS _date' );
+    $this->select('CONCAT("'.base_url('uploads/activity/').'", "", activities.image) AS image');
+    $this->select( $this->table . '.image AS image_old' );
+    $this->select( 'organization.name AS organization_name' );
+    if (isset($organization_id))
+      {
+        $this->where($this->table.'.organization_id', $organization_id);
+      }
 
+      $this->join(
+        'organization',
+        'organization.id = activities.organization_id',
+        'inner'
+      );
+
+      $this->order_by($this->table.'.id', 'desc');
+
+      $this->activities( $start, $limit );
+
+      return $this;
+  }
 }
 ?>

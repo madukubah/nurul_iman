@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Assessment_model extends MY_Model
+class Structural_model extends MY_Model
 {
-  protected $table = "assessment";
+  protected $table = "structural";
 
   function __construct() {
       parent::__construct( $this->table );
@@ -69,6 +69,14 @@ class Assessment_model extends MY_Model
    */
   public function delete( $data_param  )
   {
+    //foreign
+    //delete_foreign( $data_param. $models[]  )
+    if( !$this->delete_foreign( $data_param, ['menu_model'] ) )
+    {
+      $this->set_error("gagal");//('group_delete_unsuccessful');
+      return FALSE;
+    }
+    //foreign
     $this->db->trans_begin();
 
     $this->db->delete($this->table, $data_param );
@@ -93,7 +101,7 @@ class Assessment_model extends MY_Model
    * @return static
    * @author madukubah
    */
-  public function assessment( $id = NULL  )
+  public function structural( $id = NULL  )
   {
       if (isset($id))
       {
@@ -103,32 +111,19 @@ class Assessment_model extends MY_Model
       $this->limit(1);
       $this->order_by($this->table.'.id', 'desc');
 
-      $this->assessments(  );
+      $this->structurals(  );
 
       return $this;
   }
-  public function assessment_by_student_id( $student_id = NULL  )
-  {
-      if (isset($student_id))
-      {
-        $this->where($this->table.'.student_id', $student_id);
-      }
-
-      $this->limit(1);
-      $this->order_by($this->table.'.id', 'desc');
-
-      $this->assessments(  );
-
-      return $this;
-  }
+ 
   /**
-   * assessments
+   * structurals
    *
    *
    * @return static
    * @author madukubah
    */
-  public function assessments( $start = 0 , $limit = NULL )
+  public function structurals( $start = 0 , $limit = NULL )
   {
       if (isset( $limit ))
       {
@@ -138,6 +133,28 @@ class Assessment_model extends MY_Model
       $this->order_by($this->table.'.id', 'asc');
       return $this->fetch_data();
   }
+  public function structural_by_organization_id( $organization_id = NULL )
+  {
+    $this->select( $this->table . '.*' );
+    $this->select( $this->table . '.image AS image_old' );
+    $this->select('CONCAT("'.base_url('uploads/structural/').'", "", structural.image) AS image');
+    $this->select( 'organization.name AS organization_name' );
+    if (isset($organization_id))
+      {
+        $this->where($this->table.'.organization_id', $organization_id);
+      }
 
+      $this->join(
+        'organization',
+        'organization.id = structural.organization_id',
+        'inner'
+      );
+
+      $this->order_by($this->table.'.id', 'desc');
+
+      $this->structurals(  );
+
+      return $this;
+  }
 }
 ?>

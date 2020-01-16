@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Assessment_model extends MY_Model
+class Teacher_model extends MY_Model
 {
-  protected $table = "assessment";
+  protected $table = "teacher";
 
   function __construct() {
       parent::__construct( $this->table );
@@ -93,7 +93,7 @@ class Assessment_model extends MY_Model
    * @return static
    * @author madukubah
    */
-  public function assessment( $id = NULL  )
+  public function teacher( $id = NULL  )
   {
       if (isset($id))
       {
@@ -103,33 +103,23 @@ class Assessment_model extends MY_Model
       $this->limit(1);
       $this->order_by($this->table.'.id', 'desc');
 
-      $this->assessments(  );
+      $this->teachers(  );
 
       return $this;
   }
-  public function assessment_by_student_id( $student_id = NULL  )
-  {
-      if (isset($student_id))
-      {
-        $this->where($this->table.'.student_id', $student_id);
-      }
-
-      $this->limit(1);
-      $this->order_by($this->table.'.id', 'desc');
-
-      $this->assessments(  );
-
-      return $this;
-  }
+ 
   /**
-   * assessments
+   * teachers
    *
    *
    * @return static
    * @author madukubah
    */
-  public function assessments( $start = 0 , $limit = NULL )
+  public function teachers( $start = 0 , $limit = NULL )
   {
+    $this->select( $this->table . '.*' );
+    $this->select('CONCAT("'.base_url('uploads/teacher/').'", "", teacher.photo) AS image');
+    $this->select( $this->table . '.photo AS image_old' );
       if (isset( $limit ))
       {
         $this->limit( $limit );
