@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: 16 Jan 2020 pada 12.58
+-- Generation Time: 17 Jan 2020 pada 14.34
 -- Versi Server: 5.7.28-0ubuntu0.18.04.4
 -- PHP Version: 7.2.24-0ubuntu0.18.04.1
 
@@ -32,7 +32,8 @@ CREATE TABLE `activities` (
   `name` varchar(255) NOT NULL,
   `date` date NOT NULL,
   `image` text NOT NULL,
-  `description` text NOT NULL
+  `preview` text NOT NULL,
+  `file_content` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -56,6 +57,21 @@ CREATE TABLE `assessment` (
 
 INSERT INTO `assessment` (`id`, `student_id`, `knowledge`, `attitude`, `class`, `description`) VALUES
 (1, 174, 80, 90, 'A', '-');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `gallery`
+--
+
+CREATE TABLE `gallery` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `organization_id` int(10) UNSIGNED NOT NULL,
+  `type` int(5) NOT NULL,
+  `name` varchar(200) NOT NULL,
+  `description` text NOT NULL,
+  `file` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -447,7 +463,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `phone`, `image`, `address`) VALUES
 (1, '127.0.0.1', 'admin@fixl.com', '$2y$12$XpBgMvQ5JzfvN3PTgf/tA.XwxbCOs3mO0a10oP9/11qi1NUpv46.u', 'admin@fixl.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1579147001, 1, 'Admin', 'istrator', '081342989185', 'USER_1_1571554027.jpeg', 'admin'),
-(13, '::1', 'uadmin@gmail.com', '$2y$10$78SZyvKRKMU7nPCew9w4nOpEUmJ1SeTV4L4ZG2NXXSfbEaswqoepq', 'uadmin@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1568678256, 1579147309, 1, 'admin', 'TPA', '00', 'USER_13_1568678463.jpg', 'jln mutiara no 8');
+(13, '::1', 'uadmin@gmail.com', '$2y$10$78SZyvKRKMU7nPCew9w4nOpEUmJ1SeTV4L4ZG2NXXSfbEaswqoepq', 'uadmin@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1568678256, 1579239479, 1, 'admin', 'TPA', '00', 'USER_13_1568678463.jpg', 'jln mutiara no 8');
 
 -- --------------------------------------------------------
 
@@ -486,6 +502,13 @@ ALTER TABLE `activities`
 ALTER TABLE `assessment`
   ADD PRIMARY KEY (`id`),
   ADD KEY `student_id` (`student_id`);
+
+--
+-- Indexes for table `gallery`
+--
+ALTER TABLE `gallery`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `organization_id` (`organization_id`);
 
 --
 -- Indexes for table `groups`
@@ -564,12 +587,17 @@ ALTER TABLE `users_groups`
 -- AUTO_INCREMENT for table `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `assessment`
 --
 ALTER TABLE `assessment`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `gallery`
+--
+ALTER TABLE `gallery`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `groups`
 --
@@ -599,7 +627,7 @@ ALTER TABLE `savings`
 -- AUTO_INCREMENT for table `structural`
 --
 ALTER TABLE `structural`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `student`
 --
@@ -635,6 +663,12 @@ ALTER TABLE `activities`
 --
 ALTER TABLE `assessment`
   ADD CONSTRAINT `assessment_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`);
+
+--
+-- Ketidakleluasaan untuk tabel `gallery`
+--
+ALTER TABLE `gallery`
+  ADD CONSTRAINT `gallery_ibfk_1` FOREIGN KEY (`organization_id`) REFERENCES `organization` (`id`);
 
 --
 -- Ketidakleluasaan untuk tabel `savings`
