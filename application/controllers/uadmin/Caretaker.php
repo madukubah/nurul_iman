@@ -1,34 +1,40 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Structural extends Uadmin_Controller {
+class Caretaker extends Uadmin_Controller {
 	private $services = null;
     private $name = null;
     private $parent_page = 'uadmin';
-	private $current_page = 'uadmin/structural/';
+	private $current_page = 'uadmin/caretaker/';
 	
 	public function __construct(){
 		parent::__construct();
-		$this->load->library('services/Structural_services');
-		$this->services = new Structural_services;
+		$this->load->library('services/Caretaker_services');
+		$this->services = new Caretaker_services;
 		$this->load->model(array(
-			'group_model',
 			'gallery_model',
-			'organization_model',
-			'structural_model',
 		));
 
 	}
 	public function index( $organization_id )
 	{
-		$this->data['menu_list_id'] = 'structural_index_' . $organization_id ;
-		$organization = $this->organization_model->organization( $organization_id )->row();
+		$this->data['menu_list_id'] = 'caretaker_index_' . $organization_id ;
+		$page = ($this->uri->segment(4 + 1)) ? ($this->uri->segment(4 + 1) -  1 ) : 0;
+		// echo $page; return;
+        //pagination parameter
+        $pagination['base_url'] = base_url( $this->current_page ) .'/index';
+        $pagination['total_records'] = $this->gallery_model->record_count() ;
+        $pagination['limit_per_page'] = 10;
+        $pagination['start_record'] = $page*$pagination['limit_per_page'];
+        $pagination['uri_segment'] = 4;
+		//set pagination
+		if ($pagination['total_records'] > 0 ) $this->data['pagination_links'] = $this->setPagination($pagination);
 		#################################################################3
 		$table = $this->services->get_table_config( $this->current_page );
-		$table[ "rows" ] = $this->gallery_model->gallery_by_organization_id( $organization_id )->result();
+		$table[ "rows" ] = $this->gallery_model->gallery_by_organization_id( $organization_id, 2 )->result();
 		$table = $this->load->view('templates/tables/plain_table_image', $table, true);
 		$this->data[ "contents" ] = $table;
 		$add_menu = array(
-			"name" => "Tambah Foto",
+			"name" => "Tambah Pengurus",
 			"modal_id" => "add_group_",
 			"button_color" => "primary",
 			"url" => site_url( $this->current_page."add/"),
@@ -40,12 +46,12 @@ class Structural extends Uadmin_Controller {
 				),
 				"name" => array(
 					'type' => 'text',
-					'label' => "Nama Bagan Struktur",
+					'label' => "Nama Pengurus",
 					'value' => "",
 				),
 				"image" => array(
 					'type' => 'file',
-					'label' => "Foto Bagan Struktur",
+					'label' => "Foto Pengurus",
 					'value' => "",
 				),
 				"description" => array(
@@ -66,8 +72,8 @@ class Structural extends Uadmin_Controller {
 		$this->data["key"] = $this->input->get('key', FALSE);
 		$this->data["alert"] = (isset($alert)) ? $alert : NULL ;
 		$this->data["current_page"] = $this->current_page;
-		$this->data["block_header"] = "Bagan Struktur";
-		$this->data["header"] = $organization->name;
+		$this->data["block_header"] = "Data Pengurus";
+		$this->data["header"] = "Data Pengurus";
 		$this->data["sub_header"] = 'Klik Tombol Action Untuk Aksi Lebih Lanjut';
 		$this->render( "templates/contents/plain_content" );
 	}
@@ -75,14 +81,14 @@ class Structural extends Uadmin_Controller {
 
 	public function add(  )
 	{
+		$data['organization_id'] = $this->input->post( 'organization_id' );
 		if( !($_POST) ) redirect(site_url(  $this->current_page ));  
 
 		// echo var_dump( $data );return;
-		$data['organization_id'] = $this->input->post( 'organization_id' );
-		$this->form_validation->set_rules( 'description', 'Deskripsi Kegiatan', 'required|trim' );
+		$this->form_validation->set_rules( $this->services->validation_config() );
         if ($this->form_validation->run() === TRUE )
         {
-			$data['type'] = 1;
+			$data['type'] = 2;
 			$data['file'] = $this->upload_image();
 			$data['name'] = $this->input->post( 'name' );
 			$data['description'] = $this->input->post( 'description' );
@@ -106,13 +112,16 @@ class Structural extends Uadmin_Controller {
 	{
 		if( !($_POST) ) redirect(site_url(  $this->current_page ));  
 
-		// echo var_dump( $data );return;
 		$organization_id = $this->input->post( 'organization_id' );
-		$this->form_validation->set_rules( 'description', 'Deskripsi Kegiatan', 'required|trim' );
+		// echo var_dump( $data );return;
+		$this->form_validation->set_rules( $this->services->validation_config() );
         if ($this->form_validation->run() === TRUE )
         {
 			if(NULL != $_FILES['image']['name']){
 				$data['file'] = $this->upload_image();
+				if( !$data['file'] ){
+					redirect( site_url($this->current_page) . 'index/' . $organization_id );
+				}
 			}
 			$data['name'] = $this->input->post( 'name' );
 			$data['description'] = $this->input->post( 'description' );
@@ -137,21 +146,20 @@ class Structural extends Uadmin_Controller {
 	public function delete(  ) {
 		$path = './uploads/gallery/';
 		if( !($_POST) ) redirect( site_url($this->current_page) );
-		
+
 		$organization_id = $this->input->post( 'organization_id' );  
+	  
 		$data_param['id'] 	= $this->input->post('id');
-		
-		
 		if( $this->gallery_model->delete( $data_param ) ){
 			if(NULL !== $this->input->post('image_old')){
 				if($this->input->post('image_old') != 'default.jpg')
 					@unlink( $path.$this->input->post('image_old') );
 			}
-		  $this->session->set_flashdata('alert', $this->alert->set_alert( Alert::SUCCESS, $this->gallery_model->messages() ) );
+			$this->session->set_flashdata('alert', $this->alert->set_alert( Alert::SUCCESS, $this->gallery_model->messages() ) );
 		}else{
 		  $this->session->set_flashdata('alert', $this->alert->set_alert( Alert::DANGER, $this->gallery_model->errors() ) );
 		}
-		redirect( site_url($this->current_page) . 'index/' . $organization_id );
+		redirect( site_url($this->current_page) . 'index/' . $data['organization_id'] );
 	}
 	public function upload_image(  )
 	{
@@ -168,9 +176,7 @@ class Structural extends Uadmin_Controller {
 		
 		if ( ! $this->upload->do_upload( 'image' ) )
 		{
-			// $this->set_error( $this->upload->display_errors() );
-			// $this->set_error( 'upload_unsuccessful' );
-			return FALSE;
+			$this->session->set_flashdata('alert', $this->alert->set_alert( Alert::DANGER, $this->upload->display_errors() ) );
 		}
 		else
 		{

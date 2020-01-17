@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: 17 Jan 2020 pada 14.34
+-- Generation Time: 17 Jan 2020 pada 15.27
 -- Versi Server: 5.7.28-0ubuntu0.18.04.4
 -- PHP Version: 7.2.24-0ubuntu0.18.04.1
 
@@ -66,12 +66,19 @@ INSERT INTO `assessment` (`id`, `student_id`, `knowledge`, `attitude`, `class`, 
 
 CREATE TABLE `gallery` (
   `id` int(10) UNSIGNED NOT NULL,
-  `organization_id` int(10) UNSIGNED NOT NULL,
+  `organization_id` int(10) UNSIGNED DEFAULT NULL,
   `type` int(5) NOT NULL,
   `name` varchar(200) NOT NULL,
   `description` text NOT NULL,
   `file` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `gallery`
+--
+
+INSERT INTO `gallery` (`id`, `organization_id`, `type`, `name`, `description`, `file`) VALUES
+(1, 3, 2, 'Nama', '-', '1579246023_IMG_20191224_182741.jpg');
 
 -- --------------------------------------------------------
 
@@ -140,10 +147,10 @@ INSERT INTO `menus` (`id`, `menu_id`, `name`, `link`, `list_id`, `icon`, `status
 (115, 111, 'Data Guru', 'uadmin/teacher', 'teacher_index', 'home', 1, 1, '-'),
 (116, 112, 'Kegiatan', 'uadmin/activities/index/2', 'activities_index_2', 'home', 1, 1, '-'),
 (117, 112, 'Bagan Struktur', 'uadmin/structural/index/2', 'structural_index_2', 'home', 1, 1, '-'),
-(118, 112, 'Data Pengurus', 'uadmin/management/index/2', 'management_index_2', 'home', 1, 1, '-'),
+(118, 112, 'Data Pengurus', 'uadmin/caretaker/index/2', 'caretaker_index_2', 'home', 1, 1, '-'),
 (119, 113, 'Kegiatan', 'uadmin/activities/index/3', 'activities_index_3', 'home', 1, 1, '-'),
 (120, 113, 'Bagan Struktur', 'uadmin/structural/index/3', 'structural_index_3', 'home', 1, 1, '-'),
-(121, 113, 'Data Pengurus', 'uadmin/management/index/3', 'management_index_3', 'home', 1, 1, '-');
+(121, 113, 'Data Pengurus', 'uadmin/caretaker/index/3', 'caretaker_index_3', 'home', 1, 1, '-');
 
 -- --------------------------------------------------------
 
@@ -597,7 +604,7 @@ ALTER TABLE `assessment`
 -- AUTO_INCREMENT for table `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `groups`
 --
