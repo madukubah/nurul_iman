@@ -41,7 +41,7 @@
             </div>
             <div class="card-body">
               <!--  -->
-              <?php echo form_open_multipart( $current_page . 'add?organization_id=' . $this->input->get('organization_id') );  ?>
+              <?php echo form_open_multipart( $current_page . '?organization_id=' . $this->input->get('organization_id') );  ?>
               <?php echo ( isset( $contents )  ) ? $contents : '' ;  ?>
               <!-- <textarea name="content" id="summernote" cols="30" rows="10"></textarea> -->
 

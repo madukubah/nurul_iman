@@ -68,6 +68,7 @@ class Activities extends Uadmin_Controller {
         {
 			$data['organization_id'] = $organization_id;
 			$data['name'] = $this->input->post( 'name' );
+			$data['preview'] = $this->input->post( 'preview' );
 			$data['date'] = date("Y-m-d", strtotime( $this->input->post('date') ) ) ;
 			
 			$name = str_replace( ".", "_",   $data['name']  ); // Load librari upload
@@ -101,7 +102,7 @@ class Activities extends Uadmin_Controller {
 			$alert = $this->session->flashdata('alert');
 			$this->data["key"] = $this->input->get('key', FALSE);
 			$this->data["alert"] = (isset($alert)) ? $alert : NULL ;
-			$this->data["current_page"] = $this->current_page;
+			$this->data["current_page"] = $this->current_page . 'add';
 			$this->data["block_header"] = "Buat Kegiatan ";
 			$this->data["header"] = "Buat Kegiatan ";
 			$this->data["sub_header"] = 'Klik Tombol Action Untuk Aksi Lebih Lanjut';
@@ -117,8 +118,6 @@ class Activities extends Uadmin_Controller {
 
 	public function edit( $activity_id )
 	{
-		if( !($_POST) ) redirect(site_url(  $this->current_page ));  
-
 		// echo var_dump( $data );return;
 		$organization_id = $this->input->get( 'organization_id' );
 		$this->form_validation->set_rules( $this->services->validation_config() );
@@ -126,6 +125,7 @@ class Activities extends Uadmin_Controller {
         {
 			$data['organization_id'] = $organization_id;
 			$data['name'] = $this->input->post( 'name' );
+			$data['preview'] = $this->input->post( 'preview' );
 			$data['date'] = date("Y-m-d", strtotime( $this->input->post('date') ) ) ;
 			
 			if( NULL != $_FILES['image']['name'] ){
@@ -163,16 +163,16 @@ class Activities extends Uadmin_Controller {
 			$alert = $this->session->flashdata('alert');
 			$this->data["key"] = $this->input->get('key', FALSE);
 			$this->data["alert"] = (isset($alert)) ? $alert : NULL ;
-			$this->data["current_page"] = $this->current_page;
+			$this->data["current_page"] = $this->current_page . 'edit/' . $activity_id;
 			$this->data["block_header"] = "Buat Kegiatan ";
 			$this->data["header"] = "Buat Kegiatan ";
 			$this->data["sub_header"] = 'Klik Tombol Action Untuk Aksi Lebih Lanjut';
 
-            $form_data = $this->services->get_form_data( $activity_id );
+            $form_data = $this->services->get_form_data( $organization_id, $activity_id );
             $form_data = $this->load->view('templates/form/plain_form', $form_data , TRUE ) ;
 
             $this->data[ "contents" ] =  $form_data;
-            $this->render( "user/news/plain_content_form" );
+            $this->render( "uadmin/activities/plain_content_form" );
 		}
 		
 	}

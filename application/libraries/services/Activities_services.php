@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Activities_services
 {
-  const CONTENT_PATH = './uploads/news/';
+  const CONTENT_PATH = './uploads/activity/';
   protected $id;
   protected $organization_id;
   protected $name;
@@ -45,8 +45,8 @@ class Activities_services
       $table["header"] = array(
         'name' => 'Nama Kegiatan',
         '_date' => 'Tanggal',
-        'image' => 'Foto',
         'preview' => 'Preview',
+        'image' => 'Foto',
       );
       $table["number"] = $start_number;
       $table[ "action" ] = array(
