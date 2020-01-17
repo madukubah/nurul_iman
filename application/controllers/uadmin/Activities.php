@@ -38,39 +38,12 @@ class Activities extends Uadmin_Controller {
 		$this->data[ "contents" ] = $table;
 		$add_menu = array(
 			"name" => "Tambah Kegiatan",
-			"modal_id" => "add_group_",
 			"button_color" => "primary",
-			"url" => site_url( $this->current_page."add/"),
-			"form_data" => array(
-				"organization_id" => array(
-					'type' => 'hidden',
-					'label' => "Kegiatan Organisasi",
-					'value' => $organization_id,
-				),
-				"name" => array(
-					'type' => 'text',
-					'label' => "Nama Kegiatan",
-					'value' => "",
-				),
-				"date" => array(
-					'type' => 'date',
-					'label' => "Tanggal Kegiatan",
-					'value' => "",
-				),
-				"image" => array(
-					'type' => 'file',
-					'label' => "Foto Kegiatan",
-				),
-				"description" => array(
-					'type' => 'textarea',
-					'label' => "Deskripsi",
-					'value' => "-",
-				),
-			),
+			"url" => site_url( $this->current_page."add?organization_id=" . $organization_id),
 			'data' => NULL
 		);
 
-		$add_menu= $this->load->view('templates/actions/modal_form_multipart', $add_menu, true ); 
+		$add_menu= $this->load->view('templates/actions/link', $add_menu, true ); 
 
 		$this->data[ "header_button" ] =  $add_menu;
 		// return;
@@ -88,50 +61,91 @@ class Activities extends Uadmin_Controller {
 
 	public function add(  )
 	{
-		if( !($_POST) ) redirect(site_url(  $this->current_page ));  
-
-		// echo var_dump( $data );return;
-		$data['organization_id'] = $this->input->post( 'organization_id' );
+		$organization_id = $this->input->get( 'organization_id' );
+		$this->data['menu_list_id'] = 'activities_index_' . $organization_id ;
 		$this->form_validation->set_rules( $this->services->validation_config() );
         if ($this->form_validation->run() === TRUE )
         {
+			$data['organization_id'] = $organization_id;
 			$data['name'] = $this->input->post( 'name' );
 			$data['date'] = date("Y-m-d", strtotime( $this->input->post('date') ) ) ;
-			$data['image'] = $this->upload_image();
-			$data['description'] = $this->input->post( 'description' );
+			
+			$name = str_replace( ".", "_",   $data['name']  ); // Load librari upload
+			$name = str_replace( "/", "_",   $name  ); // Load librari upload
+			$data['image'] = $this->upload_image( $name, $organization_id );
+			
+			// buat content html
+			$config =  $this->services->get_file_upload_config( $name );
+
+			if( file_put_contents( $config['upload_path'].$config['file_name'] , $this->input->post( 'summernote' ))  )
+			{
+				$data['file_content'] = $config['file_name'];
+			}
+			else
+			{
+				$data['file_content'] = "default.html";
+			}
 
 			if( $this->activities_model->create( $data ) ){
 				$this->session->set_flashdata('alert', $this->alert->set_alert( Alert::SUCCESS, $this->activities_model->messages() ) );
 			}else{
 				$this->session->set_flashdata('alert', $this->alert->set_alert( Alert::DANGER, $this->activities_model->errors() ) );
 			}
+			redirect( site_url($this->current_page) . 'index/' . $organization_id );
 		}
         else
         {
-          $this->data['message'] = (validation_errors() ? validation_errors() : ($this->m_account->errors() ? $this->activities_model->errors() : $this->session->flashdata('message')));
-          if(  validation_errors() || $this->activities_model->errors() ) $this->session->set_flashdata('alert', $this->alert->set_alert( Alert::DANGER, $this->data['message'] ) );
+			$this->data['message'] = (validation_errors() ? validation_errors() : ($this->activities_model->errors() ? $this->activities_model->errors() : $this->session->flashdata('message')));
+			if(  validation_errors() || $this->activities_model->errors() ) $this->session->set_flashdata('alert', $this->alert->set_alert( Alert::DANGER, $this->data['message'] ) );
+		  
+			$alert = $this->session->flashdata('alert');
+			$this->data["key"] = $this->input->get('key', FALSE);
+			$this->data["alert"] = (isset($alert)) ? $alert : NULL ;
+			$this->data["current_page"] = $this->current_page;
+			$this->data["block_header"] = "Buat Kegiatan ";
+			$this->data["header"] = "Buat Kegiatan ";
+			$this->data["sub_header"] = 'Klik Tombol Action Untuk Aksi Lebih Lanjut';
+
+            $form_data = $this->services->get_form_data( $organization_id );
+            $form_data = $this->load->view('templates/form/plain_form', $form_data , TRUE ) ;
+
+            $this->data[ "contents" ] =  $form_data;
+            $this->render( "uadmin/activities/plain_content_form" );
 		}
 		
-		redirect( site_url($this->current_page) . 'index/' . $data['organization_id'] );
 	}
 
-	public function edit(  )
+	public function edit( $activity_id )
 	{
 		if( !($_POST) ) redirect(site_url(  $this->current_page ));  
 
 		// echo var_dump( $data );return;
-		$organization_id = $this->input->post( 'organization_id' );
+		$organization_id = $this->input->get( 'organization_id' );
 		$this->form_validation->set_rules( $this->services->validation_config() );
         if ($this->form_validation->run() === TRUE )
         {
+			$data['organization_id'] = $organization_id;
 			$data['name'] = $this->input->post( 'name' );
 			$data['date'] = date("Y-m-d", strtotime( $this->input->post('date') ) ) ;
-			$data['description'] = $this->input->post( 'description' );
 			
 			if( NULL != $_FILES['image']['name'] ){
 				$data['image'] = $this->upload_image();
 			}
-				
+			
+			// buat content html
+
+			$config =  $this->services->get_file_upload_config( $title );
+			if( file_put_contents( $config['upload_path'].$config['file_name'], $this->input->post( 'summernote' ))  )
+			{
+				$data['file_content'] = $config['file_name'];
+				if( $this->input->post( 'file_content' ) != "default.html" )
+					if( !@unlink( $config['upload_path'].$this->input->post( 'file_content' ) ) ) return;
+			}
+			else
+			{
+				$data['file_content'] = "default.html";
+			}
+
 			$data_param['id'] = $this->input->post( 'id' );
 
 			if( $this->activities_model->update( $data, $data_param  ) ){
@@ -139,33 +153,47 @@ class Activities extends Uadmin_Controller {
 			}else{
 				$this->session->set_flashdata('alert', $this->alert->set_alert( Alert::DANGER, $this->activities_model->errors() ) );
 			}
+			redirect( site_url($this->current_page) . 'index/' . $organization_id );
 		}
         else
         {
-          $this->data['message'] = (validation_errors() ? validation_errors() : ($this->m_account->errors() ? $this->activities_model->errors() : $this->session->flashdata('message')));
-          if(  validation_errors() || $this->activities_model->errors() ) $this->session->set_flashdata('alert', $this->alert->set_alert( Alert::DANGER, $this->data['message'] ) );
+          $this->data['message'] = (validation_errors() ? validation_errors() : ($this->activities_model->errors() ? $this->activities_model->errors() : $this->session->flashdata('message')));
+		  if(  validation_errors() || $this->activities_model->errors() ) $this->session->set_flashdata('alert', $this->alert->set_alert( Alert::DANGER, $this->data['message'] ) );
+		  
+			$alert = $this->session->flashdata('alert');
+			$this->data["key"] = $this->input->get('key', FALSE);
+			$this->data["alert"] = (isset($alert)) ? $alert : NULL ;
+			$this->data["current_page"] = $this->current_page;
+			$this->data["block_header"] = "Buat Kegiatan ";
+			$this->data["header"] = "Buat Kegiatan ";
+			$this->data["sub_header"] = 'Klik Tombol Action Untuk Aksi Lebih Lanjut';
+
+            $form_data = $this->services->get_form_data( $activity_id );
+            $form_data = $this->load->view('templates/form/plain_form', $form_data , TRUE ) ;
+
+            $this->data[ "contents" ] =  $form_data;
+            $this->render( "user/news/plain_content_form" );
 		}
 		
-		redirect( site_url($this->current_page) . 'index/' . $organization_id );
 	}
-	public function upload_image(  )
+	public function upload_image( $name = NULL, $organization_id = NULL )
 	{
 		$upload = $this->config->item('upload', 'ion_auth');
 
-		$file = $_FILES[ 'image' ];
+		$filename = "ACTIVITY_".$name."_".time();
+		// $file = $_FILES[ 'image' ];
 		$upload_path = 'uploads/activity/';
 
 		$config 				= $upload;
-		$config['file_name'] 	=  time() . "_" . $file['name'];
+		$config['file_name'] 	=  time() . "_" . $filename;
 		$config['upload_path']	= './' . $upload_path;
 		// var_dump($file['name']); die;
 		$this->load->library('upload', $config);
 		
 		if ( ! $this->upload->do_upload( 'image' ) )
 		{
-			// $this->set_error( $this->upload->display_errors() );
-			// $this->set_error( 'upload_unsuccessful' );
-			return FALSE;
+			$this->session->set_flashdata('alert', $this->alert->set_alert( Alert::DANGER, $this->upload->display_errors() ) );
+			redirect( site_url($this->current_page) . 'index/' . $organization_id );
 		}
 		else
 		{
@@ -178,12 +206,19 @@ class Activities extends Uadmin_Controller {
 		}
 	}
 	public function delete(  ) {
+		$upload_path = 'uploads/activity/';
+
+		$config['upload_path'] = './'.$upload_path;
 		if( !($_POST) ) redirect( site_url($this->current_page) );
+
 		$organization_id 	= $this->input->post('organization_id');
 	  
 		$data_param['id'] 	= $this->input->post('id');
 		if( $this->activities_model->delete( $data_param ) ){
-		  $this->session->set_flashdata('alert', $this->alert->set_alert( Alert::SUCCESS, $this->activities_model->messages() ) );
+			if( !@unlink( $config['upload_path'].$this->input->post( 'file_content' ) ) )return;
+			// delete image
+			if( !@unlink( $config['upload_path'].$this->input->post( 'image_old' ) ) )return;
+			$this->session->set_flashdata('alert', $this->alert->set_alert( Alert::SUCCESS, $this->activities_model->messages() ) );
 		}else{
 		  $this->session->set_flashdata('alert', $this->alert->set_alert( Alert::DANGER, $this->activities_model->errors() ) );
 		}
