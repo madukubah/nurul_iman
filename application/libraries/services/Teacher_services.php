@@ -37,11 +37,11 @@ class Teacher_services
                     ),
                     "name" => array(
                         'type' => 'text',
-                        'label' => "Nama Group",
+                        'label' => "Nama Guru",
                     ),
                     "position" => array(
                       'type' => 'text',
-                      'label' => "Nama Group",
+                      'label' => "Nama Jabatan",
                     ),
                     "image_old" => array(
                       'type' => 'hidden',
@@ -49,7 +49,7 @@ class Teacher_services
                     ),
                     "image" => array(
                       'type' => 'file',
-                      'label' => "Nama Group",
+                      'label' => "Foto Guru",
                     ),
                     "description" => array(
                         'type' => 'textarea',

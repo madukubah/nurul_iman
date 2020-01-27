@@ -12,5 +12,11 @@
     <!-- <link rel="stylesheet" href="<?= base_url('front-assets/plugins/') ?>bootstrap/css/floating-label.css"> -->
 
     <title>Nurul Iman</title>
+    <style>
+    html,
+    body {
+      height: 100% !important;
+    }
+    </style>
   </head>
-  <body>
+  <body onload="menuActive('<?= $menu_list_id ?>')" class="d-flex flex-column">

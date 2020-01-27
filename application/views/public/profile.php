@@ -34,11 +34,14 @@
 
     <div class="container mt-5">
         <div class="row justify-content-center mb-2">
-            <h3>TPA Nurul Iman</h3>
+            <h3>Mesjid Nurul Iman</h3>
         </div>
       <div class="row">
-        <div id="profile" class="mb-5">
-
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mt-3 mb-3 order-sm-2">
+          Profil Mesjid
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mt-3 mb-3 order-sm-1">
+          Kontak
         </div>
       </div>
     </div>

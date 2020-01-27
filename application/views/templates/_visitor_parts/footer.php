@@ -1,8 +1,14 @@
-<footer class="footer fixed-bottom" style="background-color: rgba(0, 100, 20, 0.7); color: #fff;">
-      <div class="text-center pt-2">
-        <p>&copy2019 ~FIXLabs</p>
-      </div>
-    </footer>
+  <style>
+  #sticky-footer {
+    flex-shrink: none;
+    /* background-color: rgba(); */
+  }
+  </style>
+  <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+    <div class="container text-center">
+      <small>Copyright &copy; Nurul Iman</small>
+    </div>
+  </footer>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="<?= base_url('front-assets/plugins/') ?>bootstrap/js/jquery.min.js"></script>

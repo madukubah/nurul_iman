@@ -47,17 +47,14 @@
         <?php for($i = 0; $i < 4; $i++) : ?>
             <div class="col-lg-6">
                 <div class="card mb-4">
-                    <div class="card-header">
-                        Nama Kegiatan
-                    </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg">
                                 <img src="<?= base_url('front-assets/img/')?>blog-img/b1.jpg" class="rounded" alt="gambar">
                             </div>
                             <div class="col-lg">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
                                 <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
                             </div>
                         </div>
                     </div>
