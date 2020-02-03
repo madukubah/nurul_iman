@@ -5,7 +5,7 @@
         }
     }
 </style>
-<div class="container mt-5">
+<div class="container mt-5" style="min-height:532px">
     <div class="row justify-content-center">
         <div class="col-lg-6 col-sm-10 mt-5">
             <h3 class="text-center">

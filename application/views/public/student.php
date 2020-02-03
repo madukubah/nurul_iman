@@ -6,7 +6,7 @@
 
 
 <!-- regis_num, name, address, image, ttl, phone  -->
-<div class="container mt-5" style="min-height:532px">
+<div class="container mt-5">
     <div class="content text-center mb-3">
         <div class="row justify-content-between">
             <div class="col-lg-4">
