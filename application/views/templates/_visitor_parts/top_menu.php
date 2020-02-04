@@ -26,10 +26,10 @@
               <a class="nav-link color" id="home_profile" href="<?= base_url('home/profile');?>">Profil Mesjid</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="home_student" href="<?= base_url('home/student');?>">Santri</a>
-              <!-- <button type="button" class="btn btn-default nav-link" data-toggle="modal" data-target="#find_student">
+              <!-- <a class="nav-link" id="home_student" href="<?= base_url('home/student');?>">Santri</a> -->
+              <a type="button" class="btn btn-default nav-link color" data-toggle="modal" data-target="#find_student">
                 Cari Santri
-              </button> -->
+              </a>
             </li>
             <li class="nav-item">
               <a class="nav-link btn btn-sm btn-primary" id="home_registration" href="<?= base_url('home/registration');?>">Pendaftaran</a>
@@ -44,7 +44,7 @@
   <div class="modal-dialog">
       <!-- Modal content-->
       <div class="modal-content">
-          <?php echo form_open( site_url('home/student/') ); ?>
+        <form action="<?= site_url('home/student/') ?>" method="get">
           <div class="modal-header">
               <h5 class="modal-title">Cari Santri</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -52,14 +52,14 @@
               </button>
           </div>
           <div class="modal-body">
-            <label for="">Nama Santri</label>
-            <input type="text" class="form-control" name="student" id="student">
+            <label for="">Nomor Induk Santri</label>
+            <input type="text" class="form-control" name="registration_number" id="registration_number">
           </div>
           <div class="modal-footer">
               <button type="submit" class="btn  btn-success">Ok</button>
               <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Batal</button>
           </div>
-          <?php echo form_close(); ?>
+        </form>
       </div>
   </div>
 </div>

@@ -37,12 +37,12 @@ class Home extends Home_Controller {
 	}
 	public function student(  )
 	{
-		$key = (null !== $this->input->get('name')) ? $this->input->get('name') : null;
+		$key = (null !== $this->input->get('registration_number')) ? $this->input->get('registration_number') : null;
 
 		if( $key ){
-			$this->data['students'] = $this->student_model->search( $key )->result();
+			$this->data['student'] = $this->student_model->student_by_registration_number( $key )->row();
 		}else {
-			$this->data['students'] = $this->student_model->students()->result();
+			$this->data['student'] = null;
 		}
 
 		// TODO : tampilkan landing page bagi user yang belum daftar

@@ -6,29 +6,17 @@
 
 
 <!-- regis_num, name, address, image, ttl, phone  -->
-<div class="container mt-5">
+<div class="container mt-5" style="min-height:532px">
     <div class="content text-center mb-3">
         <div class="row justify-content-between">
             <div class="col-lg-4">
-                <h3>Daftar Santri</h3>
-            </div>
-            <div class="col-lg-4">
-                <form action="" method="get">
-                    <div class="row">
-                        <div class="col-10">
-                            <input type="text" name="name" id="name" class="form-control" placeholder="Masukkan Nama Santri..">
-                        </div>
-                        <div class="col-2">
-                            <button type="submit" class="btn btn-success">Cari</button>
-                        </div>
-                    </div>
-                </form>
+                <h3>Pencarian Santri</h3>
             </div>
         </div>
     </div>
     <div class="content">
         <div class="row justify-content-center">
-            <?php foreach ($students as $key => $student) : ?>
+            <?php if($student) : ?>
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                 <div class="card shadow mb-4">
                     <img src="<?= $student->image ?>" class="card-img-top rounded" alt="gambar" width="100%">
@@ -42,7 +30,9 @@
                     </div>
                 </div>
             </div>
-            <?php endforeach; ?>
+            <?php else : ?>
+            <h4>Tidak ada Siswa yang sesuai</h4>
+            <?php endif; ?>
         </div>
     </div>
 </div>
