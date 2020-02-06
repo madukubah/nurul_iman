@@ -155,5 +155,23 @@ class Activities_model extends MY_Model
 
       return $this;
   }
+
+  public function activity_by_file_content( $file_content = NULL )
+  {
+    $this->select( $this->table . '.*' );
+    $this->select( $this->table . '.image AS image_old' );
+    $this->select( $this->table . '.date AS _date' );
+    $this->select('CONCAT("'.base_url('uploads/activity/').'", "", activities.image) AS image');
+    $this->select( $this->table . '.image AS image_old' );
+    if (isset($file_content))
+      {
+        $this->where($this->table.'.file_content', $file_content);
+      }
+      $this->order_by($this->table.'.id', 'desc');
+
+      $this->activities(  );
+
+      return $this;
+  }
 }
 ?>

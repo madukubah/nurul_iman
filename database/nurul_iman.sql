@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: 17 Jan 2020 pada 22.45
--- Versi Server: 5.7.28-0ubuntu0.18.04.4
--- PHP Version: 7.2.24-0ubuntu0.18.04.1
+-- Generation Time: 06 Feb 2020 pada 23.15
+-- Versi Server: 5.7.29-0ubuntu0.18.04.1
+-- PHP Version: 7.2.24-0ubuntu0.18.04.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -41,7 +41,9 @@ CREATE TABLE `activities` (
 --
 
 INSERT INTO `activities` (`id`, `organization_id`, `name`, `date`, `image`, `preview`, `file_content`) VALUES
-(1, 1, 'Lomba Ngaji', '2020-01-11', '1579248682_ACTIVITY_Lomba_Ngaji_1579248682.jpg', 'Lomba Mengaji yang di laksanakan di Masjid Nurul Iman dan diikuti oleh seluruh santri TPA Nurul Iman', 'ACTIVITY__1579249581.html');
+(1, 1, 'Lomba Ngaji', '2020-01-11', '1579248682_ACTIVITY_Lomba_Ngaji_1579248682.jpg', 'Lomba Mengaji yang di laksanakan di Masjid Nurul Iman dan diikuti oleh seluruh santri TPA Nurul Iman', 'ACTIVITY__1579249581.html'),
+(2, 2, 'Majelis Taklim Pemersatu Umat', '2016-03-11', '1581000570_ACTIVITY_Majelis_Taklim_Pemersatu_Umat_1581000570.jpg', '-', 'ACTIVITY__1581000570.html'),
+(3, 3, 'Membangun Generasi Muda Suka ke Masjid', '2016-09-22', '1581000842_ACTIVITY_Membangun_Generasi_Muda_Suka_ke_Masjid_1581000842.jpg', '-', 'ACTIVITY__1581000842.html');
 
 -- --------------------------------------------------------
 
@@ -145,6 +147,11 @@ CREATE TABLE `menus` (
 --
 
 INSERT INTO `menus` (`id`, `menu_id`, `name`, `link`, `list_id`, `icon`, `status`, `position`, `description`) VALUES
+(101, 1, 'Beranda', 'admin/', 'home_index', 'home', 1, 1, '-'),
+(102, 1, 'Group', 'admin/group', 'group_index', 'home', 1, 2, '-'),
+(103, 1, 'Setting', 'admin/menus', '-', 'cogs', 1, 3, '-'),
+(104, 1, 'User', 'admin/user_management', 'user_management_index', 'users', 1, 4, '-'),
+(106, 103, 'Menu', 'admin/menus', 'menus_index', 'circle', 1, 1, '-'),
 (107, 2, 'Beranda', 'uadmin/home', 'home_index', 'home', 1, 1, '-'),
 (108, 2, 'Santri', 'uadmin/student', 'student_index', 'home', 1, 2, '-'),
 (109, 2, 'Iuran', 'uadmin/savings', 'savings_index', 'home', 1, 3, '-'),
@@ -159,7 +166,19 @@ INSERT INTO `menus` (`id`, `menu_id`, `name`, `link`, `list_id`, `icon`, `status
 (118, 112, 'Data Pengurus', 'uadmin/caretaker/index/2', 'caretaker_index_2', 'home', 1, 1, '-'),
 (119, 113, 'Kegiatan', 'uadmin/activities/index/3', 'activities_index_3', 'home', 1, 1, '-'),
 (120, 113, 'Bagan Struktur', 'uadmin/structural/index/3', 'structural_index_3', 'home', 1, 1, '-'),
-(121, 113, 'Data Pengurus', 'uadmin/caretaker/index/3', 'caretaker_index_3', 'home', 1, 1, '-');
+(121, 113, 'Data Pengurus', 'uadmin/caretaker/index/3', 'caretaker_index_3', 'home', 1, 1, '-'),
+(122, 2, 'Profil Mesjid', 'uadmin/profile', 'profile_index', 'home', 1, 4, '-');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `mosque`
+--
+
+CREATE TABLE `mosque` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `file_content` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -442,7 +461,7 @@ CREATE TABLE `teacher` (
 --
 
 INSERT INTO `teacher` (`id`, `name`, `position`, `description`, `photo`) VALUES
-(2, 'Guru', 'Guru Kelas', '-', '1579146977_twitter.png');
+(2, 'Guru', 'Guru Kelas', '-', '1579941388_ubuntu.jpg');
 
 -- --------------------------------------------------------
 
@@ -478,8 +497,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `phone`, `image`, `address`) VALUES
-(1, '127.0.0.1', 'admin@fixl.com', '$2y$12$XpBgMvQ5JzfvN3PTgf/tA.XwxbCOs3mO0a10oP9/11qi1NUpv46.u', 'admin@fixl.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1579147001, 1, 'Admin', 'istrator', '081342989185', 'USER_1_1571554027.jpeg', 'admin'),
-(13, '::1', 'uadmin@gmail.com', '$2y$10$78SZyvKRKMU7nPCew9w4nOpEUmJ1SeTV4L4ZG2NXXSfbEaswqoepq', 'uadmin@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1568678256, 1579248585, 1, 'admin', 'TPA', '00', 'USER_13_1568678463.jpg', 'jln mutiara no 8');
+(1, '127.0.0.1', 'admin@fixl.com', '$2y$12$XpBgMvQ5JzfvN3PTgf/tA.XwxbCOs3mO0a10oP9/11qi1NUpv46.u', 'admin@fixl.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1579942390, 1, 'Admin', 'istrator', '081342989185', 'USER_1_1571554027.jpeg', 'admin'),
+(13, '::1', 'uadmin@gmail.com', '$2y$10$78SZyvKRKMU7nPCew9w4nOpEUmJ1SeTV4L4ZG2NXXSfbEaswqoepq', 'uadmin@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1568678256, 1580998393, 1, 'admin', 'TPA', '00', 'USER_13_1568678463.jpg', 'jln mutiara no 8');
 
 -- --------------------------------------------------------
 
@@ -545,6 +564,12 @@ ALTER TABLE `menus`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `mosque`
+--
+ALTER TABLE `mosque`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `organization`
 --
 ALTER TABLE `organization`
@@ -603,7 +628,7 @@ ALTER TABLE `users_groups`
 -- AUTO_INCREMENT for table `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `assessment`
 --
@@ -628,7 +653,12 @@ ALTER TABLE `login_attempts`
 -- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
+--
+-- AUTO_INCREMENT for table `mosque`
+--
+ALTER TABLE `mosque`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `organization`
 --

@@ -8,12 +8,40 @@ class Home extends Home_Controller {
 		parent::__construct();
 		$this->load->model(array(
 			'student_model',
+			'teacher_model',
+			'activities_model',
+			
 		));
 	}
 	public function index()
 	{
 		// TODO : tampilkan landing page bagi user yang belum daftar
+		$this->data['activities'] = $this->activities_model->activities_by_organization_id(0, 3)->result();
+		$this->data['student'] = $this->student_model->record_count();
+		$this->data['teacher'] = $this->teacher_model->record_count();
+		$this->data['total_activity'] = $this->activities_model->activities()->num_rows();
+		// var_dump($this->data['student']); die;
 		$this->render("public/index");
+	}
+	public function article( $article )
+	{
+		$activity = $this->activities_model->activity_by_file_content( $article )->row();
+
+		
+		// $data['hit'] = $news->hit + 1;
+		// $data_param['id'] = $news->id;
+		// $this->event_model->update( $data, $data_param )->row();
+		
+		$upload_path = 'uploads/activity/';
+		
+		$config['upload_path'] = './'.$upload_path;
+		$file = str_replace( "%20", " ", $article );
+		$file_content = file_get_contents(  $config['upload_path'] . $file );
+		// var_dump( $activity ); die;
+		
+		$this->data['activity'] = $activity;
+		$this->data['file_content'] = $file_content;
+		$this->render("public/plain_article");
 	}
 	public function tpa()
 	{
