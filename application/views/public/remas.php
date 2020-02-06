@@ -1,65 +1,116 @@
-    <!-- jumbotron -->
-    <div class="jumbotron jumbotron-fluid pt-3" >
-      <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-              <img src="<?= base_url('front-assets/img/')?>blog-img/bg1.jpg" class="d-block w-100 img-jumbotron" alt="">
+<div class="intro-container bg-dark" style="display: table; height: 5.9375rem; width: 100%;" ></div>
+
+<main id="main">
+
+  <!--==========================
+    About Us Section
+  ============================-->
+  <section id="about">
+    <div class="container">
+
+      <header class="section-header">
+        <h3>Kegiatan Remaja Mesjid</h3>
+        <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, </p> -->
+      </header>
+
+      <div class="row about-cols">
+
+        <div class="col-md-4 wow fadeInUp">
+          <div class="about-col">
+            <div class="img">
+              <img src="<?= base_url('front-assets/')?>img/about-mission.jpg" alt="" class="img-fluid">
+              <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
+            </div>
+            <h2 class="title"><a href="#">Our Mission</a></h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
           </div>
         </div>
-      </div>
-    </div>
-    <!-- end jumbotron -->
 
-    <!-- content -->
-    <div class="container content-banner">
-      <div class="row justify-content-center">
-        <div class="col-lg-4 col-sm-8 col-md-8 banner">
-          <div class="row text-center">
-            <div class="col-sm-2 col-md-4 col-lg-4">
-              <img src="<?= base_url('front-assets/img/') ?>core-img/logo.png" width="60" height="60" alt="">
+        <div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
+          <div class="about-col">
+            <div class="img">
+              <img src="<?= base_url('front-assets/')?>img/about-plan.jpg" alt="" class="img-fluid">
+              <div class="icon"><i class="ion-ios-list-outline"></i></div>
             </div>
-            <div class="col-sm-4 col-md-8 col-lg-8">
-              <h4>TPA Nurul Iman</h4>
-            </div>
+            <h2 class="title"><a href="#">Our Plan</a></h2>
+            <p>
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem  doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+            </p>
           </div>
         </div>
-      </div>
-    </div>
-    <!-- end content -->
 
-
-    <div class="container mt-4">
-        <div class="row">
-            <div class="col-lg-8">
-                <div class="structure-organizer"></div>
+        <div class="col-md-4 wow fadeInUp" data-wow-delay="0.2s">
+          <div class="about-col">
+            <div class="img">
+              <img src="<?= base_url('front-assets/')?>img/about-vision.jpg" alt="" class="img-fluid">
+              <div class="icon"><i class="ion-ios-eye-outline"></i></div>
             </div>
-            <div class="col-lg-4">
-                <h3>Struktur Organisasi Remaja Mesjid</h3>
-            </div>
+            <h2 class="title"><a href="#">Our Vision</a></h2>
+            <p>
+              Nemo enim ipsam voluptatem quia voluptas sit aut odit aut fugit, sed quia magni dolores eos qui ratione voluptatem sequi nesciunt Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
+            </p>
+          </div>
         </div>
-    </div>
 
-    <div class="container mt-5">
-        <ul class="list-inline text-center">
-            <li class="list-inline-item"><h4>Kegiatan</h4></li>
-        </ul>
+      </div>
+
+    </div>
+  </section><!-- #about -->
+
+
+  <!--==========================
+    Team Section
+  ============================-->
+  <section id="team">
+    <div class="container">
+      <div class="section-header wow fadeInUp">
+        <h3>Struktur Organisasi</h3>
+      </div>
+
       <div class="row">
-        <?php for($i = 0; $i < 4; $i++) : ?>
-            <div class="col-lg-6">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-lg">
-                                <img src="<?= base_url('front-assets/img/')?>blog-img/b1.jpg" class="rounded" alt="gambar">
-                            </div>
-                            <div class="col-lg">
-                                <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                            </div>
-                        </div>
-                    </div>
+
+        <div class="col-lg-9 col-md-12 wow fadeInUp" data-wow-delay="0.2s">
+          <div class="member">
+            <img src="<?= base_url('front-assets/')?>img/team-3.jpg" class="img-fluid" alt="">
+            <div class="member-info">
+              <div class="member-info-content">
+                <h4>William Anderson</h4>
+                <span>CTO</span>
+                <div class="social">
+                  <a href=""><i class="fa fa-twitter"></i></a>
+                  <a href=""><i class="fa fa-facebook"></i></a>
+                  <a href=""><i class="fa fa-google-plus"></i></a>
+                  <a href=""><i class="fa fa-linkedin"></i></a>
                 </div>
+              </div>
             </div>
-        <?php endfor;?>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+          <div class="member">
+            <img src="<?= base_url('front-assets/')?>img/team-4.jpg" class="img-fluid" alt="">
+            <div class="member-info">
+              <div class="member-info-content">
+                <h4>Amanda Jepson</h4>
+                <span>Accountant</span>
+                <div class="social">
+                  <a href=""><i class="fa fa-twitter"></i></a>
+                  <a href=""><i class="fa fa-facebook"></i></a>
+                  <a href=""><i class="fa fa-google-plus"></i></a>
+                  <a href=""><i class="fa fa-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
+
     </div>
+  </section><!-- #team -->
+
+
+</main>

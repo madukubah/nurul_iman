@@ -1,3 +1,4 @@
+<?= base_url('front-assets/')?>
 <!-- ********** Hero Area Start ********** -->
 <div class="hero-area height-400 bg-img background-overlay" id="bg4"></div>
 <!-- ********** Hero Area End ********** -->

@@ -4,42 +4,42 @@
     font-weight: bolder;
   }
 </style>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link color" id="home_index" href="<?= base_url();?>">Beranda <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link color dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Organisasi
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item color" id="home_tpa" href="<?= base_url('home/tpa');?>">TPA</a>
-                    <a class="dropdown-item color" id="home_majelis" href="<?= base_url('home/majelis');?>">Majelis Ta'lim</a>
-                    <a class="dropdown-item color" id="home_rimnis" href="<?= base_url('home/rimnis');?>">RIMNIS</a>
-                </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link color" id="home_profile" href="<?= base_url('home/profile');?>">Profil Mesjid</a>
-            </li>
-            <li class="nav-item">
-              <!-- <a class="nav-link" id="home_student" href="<?= base_url('home/student');?>">Santri</a> -->
-              <a type="button" class="btn btn-default nav-link color" data-toggle="modal" data-target="#find_student">
-                Cari Santri
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link btn btn-sm btn-primary" id="home_registration" href="<?= base_url('home/registration');?>">Pendaftaran</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <!-- end navbar -->
 
+
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+          <li>
+            <a id="home_index" href="<?= base_url();?>">Beranda</a>
+          </li>
+          <li class="menu-has-children">
+            <a href="#">Organisasi</a>
+            <ul>
+              <li>
+                <a id="home_tpa" href="<?= base_url('home/tpa');?>">TPA</a>
+              </li>
+              <li>
+                <a id="home_majelis" href="<?= base_url('home/majelis');?>">Majelis Ta'lim</a>
+              </li>
+              <li>
+                <a id="home_rimnis" href="<?= base_url('home/rimnis');?>">RIMNIS</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a id="home_profile" href="<?= base_url('home/profile');?>">Profil Mesjid</a>
+          </li>
+          <li>
+            <a type="button" class="btn btn-sm mt-1" data-toggle="modal" data-target="#find_student">
+                Cari Santri
+            </a>
+          </li>
+          <li>
+            <a id="home_registration" class="btn btn-sm btn-primary p-1" href="<?= base_url('home/registration');?>">Pendaftaran</a>
+          </li>
+        </ul>
+      </nav><!-- #nav-menu-container -->
+    </div>
+  </header><!-- #header -->
 <div class="modal fade" id="find_student" role="dialog">
   <div class="modal-dialog">
       <!-- Modal content-->

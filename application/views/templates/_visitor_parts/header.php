@@ -1,6 +1,6 @@
-<!-- navbar -->
-<nav class="navbar navbar-expand-lg navbar-light pt-3" id="menu">
-      <div class="container">
-        <a class="navbar-brand" href="#">
-          <img src="<?= base_url('front-assets/img/') ?>core-img/logo.png" width="30" height="30" alt="">
-        </a>
+<header id="header">
+    <div class="container-fluid">
+      <div id="logo" class="pull-left">
+        <!-- <h1><a href="#intro" class="scrollto">Nurul Iman</a></h1> -->
+        <a href="<?= base_url('') ?>"><img src="<?= base_url('front-assets/') ?>img/favicon.png" alt="" title="" /></a>
+      </div>

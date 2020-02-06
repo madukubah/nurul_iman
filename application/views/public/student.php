@@ -1,38 +1,167 @@
-<style>
-    a.color {
-        color: black !important;
-    }
-</style>
+  <div class="intro-container bg-dark" style="display: table; height: 5.9375rem; width: 100%;" ></div>
+
+    <!--==========================
+      Portfolio Section
+    ============================-->
+    <section id="portfolio"  class="section-bg" >
+      <div class="container">
+
+        <header class="section-header">
+          <h3 class="section-title">Our Portfolio</h3>
+        </header>
+
+        <div class="row">
+          <div class="col-lg-12">
+            <ul id="portfolio-flters">
+              <li data-filter="*" class="filter-active">All</li>
+              <li data-filter=".filter-app">App</li>
+              <li data-filter=".filter-card">Card</li>
+              <li data-filter=".filter-web">Web</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row portfolio-container">
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp">
+            <div class="portfolio-wrap">
+              <figure>
+                <img src="<?= base_url('front-assets/')?>img/portfolio/app1.jpg" class="img-fluid" alt="">
+                <a href="<?= base_url('front-assets/')?>img/portfolio/app1.jpg" data-lightbox="portfolio" data-title="App 1" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">App 1</a></h4>
+                <p>App</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web wow fadeInUp" data-wow-delay="0.1s">
+            <div class="portfolio-wrap">
+              <figure>
+                <img src="<?= base_url('front-assets/')?>img/portfolio/web3.jpg" class="img-fluid" alt="">
+                <a href="<?= base_url('front-assets/')?>img/portfolio/web3.jpg" class="link-preview" data-lightbox="portfolio" data-title="Web 3" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">Web 3</a></h4>
+                <p>Web</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp" data-wow-delay="0.2s">
+            <div class="portfolio-wrap">
+              <figure>
+                <img src="<?= base_url('front-assets/')?>img/portfolio/app2.jpg" class="img-fluid" alt="">
+                <a href="<?= base_url('front-assets/')?>img/portfolio/app2.jpg" class="link-preview" data-lightbox="portfolio" data-title="App 2" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">App 2</a></h4>
+                <p>App</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card wow fadeInUp">
+            <div class="portfolio-wrap">
+              <figure>
+                <img src="<?= base_url('front-assets/')?>img/portfolio/card2.jpg" class="img-fluid" alt="">
+                <a href="<?= base_url('front-assets/')?>img/portfolio/card2.jpg" class="link-preview" data-lightbox="portfolio" data-title="Card 2" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">Card 2</a></h4>
+                <p>Card</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web wow fadeInUp" data-wow-delay="0.1s">
+            <div class="portfolio-wrap">
+              <figure>
+                <img src="<?= base_url('front-assets/')?>img/portfolio/web2.jpg" class="img-fluid" alt="">
+                <a href="<?= base_url('front-assets/')?>img/portfolio/web2.jpg" class="link-preview" data-lightbox="portfolio" data-title="Web 2" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">Web 2</a></h4>
+                <p>Web</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp" data-wow-delay="0.2s">
+            <div class="portfolio-wrap">
+              <figure>
+                <img src="<?= base_url('front-assets/')?>img/portfolio/app3.jpg" class="img-fluid" alt="">
+                <a href="<?= base_url('front-assets/')?>img/portfolio/app3.jpg" class="link-preview" data-lightbox="portfolio" data-title="App 3" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">App 3</a></h4>
+                <p>App</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card wow fadeInUp">
+            <div class="portfolio-wrap">
+              <figure>
+                <img src="<?= base_url('front-assets/')?>img/portfolio/card1.jpg" class="img-fluid" alt="">
+                <a href="<?= base_url('front-assets/')?>img/portfolio/card1.jpg" class="link-preview" data-lightbox="portfolio" data-title="Card 1" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">Card 1</a></h4>
+                <p>Card</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card wow fadeInUp" data-wow-delay="0.1s">
+            <div class="portfolio-wrap">
+              <figure>
+                <img src="<?= base_url('front-assets/')?>img/portfolio/card3.jpg" class="img-fluid" alt="">
+                <a href="<?= base_url('front-assets/')?>img/portfolio/card3.jpg" class="link-preview" data-lightbox="portfolio" data-title="Card 3" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">Card 3</a></h4>
+                <p>Card</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web wow fadeInUp" data-wow-delay="0.2s">
+            <div class="portfolio-wrap">
+              <figure>
+                <img src="<?= base_url('front-assets/')?>img/portfolio/web1.jpg" class="img-fluid" alt="">
+                <a href="<?= base_url('front-assets/')?>img/portfolio/web1.jpg" class="link-preview" data-lightbox="portfolio" data-title="Web 1" title="Preview"><i class="ion ion-eye"></i></a>
+                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+              </figure>
+
+              <div class="portfolio-info">
+                <h4><a href="#">Web 1</a></h4>
+                <p>Web</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- #portfolio -->
 
 
-<!-- regis_num, name, address, image, ttl, phone  -->
-<div class="container mt-5" style="min-height:532px">
-    <div class="content text-center mb-3">
-        <div class="row justify-content-between">
-            <div class="col-lg-4">
-                <h3>Pencarian Santri</h3>
-            </div>
-        </div>
-    </div>
-    <div class="content">
-        <div class="row justify-content-center">
-            <?php if($student) : ?>
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                <div class="card shadow mb-4">
-                    <img src="<?= $student->image ?>" class="card-img-top rounded" alt="gambar" width="100%">
-                    <div class="card-body">
-                        <h6 class="card-title"><?= $student->name ?></h6>
-                        <p style="margin-top: -0.8rem !important; font-size: 0.8rem;"><cite title="Source Title"><?= $student->registration_number ?></cite></p>
-                        <p class="card-text"><b>Profil</b></p>
-                        <p style="margin-top: -0.8rem !important; font-size: 0.8rem;">TTL: <?= $student->ttl ?></p>
-                        <p style="margin-top: -0.8rem !important; font-size: 0.8rem;">Alamat: <?= $student->address ?></p>
-                        <p style="margin-top: -0.8rem !important; font-size: 0.8rem;">Hp: <?= $student->phone ?></p>
-                    </div>
-                </div>
-            </div>
-            <?php else : ?>
-            <h4>Tidak ada Siswa yang sesuai</h4>
-            <?php endif; ?>
-        </div>
-    </div>
-</div>
+  </main>
