@@ -10,139 +10,54 @@
 
       <div class="row about-cols">
 
-        <div class="col-md-4 wow fadeInUp">
-          <div class="about-col">
-            <div class="img">
-              <img src="<?= base_url('front-assets/') ?>img/about-mission.jpg" alt="" class="img-fluid">
-              <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
+        <?php foreach ($activities as $key => $activity) : ?>
+          <div class="col-md-4 wow fadeInUp">
+            <div class="about-col">
+              <div class="img">
+                <img src="<?= $activity->image ?>" alt="" class="img-fluid">
+                <!-- <div class="icon"><i class="ion-ios-speedometer-outline"></i></div> -->
+              </div>
+              <h2 class="title"><a href="<?= site_url('home/article/') . $activity->file_content ?>"><?= $activity->name ?></a></h2>
+              <p>
+              <?= $activity->preview ?>
+              </p>
             </div>
-            <h2 class="title"><a href="#">Our Mission</a></h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
           </div>
-        </div>
-
-        <div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
-          <div class="about-col">
-            <div class="img">
-              <img src="<?= base_url('front-assets/') ?>img/about-plan.jpg" alt="" class="img-fluid">
-              <div class="icon"><i class="ion-ios-list-outline"></i></div>
-            </div>
-            <h2 class="title"><a href="#">Our Plan</a></h2>
-            <p>
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem  doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-            </p>
-          </div>
-        </div>
-
-        <div class="col-md-4 wow fadeInUp" data-wow-delay="0.2s">
-          <div class="about-col">
-            <div class="img">
-              <img src="<?= base_url('front-assets/') ?>img/about-vision.jpg" alt="" class="img-fluid">
-              <div class="icon"><i class="ion-ios-eye-outline"></i></div>
-            </div>
-            <h2 class="title"><a href="#">Our Vision</a></h2>
-            <p>
-              Nemo enim ipsam voluptatem quia voluptas sit aut odit aut fugit, sed quia magni dolores eos qui ratione voluptatem sequi nesciunt Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
-            </p>
-          </div>
-        </div>
+        <?php endforeach; ?>
 
       </div>
 
     </div>
   </section><!-- #about -->
 
+<!--==========================
+      Call To Action Section
+    ============================-->
+    <section id="call-to-action" class="wow fadeIn">
+      <div class="container">
 
-  <!--==========================
-    Team Section
-  ============================-->
-  <section id="team">
-    <div class="container">
-      <div class="section-header wow fadeInUp">
-        <h3>Team</h3>
-        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
-      </div>
+        <div class="section-header wow fadeInUp">
+          <h3>Guru</h3>
+          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+        </div>
 
-      <div class="row">
+        <div class="row about-cols">
 
+        <?php foreach ($teachers as $key => $teacher) : ?>
         <div class="col-lg-3 col-md-6 wow fadeInUp">
-          <div class="member">
-            <img src="<?= base_url('front-assets/') ?>img/team-1.jpg" class="img-fluid" alt="">
-            <div class="member-info">
-              <div class="member-info-content">
-                <h4>Walter White</h4>
-                <span>Chief Executive Officer</span>
-                <div class="social">
-                  <a href=""><i class="fa fa-twitter"></i></a>
-                  <a href=""><i class="fa fa-facebook"></i></a>
-                  <a href=""><i class="fa fa-google-plus"></i></a>
-                  <a href=""><i class="fa fa-linkedin"></i></a>
-                </div>
-              </div>
+          <div class="card shadow">
+            <img src="<?= $teacher->image ?>" class="card-img-top" alt="<?= $teacher->photo ?>">
+            <div class="card-body">
+              <h5 class="card-title"><?= $teacher->name ?></h5>
+              <p class="card-subtitle mb-2 text-muted"><?= $teacher->position ?></p>
             </div>
           </div>
         </div>
+        <?php endforeach; ?>
 
-        <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-          <div class="member">
-            <img src="<?= base_url('front-assets/') ?>img/team-2.jpg" class="img-fluid" alt="">
-            <div class="member-info">
-              <div class="member-info-content">
-                <h4>Sarah Jhonson</h4>
-                <span>Product Manager</span>
-                <div class="social">
-                  <a href=""><i class="fa fa-twitter"></i></a>
-                  <a href=""><i class="fa fa-facebook"></i></a>
-                  <a href=""><i class="fa fa-google-plus"></i></a>
-                  <a href=""><i class="fa fa-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-          <div class="member">
-            <img src="<?= base_url('front-assets/') ?>img/team-3.jpg" class="img-fluid" alt="">
-            <div class="member-info">
-              <div class="member-info-content">
-                <h4>William Anderson</h4>
-                <span>CTO</span>
-                <div class="social">
-                  <a href=""><i class="fa fa-twitter"></i></a>
-                  <a href=""><i class="fa fa-facebook"></i></a>
-                  <a href=""><i class="fa fa-google-plus"></i></a>
-                  <a href=""><i class="fa fa-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-          <div class="member">
-            <img src="<?= base_url('front-assets/') ?>img/team-4.jpg" class="img-fluid" alt="">
-            <div class="member-info">
-              <div class="member-info-content">
-                <h4>Amanda Jepson</h4>
-                <span>Accountant</span>
-                <div class="social">
-                  <a href=""><i class="fa fa-twitter"></i></a>
-                  <a href=""><i class="fa fa-facebook"></i></a>
-                  <a href=""><i class="fa fa-google-plus"></i></a>
-                  <a href=""><i class="fa fa-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
 
       </div>
-
-    </div>
-  </section><!-- #team -->
-
+    </section><!-- #call-to-action -->
 
 </main>

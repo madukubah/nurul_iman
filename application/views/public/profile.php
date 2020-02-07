@@ -102,30 +102,25 @@
 
         <div class="row counters">
 
-  				<div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">274</span>
-            <p>Clients</p>
+          <div class="col-md-4 col-sm-12 text-center">
+            <span data-toggle="counter-up"><?= $student ?></span>
+            <p>Santri</p>
   				</div>
 
-          <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">421</span>
-            <p>Projects</p>
+          <div class="col-md-4 col-sm-12 text-center">
+            <span data-toggle="counter-up"><?= $teacher ?></span>
+            <p>Pengajar</p>
   				</div>
 
-          <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">1,364</span>
-            <p>Hours Of Support</p>
-  				</div>
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">18</span>
-            <p>Hard Workers</p>
+          <div class="col-md-4 col-sm-12 text-center">
+            <span data-toggle="counter-up"><?= $total_activity ?></span>
+            <p>Kegiatan</p>
   				</div>
 
   			</div>
 
         <div class="facts-img">
-          <img src="<?= base_url('front-assets/')?>img/facts-img.png" alt="" class="img-fluid">
+          <img src="<?= base_url('front-assets/')?>img/bg-mosque.png" alt="" class="img-fluid">
         </div>
 
       </div>

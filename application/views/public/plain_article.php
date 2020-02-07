@@ -9,6 +9,9 @@
       <div class="row">
 
         <div class="col-lg-9 wow fadeInUp">
+            <div class="img">
+              <img src="<?= $activity->image ?>" alt="" class="img-fluid">
+            </div>
           <?= $file_content ?>
         </div>
 
