@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: 06 Feb 2020 pada 23.15
+-- Generation Time: 21 Feb 2020 pada 16.16
 -- Versi Server: 5.7.29-0ubuntu0.18.04.1
 -- PHP Version: 7.2.24-0ubuntu0.18.04.2
 
@@ -89,7 +89,8 @@ CREATE TABLE `gallery` (
 INSERT INTO `gallery` (`id`, `organization_id`, `type`, `name`, `description`, `file`) VALUES
 (1, 3, 2, 'Nama', '-', '1579246023_IMG_20191224_182741.jpg'),
 (2, 2, 1, 'Struktur Majelis Ta\'lim', '-', '1579249639_IMG_20191224_182741.jpg'),
-(3, 2, 2, 'Pengurus', '-', '1579249661_www.png');
+(3, 2, 2, 'Pengurus', '-', '1579249661_www.png'),
+(4, 3, 1, 'Struktur Remaja Mesjid', '-', '1581040333_historic-sultan-ahmet-mosque-vector-illustration.jpg');
 
 -- --------------------------------------------------------
 
@@ -498,7 +499,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `phone`, `image`, `address`) VALUES
 (1, '127.0.0.1', 'admin@fixl.com', '$2y$12$XpBgMvQ5JzfvN3PTgf/tA.XwxbCOs3mO0a10oP9/11qi1NUpv46.u', 'admin@fixl.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1579942390, 1, 'Admin', 'istrator', '081342989185', 'USER_1_1571554027.jpeg', 'admin'),
-(13, '::1', 'uadmin@gmail.com', '$2y$10$78SZyvKRKMU7nPCew9w4nOpEUmJ1SeTV4L4ZG2NXXSfbEaswqoepq', 'uadmin@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1568678256, 1580998393, 1, 'admin', 'TPA', '00', 'USER_13_1568678463.jpg', 'jln mutiara no 8');
+(13, '::1', 'uadmin@gmail.com', '$2y$10$78SZyvKRKMU7nPCew9w4nOpEUmJ1SeTV4L4ZG2NXXSfbEaswqoepq', 'uadmin@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1568678256, 1581039277, 1, 'admin', 'TPA', '00', 'USER_13_1568678463.jpg', 'jln mutiara no 8');
 
 -- --------------------------------------------------------
 
@@ -638,7 +639,7 @@ ALTER TABLE `assessment`
 -- AUTO_INCREMENT for table `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `groups`
 --
