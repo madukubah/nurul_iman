@@ -153,8 +153,10 @@ class Gallery_model extends MY_Model
         'organization.id = gallery.organization_id',
         'inner'
       );
-      $this->limit(1);
       $this->order_by($this->table.'.id', 'desc');
+      if( $type != 3 ){
+        $this->limit(1);
+      }
 
       $this->galleries(  );
 

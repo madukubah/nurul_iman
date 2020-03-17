@@ -25,6 +25,20 @@
               </li>
             </ul>
           </li>
+          <li class="menu-has-children">
+            <a href="#">Galeri</a>
+            <ul>
+              <li>
+                <a id="home_gallery" href="<?= base_url('home/gallery/1');?>">TPA</a>
+              </li>
+              <li>
+                <a id="home_gallery" href="<?= base_url('home/gallery/2');?>">Majelis Ta'lim</a>
+              </li>
+              <li>
+                <a id="home_gallery" href="<?= base_url('home/gallery/3');?>">RIMNIS</a>
+              </li>
+            </ul>
+          </li>
           <li>
             <a id="home_profile" href="<?= base_url('home/profile');?>">Profil Mesjid</a>
           </li>

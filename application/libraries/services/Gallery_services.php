@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Group_services
+class Gallery_services
 {
 
 
@@ -16,14 +16,14 @@ class Group_services
   public function get_table_config( $_page, $start_number = 1 )
   {
       $table["header"] = array(
-        'name' => 'Nama Group',
-        'description' => 'Deskripsi',
+        'image' => 'Foto',
+        'description' => 'Preview',
       );
       $table["number"] = $start_number;
       $table[ "action" ] = array(
               array(
                 "name" => 'Edit',
-                "type" => "modal_form",
+                "type" => "modal_form_multipart",
                 "modal_id" => "edit_",
                 "url" => site_url( $_page."edit/"),
                 "button_color" => "primary",
@@ -33,13 +33,25 @@ class Group_services
                         'type' => 'hidden',
                         'label' => "id",
                     ),
+                    "image" => array(
+                      'type' => 'file',
+                      'label' => "Foto",
+                    ),
+                    "image_old" => array(
+                      'type' => 'hidden',
+                      'label' => "Foto",
+                    ),
+                    "organization_id" => array(
+                      'type' => 'hidden',
+                      'label' => "organization_id",
+                    ),
                     "name" => array(
-                        'type' => 'text',
-                        'label' => "Nama Group",
+                      'type' => 'hidden',
+                      'label' => "organization_id",
                     ),
                     "description" => array(
-                        'type' => 'textarea',
-                        'label' => "Deskripsi",
+                        'type' => 'text',
+                        'label' => "Preview",
                     ),
                 ),
                 "title" => "Group",
@@ -56,6 +68,14 @@ class Group_services
                   "id" => array(
                     'type' => 'hidden',
                     'label' => "id",
+                  ),
+                  "organization_id" => array(
+                    'type' => 'hidden',
+                    'label' => "organization_id",
+                  ),
+                  "image_old" => array(
+                    'type' => 'hidden',
+                    'label' => "foto",
                   ),
                 ),
                 "title" => "Group",

@@ -11,6 +11,7 @@ class Home extends Home_Controller {
 			'gallery_model',
 			'teacher_model',
 			'activities_model',
+			'organization_model',
 			
 		));
 	}
@@ -73,6 +74,13 @@ class Home extends Home_Controller {
 		$this->data['total_activity'] = $this->activities_model->activities()->num_rows();
 		// TODO : tampilkan landing page bagi user yang belum daftar
 		$this->render("public/profile");
+	}
+	public function gallery( $organization_id )
+	{
+		$organization = $this->organization_model->organization( $organization_id )->row();
+		$this->data['galleries'] = $this->gallery_model->gallery_by_organization_id( $organization_id, 3 )->result();
+		// TODO : tampilkan landing page bagi user yang belum daftar
+		$this->render("public/gallery");
 	}
 	public function student(  )
 	{
