@@ -77,7 +77,7 @@ class Home extends Home_Controller {
 	}
 	public function gallery( $organization_id )
 	{
-		$organization = $this->organization_model->organization( $organization_id )->row();
+		$this->data['organization'] = $this->organization_model->organization( $organization_id )->row();
 		$this->data['galleries'] = $this->gallery_model->gallery_by_organization_id( $organization_id, 3 )->result();
 		// TODO : tampilkan landing page bagi user yang belum daftar
 		$this->render("public/gallery");
