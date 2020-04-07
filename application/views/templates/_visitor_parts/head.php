@@ -8,7 +8,7 @@
   <meta content="" name="description">
 
   <!-- Favicons -->
-  <link href="<?= base_url('front-assets/') ?>img/favicon.png" rel="icon">
+  <link href="<?= base_url('assets/') ?>logo/coreigniter.png" rel="icon">
   <link href="<?= base_url('front-assets/') ?>img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
