@@ -24,7 +24,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 |
 */
 // $config['base_url'] = 'http://localhost/nurul_iman/';
-$config['base_url'] = 'http://nuruliman.akar-z.com/';
+$config['base_url'] = 'https://nuruliman.akar-z.com/';
 
 /*
 |--------------------------------------------------------------------------
