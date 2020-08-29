@@ -288,6 +288,17 @@ class Savings_model extends MY_Model
     return $this->db->get( $this->table );
 
   }
-
+  public function get_total_saving_months( $year, $month = null )
+  {
+    $this->db->select('*');
+    $this->db->where('year', $year);
+    if($month){
+      $this->db->where('month', $month);
+    }else {
+      $this->db->select('SUM(nominal) as nominal_month');
+      $this->db->group_by('month');
+    }
+    return $this->db->get( $this->table );
+  }
 }
 ?>

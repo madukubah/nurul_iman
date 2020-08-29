@@ -227,6 +227,28 @@ class Student_services
     return $config;
   }
 
+  public function validation_config_regist( ){
+    $config = array(
+        array(
+          'field' => 'name',
+          'label' => 'name',
+          'rules' =>  'trim|required',
+        ),
+        array(
+          'field' => 'ttl',
+          'label' => 'ttl',
+          'rules' =>  'trim|required',
+        ),
+        array(
+          'field' => 'address',
+          'label' => 'address',
+          'rules' =>  'trim|required',
+        ),
+    );
+    
+    return $config;
+  }
+
   /**
 	 * get_form_data
 	 *

@@ -24,11 +24,11 @@ class Activities extends Uadmin_Controller {
 		$page = ($this->uri->segment(4 + 1)) ? ($this->uri->segment(4 + 1) -  1 ) : 0;
 		// echo $page; return;
         //pagination parameter
-        $pagination['base_url'] = base_url( $this->current_page ) .'/index';
+        $pagination['base_url'] = base_url( $this->current_page ) .'/index/' . $organization_id . '/';
         $pagination['total_records'] = $this->activities_model->record_count() ;
         $pagination['limit_per_page'] = 10;
         $pagination['start_record'] = $page*$pagination['limit_per_page'];
-        $pagination['uri_segment'] = 4;
+        $pagination['uri_segment'] =  4+1;
 		//set pagination
 		if ($pagination['total_records'] > 0 ) $this->data['pagination_links'] = $this->setPagination($pagination);
 		#################################################################3

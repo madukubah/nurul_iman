@@ -23,6 +23,9 @@
               <li>
                 <a id="home_rimnis" href="<?= base_url('home/rimnis');?>">RIMNIS</a>
               </li>
+              <li>
+                <a id="home_rimnis" href="<?= base_url('home/masjid');?>">Masjid</a>
+              </li>
             </ul>
           </li>
           <li class="menu-has-children">
@@ -36,6 +39,9 @@
               </li>
               <li>
                 <a id="home_gallery" href="<?= base_url('home/gallery/3');?>">RIMNIS</a>
+              </li>
+              <li>
+                <a id="home_gallery" href="<?= base_url('home/gallery/4');?>">Masjid</a>
               </li>
             </ul>
           </li>

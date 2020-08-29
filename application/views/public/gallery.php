@@ -24,8 +24,7 @@
             <div class="portfolio-wrap">
               <figure>
                 <img src="<?= $gallery->image ?>" class="img-fluid" alt="">
-                <a href="<?= $gallery->image ?>" data-lightbox="portfolio" data-title="App 1" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
-                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+                <a href="<?= $gallery->image ?>" data-lightbox="portfolio" data-title="<?= $gallery->description ?>" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
               </figure>
 
             </div>
@@ -33,7 +32,8 @@
         <?php endforeach; ?>
 
         </div>
-
+        <?php echo $pagination_links ?>
+        
       </div>
     </section><!-- #portfolio -->
 

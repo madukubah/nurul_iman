@@ -27,13 +27,15 @@
 
       </div>
 
+      <?php echo $pagination_links ?>
+
     </div>
   </section><!-- #about -->
 
 <!--==========================
       Call To Action Section
     ============================-->
-    <section id="call-to-action" class="wow fadeIn">
+    <!-- <section id="call-to-action" class="wow fadeIn">
       <div class="container">
 
         <div class="section-header wow fadeInUp">
@@ -41,23 +43,23 @@
           <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
         </div>
 
-        <div class="row about-cols">
+        <div class="row about-cols"> -->
 
-        <?php foreach ($teachers as $key => $teacher) : ?>
-        <div class="col-lg-3 col-md-6 wow fadeInUp">
+        <?php //foreach ($teachers as $key => $teacher) : ?>
+        <!-- <div class="col-lg-3 col-md-6 wow fadeInUp">
           <div class="card shadow">
-            <img src="<?= $teacher->image ?>" class="card-img-top" alt="<?= $teacher->photo ?>">
+            <img src="<?php //echo $teacher->image ?>" class="card-img-top" alt="<?php //echo $teacher->photo ?>">
             <div class="card-body">
-              <h5 class="card-title"><?= $teacher->name ?></h5>
-              <p class="card-subtitle mb-2 text-muted"><?= $teacher->position ?></p>
+              <h5 class="card-title"><?php //echo $teacher->name ?></h5>
+              <p class="card-subtitle mb-2 text-muted"><?php //echo $teacher->position ?></p>
             </div>
-          </div>
-        </div>
-        <?php endforeach; ?>
+          </div> 
+        </div> -->
+        <?php //endforeach; ?>
 
-        </div>
+        <!-- </div>
 
       </div>
-    </section><!-- #call-to-action -->
+    </section> -->
 
 </main>
