@@ -12,6 +12,9 @@ class Home extends Uadmin_Controller {
 			'savings_model',
 			'student_model',
 		));
+		$this->load->database();
+		$this->db->query("SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));");
+
 	}
 	public function index()
 	{
