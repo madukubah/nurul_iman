@@ -6,9 +6,12 @@ class MY_Controller extends CI_Controller {
     protected $data = array();
 
     public function __construct(){
-	   parent::__construct();
-	   $this->data["menu_list_id"] = $this->router->fetch_class() . '_' . $this->router->fetch_method() ; 
-	   $this->data["user_image"] = ( $this->session->userdata( 'user_image' ) != "" ) ? $this->session->userdata( 'user_image' ) : base_url('assets/img/user.png') ;
+		parent::__construct();
+		$this->load->model(array(
+			'profile_model',
+		));
+		$this->data["menu_list_id"] = $this->router->fetch_class() . '_' . $this->router->fetch_method() ; 
+		$this->data["user_image"] = ( $this->session->userdata( 'user_image' ) != "" ) ? $this->session->userdata( 'user_image' ) : base_url('assets/img/user.png') ;
     }
 
     protected function render($the_view = NULL, $template = NULL){
@@ -154,7 +157,8 @@ class Home_Controller extends MY_Controller{
 	}
   
 	protected function render($the_view = NULL, $template = 'visitor_master'){
-		  parent::render($the_view, $template);
-	  }
+		$this->data['footer'] = $this->profile_model->profile()->row();
+		parent::render($the_view, $template);
+	}
   
   }

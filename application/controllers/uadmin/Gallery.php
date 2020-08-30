@@ -20,6 +20,18 @@ class Gallery extends Uadmin_Controller {
 	public function index( $organization_id )
 	{
 		$organization = $this->organization_model->organization( $organization_id )->row();
+
+		$page = ($this->uri->segment(4 + 1)) ? ($this->uri->segment(4 + 1) -  1 ) : 0;
+		// echo $page; return;
+        //pagination parameter
+        $pagination['base_url'] = base_url( $this->current_page ) .'/index/' . $organization_id . '/';
+        $pagination['total_records'] = count($this->gallery_model->gallery_by_organization_id( $organization_id, 3 )->result());
+        $pagination['limit_per_page'] = 10;
+        $pagination['start_record'] = $page*$pagination['limit_per_page'];
+        $pagination['uri_segment'] = 4;
+		//set pagination
+		if ($pagination['total_records'] > 0 ) $this->data['pagination_links'] = $this->setPagination($pagination);
+
 		#################################################################3
 		$table = $this->services->get_table_config( $this->current_page );
 		$table[ "rows" ] = $this->gallery_model->gallery_by_organization_id( $organization_id, 3 )->result();

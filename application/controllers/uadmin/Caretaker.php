@@ -21,8 +21,8 @@ class Caretaker extends Uadmin_Controller {
 		$page = ($this->uri->segment(4 + 1)) ? ($this->uri->segment(4 + 1) -  1 ) : 0;
 		// echo $page; return;
         //pagination parameter
-        $pagination['base_url'] = base_url( $this->current_page ) .'/index';
-        $pagination['total_records'] = $this->gallery_model->record_count() ;
+        $pagination['base_url'] = base_url( $this->current_page ) .'/index/' . $organization_id . '/';
+        $pagination['total_records'] = count($this->gallery_model->gallery_by_organization_id( $organization_id, 2 )->result());
         $pagination['limit_per_page'] = 10;
         $pagination['start_record'] = $page*$pagination['limit_per_page'];
         $pagination['uri_segment'] = 4;
