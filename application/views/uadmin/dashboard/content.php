@@ -118,7 +118,7 @@
                   <div class="row">
                     <!-- col -->
                     <div class="col-lg-12  col-md-6 col-12">
-                      <?php echo (isset($monthly_savings_chart)) ? $monthly_savings_chart : '';  ?>
+                        <?php echo (isset($monthly_savings_chart)) ? $monthly_savings_chart : '';  ?>
                     </div>
                   </div>
                   <!--  -->

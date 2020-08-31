@@ -323,12 +323,12 @@ class Savings_model extends MY_Model
       "student.name",
       "savings.year",
       "savings.month",
-      "COUNT( * )"
     ]);
     
     $this->db->join( "student","on student.id = savings.student_id", "inner" );
     $this->db->where( $this->table.'.year', $year);
     $this->db->where( $this->table.'.month', $month);
+    $this->db->where( $this->table.'.nominal !=', 0 );
     $this->db->group_by( $this->table.".student_id" );
     $this->db->group_by( $this->table.".month" );
 

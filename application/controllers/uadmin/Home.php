@@ -75,10 +75,10 @@ class Home extends Uadmin_Controller {
 		
 		$this->data[ "active_student_count" ] = $this->student_model->where("status", "1")->record_count() ;
 		$this->data[ "non_active_student_count" ] = $this->student_model->where("status", "0")->record_count() ;
-		$this->data[ "month_accumulation" ] = ( $month_accumulation != null )? number_format( $month_accumulation->nominal ) : 0 ;
-		$this->data[ "total_accumulation" ] = ( $total_accumulation != null )? number_format( $total_accumulation->nominal ) : 0 ;
-		$this->data[ "saving_months" ] 		= $this->savings_model->get_total_saving_months( $year )->result();
-		$this->data[ "savings_count" ] = count( $this->savings_model->count_savings( date("m"), date("Y") )->result() );
+		$this->data[ "month_accumulation" ] 	= ( $month_accumulation != null )? number_format( $month_accumulation->nominal ) : 0 ;
+		$this->data[ "total_accumulation" ] 	= ( $total_accumulation != null )? number_format( $total_accumulation->nominal ) : 0 ;
+		$this->data[ "saving_months" ] 			= $this->savings_model->get_total_saving_months( $year )->result();
+		$this->data[ "savings_count" ] 			= count( $this->savings_model->count_savings( date("m"), date("Y") )->result() );
 		$this->data[ "savings_count_leftover" ] = $this->data[ "active_student_count" ]  - $this->data[ "savings_count" ];
 
 		$this->data[ "student_payment" ] 	= count($this->savings_model->get_total_saving_months( date('Y'), $month )->result());
@@ -126,6 +126,7 @@ class Home extends Uadmin_Controller {
 		);
 		
 		$students = ( $this->savings_model->count_savings( date("m"), date("Y") )->result() );
+		// echo json_encode( $students );die;
 		$student_counts = $this->student_model->where( "status", 1 )->record_count( );
 		$ids = [];
 		foreach( $students as $student )
@@ -155,6 +156,7 @@ class Home extends Uadmin_Controller {
 			$this->data["header"] = "Santri Yang Mambayar Bulan Ini";
 		else $this->data["header"] = "Santri Yang Belum Mambayar Bulan Ini";
 		$this->data["sub_header"] = 'Klik Tombol Action Untuk Aksi Lebih Lanjut';
+
 		$this->render( "templates/contents/plain_content" );
 
 	}
