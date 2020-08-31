@@ -169,6 +169,39 @@ class Student_model extends MY_Model
      return $this->db->get( $this->table );
   }
 
+
+  public function student_in_ids( $start = 0 , $limit = NULL, $ids = [] )
+  { 
+    $this->db->select([
+      "CONCAT( student.registration_number, ' '  ) as _registration_number",
+      "student.id",
+      "student.name",
+    ]);
+    if (isset( $limit ))
+    {
+      $this->db->limit( $limit );
+    }
+    $this->db->offset( $start );
+    return $this->db->where_in('id', $ids )->get( $this->table );
+    // return $this->db->get( $this->table );
+  }
+
+
+  public function student_not_in_ids( $start = 0 , $limit = NULL, $ids = [] )
+  { 
+    $this->db->select([
+      "CONCAT( student.registration_number, ' '  ) as _registration_number",
+      "student.id",
+      "student.name",
+    ]);
+    if (isset( $limit ))
+    {
+      $this->db->limit( $limit );
+    }
+    $this->db->offset( $start );
+    return $this->db->where_not_in('id', $ids )->get( $this->table );
+    // return $this->db->get( $this->table );
+  }
   
 
   

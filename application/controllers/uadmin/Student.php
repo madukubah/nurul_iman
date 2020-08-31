@@ -89,7 +89,7 @@ class Student extends Uadmin_Controller {
 
 		$this->data[ "contents" ] =$form_filter. $table;
 		$add_link = array(
-			"name" => "Tambah Student",
+			"name" => "Tambah Santri",
 			"modal_id" => "add_student_",
 			"button_color" => "primary",
 			"url" => site_url( $this->current_page."add/"),

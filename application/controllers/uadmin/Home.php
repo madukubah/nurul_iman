@@ -5,7 +5,7 @@ class Home extends Uadmin_Controller {
 	private $services = null;
     private $name = null;
     private $parent_page = 'uadmin';
-	private $current_page = 'uadmin/';
+	private $current_page = 'uadmin/home/';
 	public function __construct(){
 		parent::__construct();
 		$this->load->model(array(
@@ -92,5 +92,70 @@ class Home extends Uadmin_Controller {
 		$this->data["header"] = "Group";
 		$this->data["sub_header"] = "Grafik Iuran ".$year;
 		$this->render( "uadmin/dashboard/content" );
+	}
+	public function monthly_savings()
+	{
+		$year = date('Y');
+		$month = $this->input->get("month") ? $this->input->get("month") : date('m');
+		$status = $this->input->get("status") ? $this->input->get("status") : 0;
+
+		$page = ($this->uri->segment(5)) ? ($this->uri->segment(5) -  1 ) : 0;
+		// echo $status; return;
+        //pagination parameter
+		$pagination['base_url'] = base_url( $this->current_page ) .'monthly_savings/index';
+		
+        $pagination['limit_per_page'] = 100;
+        $pagination['start_record'] = $page*$pagination['limit_per_page'];
+        $pagination['uri_segment'] = 5;
+		//set pagination
+		#################################################################3
+
+		$table["header"] = array(
+			'_registration_number' => 'Nomor Induk',
+			'name' => 'Nama Lengkap',
+		  );
+		  $table["number"] = $pagination['start_record'];
+		  $table[ "action" ] = array(
+				  array(
+					"name" => "Detail",
+					"type" => "link",
+					"url" => site_url( "uadmin/student/" ."detail/"),
+					"button_color" => "primary",
+					"param" => "id",
+				  )
+		);
+		
+		$students = ( $this->savings_model->count_savings( date("m"), date("Y") )->result() );
+		$student_counts = $this->student_model->where( "status", 1 )->record_count( );
+		$ids = [];
+		foreach( $students as $student )
+		{
+			$ids []= $student->id ;
+		}
+		if( count( $ids ) )
+			if( $status )
+				$table[ "rows" ] = ( $this->student_model->student_in_ids( $pagination['start_record'], $pagination['limit_per_page'], $ids )->result() );
+			else $table[ "rows" ] = ( $this->student_model->student_not_in_ids( $pagination['start_record'], $pagination['limit_per_page'], $ids )->result() );
+		else $table[ "rows" ] = [];
+
+		$pagination['total_records'] = (  $status ) ? count( $ids ) : $student_counts - count( $ids ) ;
+		if ($pagination['total_records'] > 0 ) $this->data['pagination_links'] = $this->setPagination($pagination);
+
+		$table = $this->load->view('templates/tables/plain_table', $table, true);
+		$this->data[ "contents" ] = $table;
+
+		// return;
+		#################################################################3
+		$alert = $this->session->flashdata('alert');
+		$this->data["key"] = $this->input->get('key', FALSE);
+		$this->data["alert"] = (isset($alert)) ? $alert : NULL ;
+		$this->data["current_page"] = $this->current_page;
+		$this->data["block_header"] = "Santri";
+		if( $status )
+			$this->data["header"] = "Santri Yang Mambayar Bulan Ini";
+		else $this->data["header"] = "Santri Yang Belum Mambayar Bulan Ini";
+		$this->data["sub_header"] = 'Klik Tombol Action Untuk Aksi Lebih Lanjut';
+		$this->render( "templates/contents/plain_content" );
+
 	}
 }

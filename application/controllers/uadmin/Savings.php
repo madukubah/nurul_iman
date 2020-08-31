@@ -26,15 +26,13 @@ class Savings extends Uadmin_Controller {
 
 		// $this->services = new Student_services;
 		$page = ($this->uri->segment(4)) ? ($this->uri->segment(4) -  1 ) : 0;
-		// echo $page; return;
+		
         //pagination parameter
         $pagination['base_url'] = base_url( $this->current_page ) .'/index';
-        $pagination['total_records'] = $this->student_model->record_count() ;
         $pagination['limit_per_page'] = 100;
         $pagination['start_record'] = $page*$pagination['limit_per_page'];
         $pagination['uri_segment'] = 4;
 		//set pagination
-		if ($pagination['total_records'] > 0 ) $this->data['pagination_links'] = $this->setPagination($pagination);
 		#################################################################3
 		$table = $this->services->get_table_config_( $this->current_page, $pagination['start_record'] + 1 );
 		// $table[ "rows" ] = array();// $this->student_model->students( $pagination['start_record'], $pagination['limit_per_page'] )->result();
@@ -44,6 +42,10 @@ class Savings extends Uadmin_Controller {
 		else
 			$table[ "rows" ] = $this->savings_model->savings_( $pagination['start_record'], $pagination['limit_per_page'], $year )->result();
 		
+		$pagination['total_records'] = count( $this->savings_model->savings_( 0, NULL, $year )->result() );
+
+		if ($pagination['total_records'] > 0 ) $this->data['pagination_links'] = $this->setPagination($pagination);
+
 
 		$table = $this->load->view('uadmin/savings/savings_table', $table, true);
 

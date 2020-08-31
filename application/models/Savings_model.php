@@ -318,12 +318,15 @@ class Savings_model extends MY_Model
   public function count_savings( $month = NULL, $year = NULL )
   {
     $this->db->select([
+      "CONCAT( student.registration_number, ' '  ) as _registration_number",
+      "student.id",
+      "student.name",
       "savings.year",
       "savings.month",
       "COUNT( * )"
     ]);
     
-    // $this->db->join( "student","on student.id = savings.student_id", "inner" );
+    $this->db->join( "student","on student.id = savings.student_id", "inner" );
     $this->db->where( $this->table.'.year', $year);
     $this->db->where( $this->table.'.month', $month);
     $this->db->group_by( $this->table.".student_id" );
