@@ -13,12 +13,16 @@ class Home extends Home_Controller {
 			'gallery_model',
 			'teacher_model',
 			'activities_model',
+			'profile_model',
 			'organization_model',
 			
 		));
 	}
 	public function index()
 	{
+		$data['carousels'] = $this->gallery_model->gallery_by_organization_id(5, 3, 'main-slider')->result();
+		
+		$this->data['carousel'] = $this->load->view('public/carousel', $data, true);
 		$this->data['activities'] = $this->activities_model->activities_by_organization_id(0, 3)->result();
 		$this->data['student'] = $this->student_model->record_count();
 		$this->data['teacher'] = $this->teacher_model->record_count();
@@ -98,6 +102,11 @@ class Home extends Home_Controller {
 	}
 	public function profile()
 	{
+		$data['carousels'] = $this->gallery_model->gallery_by_organization_id(5, 3, 'main-slider')->result();
+		
+		$this->data['carousel'] = $this->load->view('public/carousel', $data, true);
+		$this->data['carousels'] = $this->gallery_model->gallery_by_organization_id(5, 3, 'second-slider')->result();
+		$this->data['profile'] = $this->profile_model->profile()->row();
 		$this->data['student'] = $this->student_model->record_count();
 		$this->data['teacher'] = $this->teacher_model->record_count();
 		$this->data['total_activity'] = $this->activities_model->activities()->num_rows();
@@ -133,24 +142,54 @@ class Home extends Home_Controller {
 	public function registration()
 	{
 		
-		$this->form_validation->set_rules( $this->services->validation_config() );
+		$this->form_validation->set_rules( $this->services->validation_config_regist() );
 		if ($this->form_validation->run() === TRUE )
 		{
+			$gender = ['Laki-laki', 'Perempuan'];
 			$data = [
 				'name' => strtoupper($this->input->post('name')),
-				'gender' => $this->input->post('gender'),
+				'gender' => $gender[$this->input->post('gender')],
 				'phone' => strtoupper($this->input->post('phone')),
 				'address' => strtoupper($this->input->post('address')),
 				'parent_name' => strtoupper($this->input->post('parent_name')),
 				'parent_job' => strtoupper($this->input->post('parent_job')),
 				'ttl' => strtoupper($this->input->post('ttl')),
 				'study' => strtoupper($this->input->post('study')),
-				'timestamp' => 0,
-				'photo' => 'default.jpg',
-				'entry_date' => date('Y-m-d'),
-				'status' => 0,
-				'registration_number' => '1000020',
+				'entry_date' => date('d F Y H:i:s'),
+				'status' => 'Pendaftar',
+				'registration_number' => '-',
 			];
+
+			$this->load->library('pdf');
+
+			$pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
+			$pdf->SetTitle("Pendaftaran Santri");
+
+			$pdf->setPrintHeader(false);
+			$pdf->setPrintFooter(false);
+
+			$pdf->SetTopMargin(10);
+			$pdf->SetLeftMargin(10);
+			$pdf->SetRightMargin(10);
+			$pdf->SetAutoPageBreak(true);
+
+			$pdf->SetAuthor('TLS');
+			$pdf->SetDisplayMode('real', 'default');
+			$pdf->AddPage();
+
+			$cover[ "title" ] = "Pendaftaran Santri";
+			$html = $this->load->view('report/cover', $cover, true);
+			$pdf->writeHTML($html, true, false, true, false, '');
+
+			$pdf->AddPage();
+			$pdf->SetFont('times', NULL, 9);
+
+			$html =  $this->load->view('report/student', $data, true);
+			$pdf->writeHTML($html, true, false, true, false, '');
+			$title = str_replace(" ", "_", 'Pendaftaran_Santri');
+
+			$pdf->Output($title . ".pdf", 'I');
+
 			redirect(site_url('home/registration') );
 		}
 		else
@@ -159,6 +198,7 @@ class Home extends Home_Controller {
             if(  !empty( validation_errors() ) || $this->ion_auth->errors() ) $this->session->set_flashdata('alert', $this->alert->set_alert( Alert::DANGER, $this->data['message'] ) );
 			
             $alert = $this->session->flashdata('alert');
+			$this->data['profile'] = $this->profile_model->profile()->row();
 			$this->data["alert"] = (isset($alert)) ? $alert : NULL ;
 			$this->render("public/registration");
 		}

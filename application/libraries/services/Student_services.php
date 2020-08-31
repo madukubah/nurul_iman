@@ -236,17 +236,42 @@ class Student_services
     $config = array(
         array(
           'field' => 'name',
-          'label' => 'name',
+          'label' => 'Nama Lengkap',
           'rules' =>  'trim|required',
         ),
         array(
           'field' => 'ttl',
-          'label' => 'ttl',
+          'label' => 'Tempat, Tanggal Lahir',
           'rules' =>  'trim|required',
         ),
         array(
           'field' => 'address',
-          'label' => 'address',
+          'label' => 'Alamat',
+          'rules' =>  'trim|required',
+        ),
+        array(
+          'field' => 'gender',
+          'label' => 'Jenis Kelamin',
+          'rules' =>  'required',
+        ),
+        array(
+          'field' => 'phone',
+          'label' => 'Telepon',
+          'rules' =>  'trim|required',
+        ),
+        array(
+          'field' => 'parent_name',
+          'label' => 'Nama Orang Tua/Wali',
+          'rules' =>  'trim|required',
+        ),
+        array(
+          'field' => 'parent_job',
+          'label' => 'Pekerjaab Orang Tua/Wali',
+          'rules' =>  'trim|required',
+        ),
+        array(
+          'field' => 'study',
+          'label' => 'Pendidikan',
           'rules' =>  'trim|required',
         ),
     );

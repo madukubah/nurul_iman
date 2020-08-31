@@ -25,7 +25,7 @@ class Activities extends Uadmin_Controller {
 		// echo $page; return;
         //pagination parameter
         $pagination['base_url'] = base_url( $this->current_page ) .'/index/' . $organization_id . '/';
-        $pagination['total_records'] = $this->activities_model->record_count() ;
+        $pagination['total_records'] = count($this->activities_model->activities_by_organization_id( 0, NULL, $organization_id )->result());
         $pagination['limit_per_page'] = 10;
         $pagination['start_record'] = $page*$pagination['limit_per_page'];
         $pagination['uri_segment'] =  4+1;

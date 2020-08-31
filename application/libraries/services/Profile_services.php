@@ -18,6 +18,121 @@ class Profile_services
     return get_instance()->$var;
   }
   
+  public function get_table_profile_config( $_page, $start_number = 1 )
+  {
+      $table["header"] = array(
+        'email' => 'Email',
+        'phone' => 'Telepon',
+        'address' => 'Alamat',
+      );
+      $table["number"] = $start_number;
+      $table[ "action" ] = array(
+        array(
+          "name" => 'Edit',
+          "type" => "modal_form",
+          "modal_id" => "edit_",
+          "url" => site_url( $_page."edit_profile/"),
+          "button_color" => "primary",
+          "param" => "id",
+          "form_data" => array(
+            "id" => array(
+              'type' => 'hidden',
+              'label' => "id",
+            ),
+            "email" => array(
+              'type' => 'text',
+              'label' => "Email",
+            ),
+            "phone" => array(
+                'type' => 'number',
+                'label' => "Telepon",
+            ),
+            "address" => array(
+              'type' => 'textarea',
+              'label' => "Jalan",
+            ),
+          ),
+          "title" => "Group",
+          "data_name" => "name",
+        ),
+    );
+    return $table;
+  }
+
+  public function get_table_carousel_config( $_page, $start_number = 1 )
+  {
+      $table["header"] = array(
+        'image' => 'Foto Slider',
+      );
+      $table["number"] = $start_number;
+      $table[ "action" ] = array(
+        array(
+          "name" => 'Edit',
+          "type" => "modal_form_multipart",
+          "modal_id" => "edit_",
+          "url" => site_url( $_page."edit_carousel/"),
+          "button_color" => "primary",
+          "param" => "id",
+          "form_data" => array(
+            "id" => array(
+              'type' => 'hidden',
+              'label' => "id",
+            ),
+            "image" => array(
+              'type' => 'file',
+              'label' => "Foto",
+            ),
+            "image_old" => array(
+              'type' => 'hidden',
+              'label' => "Foto",
+            ),
+          ),
+          "title" => "Group",
+          "data_name" => "name",
+        ),
+    );
+    return $table;
+  }
+
+  public function get_table_second_carousel_config( $_page, $start_number = 1 )
+  {
+      $table["header"] = array(
+        'image' => 'Foto Slider',
+      );
+      $table["number"] = $start_number;
+      $table[ "action" ] = array(
+        array(
+          "name" => 'Edit',
+          "type" => "modal_form",
+          "modal_id" => "edit_",
+          "url" => site_url( $_page."edit_profile/"),
+          "button_color" => "primary",
+          "param" => "id",
+          "form_data" => array(
+            "id" => array(
+              'type' => 'hidden',
+              'label' => "id",
+            ),
+            "email" => array(
+              'type' => 'text',
+              'label' => "Email",
+            ),
+            "phone" => array(
+                'type' => 'number',
+                'label' => "Telepon",
+            ),
+            "address" => array(
+              'type' => 'textarea',
+              'label' => "Jalan",
+            ),
+          ),
+          "title" => "Group",
+          "data_name" => "name",
+        ),
+    );
+    return $table;
+  }
+
   public function get_file_upload_config( $name )
   {
     // $name = str_replace( "(" )
@@ -42,6 +157,41 @@ class Profile_services
     
     return $config;
   }
+
+  public function validation_config_profile( ){
+    $config = array(
+      array(
+        'field' => 'email',
+        'label' => 'Email',
+        'rules' =>  'trim|required',
+      ),
+      array(
+        'field' => 'phone',
+        'label' => 'Telepon',
+        'rules' =>  'trim|required',
+      ),
+      array(
+        'field' => 'address',
+        'label' => 'ALamat',
+        'rules' =>  'trim|required',
+      ),
+    );
+    
+    return $config;
+  }
+
+  public function validation_config_carousel( ){
+    $config = array(
+      array(
+        'field' => 'id',
+        'label' => 'ID',
+        'rules' =>  'required',
+      ),
+    );
+    
+    return $config;
+  }
+
   public function get_form_data(  )
 	{
     $this->load->model(array(

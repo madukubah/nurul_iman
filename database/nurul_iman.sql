@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 19, 2020 at 02:16 PM
--- Server version: 5.7.29-0ubuntu0.18.04.1
+-- Generation Time: 30 Agu 2020 pada 14.53
+-- Versi Server: 5.7.31-0ubuntu0.18.04.1
 -- PHP Version: 7.2.28-3+ubuntu18.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `activities`
+-- Struktur dari tabel `activities`
 --
 
 CREATE TABLE `activities` (
@@ -37,18 +37,27 @@ CREATE TABLE `activities` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `activities`
+-- Dumping data untuk tabel `activities`
 --
 
 INSERT INTO `activities` (`id`, `organization_id`, `name`, `date`, `image`, `preview`, `file_content`) VALUES
 (1, 1, 'Lomba Ngaji', '2020-01-11', '1579248682_ACTIVITY_Lomba_Ngaji_1579248682.jpg', 'Lomba Mengaji yang di laksanakan di Masjid Nurul Iman dan diikuti oleh seluruh santri TPA Nurul Iman', 'ACTIVITY__1579249581.html'),
 (2, 2, 'Majelis Taklim Pemersatu Umat', '2016-03-11', '1581000570_ACTIVITY_Majelis_Taklim_Pemersatu_Umat_1581000570.jpg', '-', 'ACTIVITY__1581000570.html'),
-(3, 3, 'Membangun Generasi Muda Suka ke Masjid', '2016-09-22', '1581000842_ACTIVITY_Membangun_Generasi_Muda_Suka_ke_Masjid_1581000842.jpg', '-', 'ACTIVITY__1581000842.html');
+(3, 3, 'Membangun Generasi Muda Suka ke Masjid', '2016-09-22', '1581000842_ACTIVITY_Membangun_Generasi_Muda_Suka_ke_Masjid_1581000842.jpg', '-', 'ACTIVITY__1581000842.html'),
+(4, 1, 'Lomba Ngaji', '2020-01-11', '1579248682_ACTIVITY_Lomba_Ngaji_1579248682.jpg', 'Lomba Mengaji yang di laksanakan di Masjid Nurul Iman dan diikuti oleh seluruh santri TPA Nurul Iman', 'ACTIVITY__1579249581.html'),
+(5, 1, 'Lomba Ngaji', '2020-01-11', '1579248682_ACTIVITY_Lomba_Ngaji_1579248682.jpg', 'Lomba Mengaji yang di laksanakan di Masjid Nurul Iman dan diikuti oleh seluruh santri TPA Nurul Iman', 'ACTIVITY__1579249581.html'),
+(6, 1, 'Lomba Ngaji', '2020-01-11', '1579248682_ACTIVITY_Lomba_Ngaji_1579248682.jpg', 'Lomba Mengaji yang di laksanakan di Masjid Nurul Iman dan diikuti oleh seluruh santri TPA Nurul Iman', 'ACTIVITY__1579249581.html'),
+(7, 1, 'Lomba Ngaji', '2020-01-11', '1579248682_ACTIVITY_Lomba_Ngaji_1579248682.jpg', 'Lomba Mengaji yang di laksanakan di Masjid Nurul Iman dan diikuti oleh seluruh santri TPA Nurul Iman', 'ACTIVITY__1579249581.html'),
+(8, 1, 'Lomba Ngaji', '2020-01-11', '1579248682_ACTIVITY_Lomba_Ngaji_1579248682.jpg', 'Lomba Mengaji yang di laksanakan di Masjid Nurul Iman dan diikuti oleh seluruh santri TPA Nurul Iman', 'ACTIVITY__1579249581.html'),
+(9, 1, 'Lomba Ngaji', '2020-01-11', '1579248682_ACTIVITY_Lomba_Ngaji_1579248682.jpg', 'Lomba Mengaji yang di laksanakan di Masjid Nurul Iman dan diikuti oleh seluruh santri TPA Nurul Iman', 'ACTIVITY__1579249581.html'),
+(10, 1, 'Lomba Ngaji', '2020-01-11', '1579248682_ACTIVITY_Lomba_Ngaji_1579248682.jpg', 'Lomba Mengaji yang di laksanakan di Masjid Nurul Iman dan diikuti oleh seluruh santri TPA Nurul Iman', 'ACTIVITY__1579249581.html'),
+(11, 1, 'Lomba Ngaji', '2020-01-11', '1579248682_ACTIVITY_Lomba_Ngaji_1579248682.jpg', 'Lomba Mengaji yang di laksanakan di Masjid Nurul Iman dan diikuti oleh seluruh santri TPA Nurul Iman', 'ACTIVITY__1579249581.html'),
+(12, 1, 'Lomba Ngaji', '2020-01-11', '1579248682_ACTIVITY_Lomba_Ngaji_1579248682.jpg', 'Lomba Mengaji yang di laksanakan di Masjid Nurul Iman dan diikuti oleh seluruh santri TPA Nurul Iman', 'ACTIVITY__1579249581.html');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `assessment`
+-- Struktur dari tabel `assessment`
 --
 
 CREATE TABLE `assessment` (
@@ -61,7 +70,7 @@ CREATE TABLE `assessment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `assessment`
+-- Dumping data untuk tabel `assessment`
 --
 
 INSERT INTO `assessment` (`id`, `student_id`, `knowledge`, `attitude`, `class`, `description`) VALUES
@@ -70,7 +79,7 @@ INSERT INTO `assessment` (`id`, `student_id`, `knowledge`, `attitude`, `class`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `gallery`
+-- Struktur dari tabel `gallery`
 --
 
 CREATE TABLE `gallery` (
@@ -83,21 +92,29 @@ CREATE TABLE `gallery` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `gallery`
+-- Dumping data untuk tabel `gallery`
 --
 
 INSERT INTO `gallery` (`id`, `organization_id`, `type`, `name`, `description`, `file`) VALUES
 (1, 3, 2, 'Nama', '-', '1579246023_IMG_20191224_182741.jpg'),
 (2, 2, 1, 'Struktur Majelis Ta\'lim', '-', '1579249639_IMG_20191224_182741.jpg'),
-(3, 2, 2, 'Pengurus', '-', '1579249661_www.png'),
+(3, 2, 2, 'Pengurus', 'Ketua', '1579249661_www.png'),
 (4, 3, 1, 'Struktur Remaja Mesjid', '-', '1581040333_historic-sultan-ahmet-mosque-vector-illustration.jpg'),
 (8, 1, 3, 'Galeri TPA Nurul Iman', 'Kegiatan TPA Nurul Iman', '1584205099_Galeri_TPA_Nurul_Iman.jpeg'),
-(9, 1, 3, 'Galeri TPA Nurul Iman', 'Kegiatan TPA Nurul Iman', '1584205116_Galeri_TPA_Nurul_Iman.jpeg');
+(9, 1, 3, 'Galeri TPA Nurul Iman', 'Kegiatan TPA Nurul Iman', '1584205116_Galeri_TPA_Nurul_Iman.jpeg'),
+(10, 5, 3, 'main-slider', 'main-slider', '2b6b1f8643f82bae3284bbb1be56d85a.jpg'),
+(11, 5, 3, 'main-slider', 'main-slider', '261024.jpg'),
+(12, 5, 3, 'main-slider', 'main-slider', 'hajj-video-superJumbo.jpg'),
+(13, 5, 3, 'main-slider', 'main-slider', '1598769053_.png'),
+(14, 5, 3, 'second-slider', 'second-slider', '2b6b1f8643f82bae3284bbb1be56d85b.jpg'),
+(15, 5, 3, 'second-slider', 'second-slider', '261025.jpg'),
+(16, 5, 3, 'second-slider', 'second-slider', 'hajj-video-superJumbp.jpg'),
+(17, 5, 3, 'second-slider', 'second-slider', 'quran-bool.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `groups`
+-- Struktur dari tabel `groups`
 --
 
 CREATE TABLE `groups` (
@@ -107,7 +124,7 @@ CREATE TABLE `groups` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `groups`
+-- Dumping data untuk tabel `groups`
 --
 
 INSERT INTO `groups` (`id`, `name`, `description`) VALUES
@@ -117,7 +134,7 @@ INSERT INTO `groups` (`id`, `name`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `login_attempts`
+-- Struktur dari tabel `login_attempts`
 --
 
 CREATE TABLE `login_attempts` (
@@ -130,7 +147,7 @@ CREATE TABLE `login_attempts` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `menus`
+-- Struktur dari tabel `menus`
 --
 
 CREATE TABLE `menus` (
@@ -146,7 +163,7 @@ CREATE TABLE `menus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `menus`
+-- Dumping data untuk tabel `menus`
 --
 
 INSERT INTO `menus` (`id`, `menu_id`, `name`, `link`, `list_id`, `icon`, `status`, `position`, `description`) VALUES
@@ -173,12 +190,14 @@ INSERT INTO `menus` (`id`, `menu_id`, `name`, `link`, `list_id`, `icon`, `status
 (122, 2, 'Profil Mesjid', 'uadmin/profile', 'profile_index', 'home', 1, 4, '-'),
 (123, 111, 'Galeri', 'uadmin/gallery/index/1', 'gallery_index_1', 'home', 1, 1, '-'),
 (124, 112, 'Galeri', 'uadmin/gallery/index/2', 'gallery_index_2', 'home', 1, 1, '-'),
-(125, 113, 'Galeri', 'uadmin/gallery/index/3', 'gallery_index_3', 'home', 1, 1, '-');
+(125, 113, 'Galeri', 'uadmin/gallery/index/3', 'gallery_index_3', 'home', 1, 1, '-'),
+(126, 2, 'Masjid', 'uadmin/', '-', 'home', 1, 20, '-'),
+(127, 126, 'Kegiatan', 'uadmin/activities/index/4', 'activities_index_4', 'home', 1, 1, '-');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mosque`
+-- Struktur dari tabel `mosque`
 --
 
 CREATE TABLE `mosque` (
@@ -189,7 +208,7 @@ CREATE TABLE `mosque` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `organization`
+-- Struktur dari tabel `organization`
 --
 
 CREATE TABLE `organization` (
@@ -199,18 +218,53 @@ CREATE TABLE `organization` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `organization`
+-- Dumping data untuk tabel `organization`
 --
 
 INSERT INTO `organization` (`id`, `name`, `description`) VALUES
 (1, 'TPA Nurul Iman', 'Taman Pendidikan Al-Qur\'an Masjid Nurul Iman'),
 (2, 'Majelis Ta\'lim Nurul Iman', 'Majelis Ta\'lim Masjid Nurul Iman'),
-(3, 'RIMNIS Nurul Iman', 'Remaja Masjid Nurul Iman');
+(3, 'RIMNIS Nurul Iman', 'Remaja Masjid Nurul Iman'),
+(4, 'Masjid', '-'),
+(5, 'profile', '-');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `savings`
+-- Struktur dari tabel `payment`
+--
+
+CREATE TABLE `payment` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `student_id` int(10) UNSIGNED NOT NULL,
+  `total` int(11) NOT NULL,
+  `timestamp` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `profile`
+--
+
+CREATE TABLE `profile` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `address` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `profile`
+--
+
+INSERT INTO `profile` (`id`, `email`, `phone`, `address`) VALUES
+(1, 'nuruliman@gmail.com', '081234567891', 'Jln Mandonga');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `savings`
 --
 
 CREATE TABLE `savings` (
@@ -224,17 +278,18 @@ CREATE TABLE `savings` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `savings`
+-- Dumping data untuk tabel `savings`
 --
 
 INSERT INTO `savings` (`id`, `student_id`, `nominal`, `date`, `timestamp`, `month`, `year`) VALUES
 (1, 174, 50000, '2020-01-12', 1578812789, 1, 2020),
-(2, 174, 2000, '2020-02-12', 1578981982, 2, 2020);
+(2, 174, 2000, '2020-02-12', 1578981982, 2, 2020),
+(3, 173, 80000, '2020-01-01', 1598716230, 1, 2020);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `structural`
+-- Struktur dari tabel `structural`
 --
 
 CREATE TABLE `structural` (
@@ -248,7 +303,7 @@ CREATE TABLE `structural` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `student`
+-- Struktur dari tabel `student`
 --
 
 CREATE TABLE `student` (
@@ -269,7 +324,7 @@ CREATE TABLE `student` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `student`
+-- Dumping data untuk tabel `student`
 --
 
 INSERT INTO `student` (`id`, `registration_number`, `name`, `ttl`, `address`, `parent_name`, `phone`, `timestamp`, `photo`, `gender`, `entry_date`, `parent_job`, `study`, `status`) VALUES
@@ -442,7 +497,7 @@ INSERT INTO `student` (`id`, `registration_number`, `name`, `ttl`, `address`, `p
 (167, '1910 1071', 'AIRIN SRI ASTRIANA', 'KENDARI, 16 DESEMBER ', 'GUNUNG JATI', 'LA ODE SUMAIDA', '-', 0, 'default.jpg', 0, '2019-10-07', 'BURUH', 'SD', 1),
 (168, '1910 1072', 'MUHAMMAD ALFAN ', 'KENDARI, 20 SEPTEMBER 2009', 'GUNUNG JATI', 'RAHMAN', '-', 0, 'default.jpg', 1, '2019-10-07', 'WIRASWASTA', 'SLTA', 1),
 (169, '1910 1073', 'NUR CAHAYA', 'KENDARI, ', 'GUNUNG JATI', 'HAMIDUL', '-', 0, 'default.jpg', 0, '2019-10-10', 'WIRASWASTA', 'SD', 1),
-(170, '1910 1074', 'SITI AISYAH', 'KENDARI, 2 JANUARI 2009', 'GUNUNG JATI', 'ROY', '-', 0, 'default.jpg', 0, '2019-10-11', 'BURUH', 'SLTP', 1),
+(170, '1910 1074', 'SITI AISYAH', 'KENDARI, 2 JANUARI 2009', 'GUNUNG JATI', 'ROY', '-', 1598722111, 'default.jpg', 0, '2019-10-11', 'BURUH', 'SLTP', 1),
 (171, '1910 1075', 'RIFAL ALI ', '1-Feb-08', 'GUNUNG JATI', 'LA ODE FILIU', '-', 0, 'default.jpg', 1, '2019-10-12', 'BURUH', 'SD', 1),
 (172, '1910 1076', 'RAFKA ADITYA', 'KENDARI, 08 JULI 2012', 'JL. IR SOEKARNO', 'ZAKARIA', '-', 0, 'default.jpg', 1, '2019-10-12', 'WIRASWASTA', 'SLTA', 1),
 (173, '1910 1077', 'MUH. RASYA RAMADHAN', 'KENDARI, 3 SEPTEMBER 2012', 'JL. LASOLO', 'JISMA JINAS', '-', 0, 'default.jpg', 1, '2019-10-12', 'POLISI', 'SLTA', 1),
@@ -451,7 +506,7 @@ INSERT INTO `student` (`id`, `registration_number`, `name`, `ttl`, `address`, `p
 -- --------------------------------------------------------
 
 --
--- Table structure for table `teacher`
+-- Struktur dari tabel `teacher`
 --
 
 CREATE TABLE `teacher` (
@@ -463,7 +518,7 @@ CREATE TABLE `teacher` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `teacher`
+-- Dumping data untuk tabel `teacher`
 --
 
 INSERT INTO `teacher` (`id`, `name`, `position`, `description`, `photo`) VALUES
@@ -472,7 +527,7 @@ INSERT INTO `teacher` (`id`, `name`, `position`, `description`, `photo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -499,17 +554,17 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `phone`, `image`, `address`) VALUES
-(1, '127.0.0.1', 'admin@fixl.com', '$2y$12$XpBgMvQ5JzfvN3PTgf/tA.XwxbCOs3mO0a10oP9/11qi1NUpv46.u', 'admin@fixl.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1584203146, 1, 'Admin', 'istrator', '081342989185', 'USER_1_1571554027.jpeg', 'admin'),
-(13, '::1', 'uadmin@gmail.com', '$2y$10$78SZyvKRKMU7nPCew9w4nOpEUmJ1SeTV4L4ZG2NXXSfbEaswqoepq', 'uadmin@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1568678256, 1584598357, 1, 'admin', 'TPA', '00', 'USER_13_1568678463.jpg', 'jln mutiara no 8');
+(1, '127.0.0.1', 'admin@fixl.com', '$2y$12$XpBgMvQ5JzfvN3PTgf/tA.XwxbCOs3mO0a10oP9/11qi1NUpv46.u', 'admin@fixl.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1598704591, 1, 'Admin', 'istrator', '081342989185', 'USER_1_1571554027.jpeg', 'admin'),
+(13, '::1', 'uadmin@gmail.com', '$2y$10$78SZyvKRKMU7nPCew9w4nOpEUmJ1SeTV4L4ZG2NXXSfbEaswqoepq', 'uadmin@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1568678256, 1598765708, 1, 'admin', 'TPA', '00', 'USER_13_1568678463.jpg', 'jln mutiara no 8');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users_groups`
+-- Struktur dari tabel `users_groups`
 --
 
 CREATE TABLE `users_groups` (
@@ -519,7 +574,7 @@ CREATE TABLE `users_groups` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `users_groups`
+-- Dumping data untuk tabel `users_groups`
 --
 
 INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
@@ -582,6 +637,19 @@ ALTER TABLE `organization`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `payment`
+--
+ALTER TABLE `payment`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `student_id` (`student_id`);
+
+--
+-- Indexes for table `profile`
+--
+ALTER TABLE `profile`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `savings`
 --
 ALTER TABLE `savings`
@@ -634,7 +702,7 @@ ALTER TABLE `users_groups`
 -- AUTO_INCREMENT for table `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `assessment`
 --
@@ -644,7 +712,7 @@ ALTER TABLE `assessment`
 -- AUTO_INCREMENT for table `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `groups`
 --
@@ -659,7 +727,7 @@ ALTER TABLE `login_attempts`
 -- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
 --
 -- AUTO_INCREMENT for table `mosque`
 --
@@ -669,12 +737,22 @@ ALTER TABLE `mosque`
 -- AUTO_INCREMENT for table `organization`
 --
 ALTER TABLE `organization`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `payment`
+--
+ALTER TABLE `payment`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `profile`
+--
+ALTER TABLE `profile`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `savings`
 --
 ALTER TABLE `savings`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `structural`
 --
@@ -701,41 +779,47 @@ ALTER TABLE `users`
 ALTER TABLE `users_groups`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `activities`
+-- Ketidakleluasaan untuk tabel `activities`
 --
 ALTER TABLE `activities`
   ADD CONSTRAINT `activities_ibfk_1` FOREIGN KEY (`organization_id`) REFERENCES `organization` (`id`);
 
 --
--- Constraints for table `assessment`
+-- Ketidakleluasaan untuk tabel `assessment`
 --
 ALTER TABLE `assessment`
   ADD CONSTRAINT `assessment_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`);
 
 --
--- Constraints for table `gallery`
+-- Ketidakleluasaan untuk tabel `gallery`
 --
 ALTER TABLE `gallery`
   ADD CONSTRAINT `gallery_ibfk_1` FOREIGN KEY (`organization_id`) REFERENCES `organization` (`id`);
 
 --
--- Constraints for table `savings`
+-- Ketidakleluasaan untuk tabel `payment`
+--
+ALTER TABLE `payment`
+  ADD CONSTRAINT `payment_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`);
+
+--
+-- Ketidakleluasaan untuk tabel `savings`
 --
 ALTER TABLE `savings`
   ADD CONSTRAINT `savings_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`);
 
 --
--- Constraints for table `structural`
+-- Ketidakleluasaan untuk tabel `structural`
 --
 ALTER TABLE `structural`
   ADD CONSTRAINT `structural_ibfk_1` FOREIGN KEY (`organization_id`) REFERENCES `organization` (`id`);
 
 --
--- Constraints for table `users_groups`
+-- Ketidakleluasaan untuk tabel `users_groups`
 --
 ALTER TABLE `users_groups`
   ADD CONSTRAINT `fk_users_groups_groups1` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,

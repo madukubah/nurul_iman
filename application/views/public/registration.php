@@ -13,16 +13,16 @@
           <div class="col-md-4">
             <div class="contact-address">
               <i class="ion-ios-location-outline"></i>
-              <h3>Address</h3>
-              <address>A108 Adam Street, NY 535022, USA</address>
+              <h3>Alamat</h3>
+              <address><?= $profile->address ?></address>
             </div>
           </div>
 
           <div class="col-md-4">
             <div class="contact-phone">
               <i class="ion-ios-telephone-outline"></i>
-              <h3>Phone Number</h3>
-              <p><a href="tel:+155895548855">+1 5589 55488 55</a></p>
+              <h3>Nomor Telepon</h3>
+              <p><a href="tel:<?= $profile->phone ?>"><?= $profile->phone ?></a></p>
             </div>
           </div>
 
@@ -30,7 +30,7 @@
             <div class="contact-email">
               <i class="ion-ios-email-outline"></i>
               <h3>Email</h3>
-              <p><a href="mailto:info@example.com">info@example.com</a></p>
+              <p><a href="mailto:<?= $profile->email ?>"><?= $profile->email ?></a></p>
             </div>
           </div>
 
