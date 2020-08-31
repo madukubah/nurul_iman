@@ -288,6 +288,50 @@ class Savings_model extends MY_Model
     return $this->db->get( $this->table );
 
   }
+
+  public function savings_in_year( $year = NULL )
+  {
+    $this->db->select([
+      "savings.year",
+      "SUM( CASE WHEN savings.month = 1 THEN  savings.nominal ELSE 0 end ) as jan",
+      "SUM( CASE WHEN savings.month = 2 THEN  savings.nominal ELSE 0 end ) as feb ",
+      "SUM( CASE WHEN savings.month = 3 THEN  savings.nominal ELSE 0 end ) as mar ",
+      "SUM( CASE WHEN savings.month = 4 THEN  savings.nominal ELSE 0 end ) as apr ",
+      "SUM( CASE WHEN savings.month = 5 THEN  savings.nominal ELSE 0 end ) as mei ",
+      "SUM( CASE WHEN savings.month = 6 THEN  savings.nominal ELSE 0 end ) as jun ",
+      "SUM( CASE WHEN savings.month = 7 THEN  savings.nominal ELSE 0 end ) as jul ",
+      "SUM( CASE WHEN savings.month = 8 THEN  savings.nominal ELSE 0 end ) as ags ",
+      "SUM( CASE WHEN savings.month = 9 THEN  savings.nominal ELSE 0 end ) as sep ",
+      "SUM( CASE WHEN savings.month = 10 THEN savings.nominal ELSE 0 end ) as okt ",
+      "SUM( CASE WHEN savings.month = 11 THEN savings.nominal ELSE 0 end ) as nov ",
+      "SUM( CASE WHEN savings.month = 12 THEN savings.nominal ELSE 0 end ) as des ",
+    ]);
+    
+    $this->db->join( "student","on student.id = savings.student_id", "inner" );
+    if ( isset( $year ) )
+        $this->db->where( $this->table.'.year', $year);
+    
+    $this->db->group_by( $this->table.".year" );
+
+    return $this->db->get( $this->table );
+  }
+  public function count_savings( $month = NULL, $year = NULL )
+  {
+    $this->db->select([
+      "savings.year",
+      "savings.month",
+      "COUNT( * )"
+    ]);
+    
+    // $this->db->join( "student","on student.id = savings.student_id", "inner" );
+    $this->db->where( $this->table.'.year', $year);
+    $this->db->where( $this->table.'.month', $month);
+    $this->db->group_by( $this->table.".student_id" );
+    $this->db->group_by( $this->table.".month" );
+
+    return $this->db->get( $this->table );
+  }
+  
   public function get_total_saving_months( $year, $month = null )
   {
     $this->db->select('*');

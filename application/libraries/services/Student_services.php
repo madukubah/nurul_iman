@@ -208,6 +208,11 @@ class Student_services
   public function validation_config( ){
     $config = array(
         array(
+          'field' => 'registration_number',
+          'label' => 'Nomor Induk',
+          'rules' =>  'trim|required|is_unique[student.registration_number]',
+        ),
+        array(
           'field' => 'name',
           'label' => 'name',
           'rules' =>  'trim|required',

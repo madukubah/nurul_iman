@@ -53,10 +53,12 @@ class Student extends Uadmin_Controller {
 		$status = $this->input->get("status", TRUE );
 
 		$page = ($this->uri->segment(4)) ? ($this->uri->segment(4) -  1 ) : 0;
-		// echo $page; return;
+		// echo $status; return;
         //pagination parameter
-        $pagination['base_url'] = base_url( $this->current_page ) .'/index';
-        $pagination['total_records'] = $this->student_model->record_count() ;
+		$pagination['base_url'] = base_url( $this->current_page ) .'/index';
+		if( isset( $status ) )
+        	$pagination['total_records'] = $this->student_model->where("status", $status )->record_count() ;
+        else $pagination['total_records'] = $this->student_model->record_count() ;
         $pagination['limit_per_page'] = 100;
         $pagination['start_record'] = $page*$pagination['limit_per_page'];
         $pagination['uri_segment'] = 4;
