@@ -11,6 +11,7 @@
                     <div class="carousel-container">
                         <div class="carousel-content">
                             <h2>Masjid Nurul Iman</h2>
+                            <p><?= $carousel->description ?></p>
                             <a href="<?= base_url('home/registration');?>" class="btn-get-started scrollto">Daftar sebagai Santri</a>
                         </div>
                     </div>

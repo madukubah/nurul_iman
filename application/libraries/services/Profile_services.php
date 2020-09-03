@@ -63,6 +63,7 @@ class Profile_services
   {
       $table["header"] = array(
         'image' => 'Foto Slider',
+        'description' => 'Deskripsi',
       );
       $table["number"] = $start_number;
       $table[ "action" ] = array(
@@ -81,6 +82,10 @@ class Profile_services
             "image" => array(
               'type' => 'file',
               'label' => "Foto",
+            ),
+            'description' => array(
+              'type' => 'textarea',
+              'label' => "Deskripsi",
             ),
             "image_old" => array(
               'type' => 'hidden',

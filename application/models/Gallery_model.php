@@ -134,7 +134,7 @@ class Gallery_model extends MY_Model
       return $this->fetch_data();
   }
 
-  public function gallery_by_organization_id( $organization_id = NULL, $type = 1, $desc = NULL, $start = 0 , $limit = NULL )
+  public function gallery_by_organization_id( $organization_id = NULL, $type = 1, $desc = NULL, $start = 0 , $limit = NULL, $name = NULL )
   {
     $this->select($this->table . '.*');
     $this->select( $this->table . '.file AS image_old' );
@@ -159,6 +159,9 @@ class Gallery_model extends MY_Model
       }
       if($desc){
         $this->where($this->table.'.description', $desc);
+      }
+      if($name){
+        $this->where($this->table.'.name', $name);
       }
       if (isset( $limit ))
       {

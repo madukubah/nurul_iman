@@ -29,13 +29,13 @@ class Profile extends Uadmin_Controller {
 		$this->data[ "profile_table" ] = $profile_table;
 
 		$main_carousels = $this->services->get_table_carousel_config( $this->current_page );
-		$main_carousels[ "rows" ] = $this->gallery_model->gallery_by_organization_id(5, 3, 'main-slider')->result();
+		$main_carousels[ "rows" ] = $this->gallery_model->gallery_by_organization_id(5, 3, NULL, 0, NULL, 'main-slider')->result();
 		// var_dump($main_carousels[ "rows" ]); die;
 		$main_carousels = $this->load->view('templates/tables/plain_table_image', $main_carousels, true);
 		$this->data[ "main_carousels" ] = $main_carousels;
 
 		$second_carousels = $this->services->get_table_carousel_config( $this->current_page );
-		$second_carousels[ "rows" ] = $this->gallery_model->gallery_by_organization_id(5, 3, 'second-slider')->result();
+		$second_carousels[ "rows" ] = $this->gallery_model->gallery_by_organization_id(5, 3, NULL, 0, NULL, 'second-slider')->result();
 		$second_carousels = $this->load->view('templates/tables/plain_table_image', $second_carousels, true);
 		$this->data[ "second_carousels" ] = $second_carousels;
 		#################################################################3
@@ -158,6 +158,7 @@ class Profile extends Uadmin_Controller {
         if ($this->form_validation->run() === TRUE )
         {
 			$data['type'] = 3;
+			$data['description'] = $this->input->post('description');;
 			if(NULL != $_FILES['image']['name']){
 				$data['file'] = $this->upload_image( $data['name'] );
 				if( !$data['file'] ){
