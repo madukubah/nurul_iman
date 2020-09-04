@@ -53,7 +53,7 @@ class Home extends Home_Controller {
 		// echo $page; return;	
         //pagination parameter
         $pagination['base_url'] = base_url( 'home/tpa/' );
-        $pagination['total_records'] = $this->activities_model->record_count() ;
+        $pagination['total_records'] = count($this->activities_model->activities_by_organization_id(0, NULL, 1)->result());
         $pagination['limit_per_page'] = 6;
         $pagination['start_record'] = $page*$pagination['limit_per_page'];
         $pagination['uri_segment'] =  4-1;
@@ -70,7 +70,7 @@ class Home extends Home_Controller {
 		// echo $page; return;	
         //pagination parameter
         $pagination['base_url'] = base_url( 'home/rimnis/' );
-        $pagination['total_records'] = $this->activities_model->record_count() ;
+        $pagination['total_records'] = count($this->activities_model->activities_by_organization_id(0, NULL, 3)->result());
         $pagination['limit_per_page'] = 6;
         $pagination['start_record'] = $page*$pagination['limit_per_page'];
         $pagination['uri_segment'] =  4-1;
@@ -88,7 +88,7 @@ class Home extends Home_Controller {
 		// echo $page; return;	
         //pagination parameter
         $pagination['base_url'] = base_url( 'home/majelis/' );
-        $pagination['total_records'] = $this->activities_model->record_count() ;
+        $pagination['total_records'] = count($this->activities_model->activities_by_organization_id(0, NULL, 2)->result());
         $pagination['limit_per_page'] = 6;
         $pagination['start_record'] = $page*$pagination['limit_per_page'];
         $pagination['uri_segment'] =  4-1;
@@ -118,7 +118,7 @@ class Home extends Home_Controller {
 		// echo $page; return;	
         //pagination parameter
         $pagination['base_url'] = base_url( 'home/gallery/' ) . $organization_id . '/';
-		$pagination['total_records'] = $this->gallery_model->record_count() ;
+		$pagination['total_records'] = count($this->gallery_model->gallery_by_organization_id( $organization_id, 3, null)->result());
         $pagination['limit_per_page'] = 6;
         $pagination['start_record'] = $page*$pagination['limit_per_page'];
         $pagination['uri_segment'] =  4;

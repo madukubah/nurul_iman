@@ -29,7 +29,7 @@ class Teacher extends Uadmin_Controller {
 		//set pagination
 		if ($pagination['total_records'] > 0 ) $this->data['pagination_links'] = $this->setPagination($pagination);
 		#################################################################3
-		$table = $this->services->get_table_config( $this->current_page );
+		$table = $this->services->get_table_config( $this->current_page, ($pagination['start_record'] + 1) );
 		$table[ "rows" ] = $this->teacher_model->teachers( $pagination['start_record'], $pagination['limit_per_page'] )->result();
 		$table = $this->load->view('templates/tables/plain_table_image', $table, true);
 		$this->data[ "contents" ] = $table;

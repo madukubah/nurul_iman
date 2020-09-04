@@ -28,13 +28,13 @@ class Gallery extends Uadmin_Controller {
         $pagination['total_records'] = count($this->gallery_model->gallery_by_organization_id( $organization_id, 3 )->result());
         $pagination['limit_per_page'] = 10;
         $pagination['start_record'] = $page*$pagination['limit_per_page'];
-        $pagination['uri_segment'] = 4;
+        $pagination['uri_segment'] = 4 + 1;
 		//set pagination
 		if ($pagination['total_records'] > 0 ) $this->data['pagination_links'] = $this->setPagination($pagination);
 
 		#################################################################3
-		$table = $this->services->get_table_config( $this->current_page );
-		$table[ "rows" ] = $this->gallery_model->gallery_by_organization_id( $organization_id, 3 )->result();
+		$table = $this->services->get_table_config( $this->current_page, ($pagination['start_record'] + 1) );
+		$table[ "rows" ] = $this->gallery_model->gallery_by_organization_id( $organization_id, 3, NULL, $pagination['start_record'], $pagination['limit_per_page'] )->result();
 		$table = $this->load->view('templates/tables/plain_table_image', $table, true);
 		$this->data[ "contents" ] = $table;
 		$add_menu = array(

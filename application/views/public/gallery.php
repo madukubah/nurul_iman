@@ -23,7 +23,7 @@
           <div class="col-lg-3 col-md-6 portfolio-item filter-app wow fadeInUp">
             <div class="portfolio-wrap">
               <figure>
-                <img src="<?= $gallery->image ?>" class="img-fluid" alt="">
+                <img src="<?= $gallery->image ?>" class="img-fluid"  alt="" style="height: 100%">
                 <a href="<?= $gallery->image ?>" data-lightbox="portfolio" data-title="<?= $gallery->description ?>" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
               </figure>
 
@@ -32,7 +32,7 @@
         <?php endforeach; ?>
 
         </div>
-        <?php echo $pagination_links ?>
+        <?php echo isset($pagination_links) ? $pagination_links : '' ?>
         
       </div>
     </section><!-- #portfolio -->
