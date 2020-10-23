@@ -130,11 +130,13 @@ class Gallery_model extends MY_Model
         $this->limit( $limit );
       }
       $this->offset( $start );
-      $this->order_by($this->table.'.id', 'asc');
+       $this->order_by($this->table.'.id', 'desc');
+       $this->order_by($this->table.'._order', 'asc');
+
       return $this->fetch_data();
   }
 
-  public function gallery_by_organization_id( $organization_id = NULL, $type = 1, $desc = NULL, $start = 0 , $limit = NULL )
+  public function gallery_by_organization_id( $organization_id = NULL, $type = 1, $desc = NULL, $start = 0 , $limit = NULL, $name = NULL )
   {
     $this->select($this->table . '.*');
     $this->select( $this->table . '.file AS image_old' );
@@ -153,12 +155,16 @@ class Gallery_model extends MY_Model
         'organization.id = gallery.organization_id',
         'inner'
       );
-      $this->order_by($this->table.'.id', 'desc');
-      if( $type != 3 ){
+      // $this->order_by($this->table.'._order', 'asc');
+      // $this->order_by($this->table.'.id', 'desc');
+      if( $type == 1 ){
         $this->limit(1);
       }
       if($desc){
         $this->where($this->table.'.description', $desc);
+      }
+      if($name){
+        $this->where($this->table.'.name', $name);
       }
       if (isset( $limit ))
       {
@@ -166,7 +172,7 @@ class Gallery_model extends MY_Model
       }
       $this->offset( $start );
 
-      $this->galleries(  );
+      $this->galleries( $start, $limit );
 
       return $this;
   }

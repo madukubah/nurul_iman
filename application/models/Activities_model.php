@@ -127,7 +127,7 @@ class Activities_model extends MY_Model
         $this->limit( $limit );
       }
       $this->offset( $start );
-      $this->order_by($this->table.'.id', 'asc');
+      $this->order_by($this->table.'.date', 'desc');
       return $this->fetch_data();
   }
   public function activities_by_organization_id ( $start = 0 , $limit = NULL, $organization_id = NULL )
@@ -148,8 +148,7 @@ class Activities_model extends MY_Model
         'organization.id = activities.organization_id',
         'inner'
       );
-
-      $this->order_by($this->table.'.id', 'desc');
+      $this->order_by($this->table.'.date', 'asc');
 
       $this->activities( $start, $limit );
 

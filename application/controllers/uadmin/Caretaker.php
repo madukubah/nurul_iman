@@ -25,12 +25,12 @@ class Caretaker extends Uadmin_Controller {
         $pagination['total_records'] = count($this->gallery_model->gallery_by_organization_id( $organization_id, 2 )->result());
         $pagination['limit_per_page'] = 10;
         $pagination['start_record'] = $page*$pagination['limit_per_page'];
-        $pagination['uri_segment'] = 4;
+        $pagination['uri_segment'] = 4 + 1;
 		//set pagination
 		if ($pagination['total_records'] > 0 ) $this->data['pagination_links'] = $this->setPagination($pagination);
 		#################################################################3
-		$table = $this->services->get_table_config( $this->current_page );
-		$table[ "rows" ] = $this->gallery_model->gallery_by_organization_id( $organization_id, 2 )->result();
+		$table = $this->services->get_table_config( $this->current_page, ($pagination['start_record']+1) );
+		$table[ "rows" ] = $this->gallery_model->gallery_by_organization_id( $organization_id, 2, NULL, $pagination['start_record'], $pagination['limit_per_page'] )->result();
 		$table = $this->load->view('templates/tables/plain_table_image', $table, true);
 		$this->data[ "contents" ] = $table;
 		$add_menu = array(
@@ -44,6 +44,11 @@ class Caretaker extends Uadmin_Controller {
 					'label' => "Foto Bagan Struktur",
 					'value' => $organization_id
 				),
+                  "_order" => array(
+                    'type' => 'number',
+                    'label' => "Urutan",
+                    'value' => 1,
+                  ),
 				"name" => array(
 					'type' => 'text',
 					'label' => "Nama Pengurus",
@@ -90,8 +95,10 @@ class Caretaker extends Uadmin_Controller {
         {
 			$data['type'] = 2;
 			$data['file'] = $this->upload_image();
+			$data['_order'] = $this->input->post( '_order' );
 			$data['name'] = $this->input->post( 'name' );
 			$data['description'] = $this->input->post( 'description' );
+			$data['_order'] = $this->input->post( '_order' );
 
 			if( $this->gallery_model->create( $data ) ){
 				$this->session->set_flashdata('alert', $this->alert->set_alert( Alert::SUCCESS, $this->gallery_model->messages() ) );
@@ -124,7 +131,9 @@ class Caretaker extends Uadmin_Controller {
 				}
 			}
 			$data['name'] = $this->input->post( 'name' );
+			$data['_order'] = $this->input->post( '_order' );
 			$data['description'] = $this->input->post( 'description' );
+			$data['_order'] = $this->input->post( '_order' );
 
 			$data_param['id'] = $this->input->post( 'id' );
 
@@ -159,7 +168,7 @@ class Caretaker extends Uadmin_Controller {
 		}else{
 		  $this->session->set_flashdata('alert', $this->alert->set_alert( Alert::DANGER, $this->gallery_model->errors() ) );
 		}
-		redirect( site_url($this->current_page) . 'index/' . $data['organization_id'] );
+		redirect( site_url($this->current_page) . 'index/' . $organization_id );
 	}
 	public function upload_image(  )
 	{
@@ -167,9 +176,13 @@ class Caretaker extends Uadmin_Controller {
 
 		$file = $_FILES[ 'image' ];
 		$upload_path = 'uploads/gallery/';
-
+		
+		$file['name'] = str_replace( " ", "_",    $file['name']  ); // spasi ->
+        $file['name'] = str_replace( ".", "_",   $file['name']  ); // spasi -> _
+		$file['name'] = str_replace( ",", "_",   $file['name']  ); // spasi -> _
+		
 		$config 				= $upload;
-		$config['file_name'] 	=  time() . "_" . $file['name'];
+		$config['file_name'] 	=  time() . "_";// . $file['name'];
 		$config['upload_path']	= './' . $upload_path;
 		// var_dump($file['name']); die;
 		$this->load->library('upload', $config);

@@ -191,7 +191,7 @@ class Student extends Uadmin_Controller {
 					$student_data["address"] = $row['I'];
 					$student_data["phone"] = $row['J'];
 					$student_data["phone"] || $student_data["phone"] = '-' ;
-					$student_data["status"] = 1;
+					$student_data["status"] = 0;
 
 					$student_data['photo'] = "default.jpg";
 

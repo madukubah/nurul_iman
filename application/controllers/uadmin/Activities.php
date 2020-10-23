@@ -32,7 +32,7 @@ class Activities extends Uadmin_Controller {
 		//set pagination
 		if ($pagination['total_records'] > 0 ) $this->data['pagination_links'] = $this->setPagination($pagination);
 		#################################################################3
-		$table = $this->services->get_table_config( $this->current_page );
+		$table = $this->services->get_table_config( $this->current_page, ($pagination['start_record'] + 1) );
 		$table[ "rows" ] = $this->activities_model->activities_by_organization_id( $pagination['start_record'], $pagination['limit_per_page'], $organization_id )->result();
 		$table = $this->load->view('templates/tables/plain_table_image', $table, true);
 		$this->data[ "contents" ] = $table;
@@ -134,7 +134,7 @@ class Activities extends Uadmin_Controller {
 			
 			// buat content html
 
-			$config =  $this->services->get_file_upload_config( $title );
+			$config =  $this->services->get_file_upload_config( $data['name'] );
 			if( file_put_contents( $config['upload_path'].$config['file_name'], $this->input->post( 'summernote' ))  )
 			{
 				$data['file_content'] = $config['file_name'];
@@ -215,10 +215,9 @@ class Activities extends Uadmin_Controller {
 	  
 		$data_param['id'] 	= $this->input->post('id');
 		if( $this->activities_model->delete( $data_param ) ){
-			if( !@unlink( $config['upload_path'].$this->input->post( 'file_content' ) ) )return;
-			// delete image
-			if( !@unlink( $config['upload_path'].$this->input->post( 'image_old' ) ) )return;
-			$this->session->set_flashdata('alert', $this->alert->set_alert( Alert::SUCCESS, $this->activities_model->messages() ) );
+			if( !@unlink( $config['upload_path'].$this->input->post( 'file_content' ) ) )
+				if( !@unlink( $config['upload_path'].$this->input->post( 'image_old' ) ) )
+					$this->session->set_flashdata('alert', $this->alert->set_alert( Alert::SUCCESS, $this->activities_model->messages() ) );
 		}else{
 		  $this->session->set_flashdata('alert', $this->alert->set_alert( Alert::DANGER, $this->activities_model->errors() ) );
 		}

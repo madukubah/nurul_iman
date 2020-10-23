@@ -55,6 +55,10 @@ class Teacher_services
                         'type' => 'textarea',
                         'label' => "Deskripsi",
                     ),
+                    "_order" => array(
+                      'type' => 'number',
+                      'label' => "Urutan",
+                    ),
                 ),
                 "title" => "Group",
                 "data_name" => "name",

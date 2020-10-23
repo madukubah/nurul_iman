@@ -29,7 +29,7 @@ class Teacher extends Uadmin_Controller {
 		//set pagination
 		if ($pagination['total_records'] > 0 ) $this->data['pagination_links'] = $this->setPagination($pagination);
 		#################################################################3
-		$table = $this->services->get_table_config( $this->current_page );
+		$table = $this->services->get_table_config( $this->current_page, ($pagination['start_record'] + 1) );
 		$table[ "rows" ] = $this->teacher_model->teachers( $pagination['start_record'], $pagination['limit_per_page'] )->result();
 		$table = $this->load->view('templates/tables/plain_table_image', $table, true);
 		$this->data[ "contents" ] = $table;
@@ -57,6 +57,10 @@ class Teacher extends Uadmin_Controller {
 					'type' => 'textarea',
 					'label' => "Deskripsi",
 					'value' => "-",
+				),
+				"_order" => array(
+					'type' => 'number',
+					'label' => "Urutan",
 				),
 			),
 			'data' => NULL
@@ -92,6 +96,7 @@ class Teacher extends Uadmin_Controller {
 			$data['photo'] = $this->upload_image();
 			
 			$data['description'] = $this->input->post( 'description' );
+			$data['_order'] = $this->input->post( '_order' );
 
 			if( $this->teacher_model->create( $data ) ){
 				$this->session->set_flashdata('alert', $this->alert->set_alert( Alert::SUCCESS, $this->teacher_model->messages() ) );
@@ -122,6 +127,7 @@ class Teacher extends Uadmin_Controller {
 			if( NULL != $_FILES['image']['name'])
 				$data['photo'] = $this->upload_image();
 			$data['description'] = $this->input->post( 'description' );
+			$data['_order'] = $this->input->post( '_order' );
 
 			$data_param['id'] = $this->input->post( 'id' );
 

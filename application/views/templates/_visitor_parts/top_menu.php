@@ -18,13 +18,13 @@
                 <a id="home_tpa" href="<?= base_url('home/tpa');?>">TPA</a>
               </li>
               <li>
-                <a id="home_majelis" href="<?= base_url('home/majelis');?>">Majelis Ta'lim</a>
+                <a id="home_majelis" href="<?= base_url('home/majelis');?>">Majelis Taklim</a>
               </li>
               <li>
                 <a id="home_rimnis" href="<?= base_url('home/rimnis');?>">RIMNIS</a>
               </li>
               <li>
-                <a id="home_rimnis" href="<?= base_url('home/masjid');?>">Masjid</a>
+                <a id="home_rimnis" href="<?= base_url('home/masjid');?>">Pengurus Masjid</a>
               </li>
             </ul>
           </li>
@@ -35,7 +35,7 @@
                 <a id="home_gallery" href="<?= base_url('home/gallery/1');?>">TPA</a>
               </li>
               <li>
-                <a id="home_gallery" href="<?= base_url('home/gallery/2');?>">Majelis Ta'lim</a>
+                <a id="home_gallery" href="<?= base_url('home/gallery/2');?>">Majelis Taklim</a>
               </li>
               <li>
                 <a id="home_gallery" href="<?= base_url('home/gallery/3');?>">RIMNIS</a>

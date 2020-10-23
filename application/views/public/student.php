@@ -21,11 +21,9 @@
           </div>
         </div>
 
-        <div class="row portfolio-container">
-          <?php if( isset($student) ) : ?>
+        <?php if( isset($student) ) : ?>
+        <div class="row contact-info">
               
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp"></div>
-            
             <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp">
               <div class="portfolio-wrap">
                 <figure>
@@ -43,12 +41,38 @@
                 </div>
               </div>
             </div>
-          <?php else: ?> 
-            <p>Santri Tidak ditemukan</p>
-          <?php endif; ?>
 
+            <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp">
+              <div>
+                <h5>Jenis Kelamin</h5>
+                <p><?php echo $student->gender ? "Laki-laki" : "Perempuan"; ?></p>
+                <h5>No HP</h5>
+                <p><?= $student->phone ?></p>
+                <h5>Tanggal Masuk</h5>
+                <p><?= $student->entry_date ?></p>
+              </div>
+            </div>
 
+            <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp">
+              <div>
+                <h5>Pendidikan</h5>
+                <p><?= $student->study ?></p>
+                <h5>Nama Orang Tua/Wali</h5>
+                <p><?= $student->parent_name ?></p>
+                <h5>Pekerjaan Orang Tua/Wali</h5>
+                <p><?= $student->parent_job ?></p>
+              </div>
+            </div>
         </div>
+        <div class="mt-4">
+          <?php 
+            if(isset($savings)) echo $savings;
+          ?>
+        </div>
+
+        <?php else: ?> 
+          <p>Santri Tidak ditemukan</p>
+        <?php endif; ?>
 
       </div>
     </section><!-- #portfolio -->

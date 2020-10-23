@@ -76,12 +76,10 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => 'Alan!234',
-	'database' => 'nurul_iman',
-	/*'username' => 'piyocom_iorder',
-	'password' => '!sS8Bfx[)m?2',
-	'database' => 'piyocom_nuruliman',*/
+	'username' => 'nurm5132_nurul_iman',
+	'password' => 'nurul_iman123',
+	'database' => 'nurm5132_nurul_iman',
+	
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

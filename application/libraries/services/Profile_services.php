@@ -63,6 +63,7 @@ class Profile_services
   {
       $table["header"] = array(
         'image' => 'Foto Slider',
+        'description' => 'Deskripsi',
       );
       $table["number"] = $start_number;
       $table[ "action" ] = array(
@@ -81,6 +82,50 @@ class Profile_services
             "image" => array(
               'type' => 'file',
               'label' => "Foto",
+            ),
+            'description' => array(
+              'type' => 'textarea',
+              'label' => "Deskripsi",
+            ),
+            "image_old" => array(
+              'type' => 'hidden',
+              'label' => "Foto",
+            ),
+          ),
+          "title" => "Group",
+          "data_name" => "name",
+        ),
+    );
+    return $table;
+  }
+
+  public function get_table_logo_config( $_page, $start_number = 1 )
+  {
+      $table["header"] = array(
+        'image' => 'Logo',
+        'description' => 'Deskripsi',
+      );
+      $table["number"] = $start_number;
+      $table[ "action" ] = array(
+        array(
+          "name" => 'Edit',
+          "type" => "modal_form_multipart",
+          "modal_id" => "edit_",
+          "url" => site_url( $_page."edit_logo/"),
+          "button_color" => "primary",
+          "param" => "id",
+          "form_data" => array(
+            "id" => array(
+              'type' => 'hidden',
+              'label' => "id",
+            ),
+            "image" => array(
+              'type' => 'file',
+              'label' => "Foto",
+            ),
+            'description' => array(
+              'type' => 'textarea',
+              'label' => "Deskripsi",
             ),
             "image_old" => array(
               'type' => 'hidden',

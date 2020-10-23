@@ -53,6 +53,10 @@ class Gallery_services
                         'type' => 'text',
                         'label' => "Preview",
                     ),
+                    "_order" => array(
+                      'type' => 'number',
+                      'label' => "Urutan",
+                    ),
                 ),
                 "title" => "Group",
                 "data_name" => "name",

@@ -125,8 +125,17 @@ class Teacher_model extends MY_Model
         $this->limit( $limit );
       }
       $this->offset( $start );
+      $this->order_by($this->table.'._order', 'asc');
       $this->order_by($this->table.'.id', 'asc');
       return $this->fetch_data();
+  }
+
+  function get_leader() {
+    $this->select( $this->table . '.*' );
+    $this->select('CONCAT("'.base_url('uploads/teacher/').'", "", teacher.photo) AS image');
+    $this->select( $this->table . '.photo AS image_old' );
+    $this->where($this->table . '.description', 'Ketua');
+    return $this->fetch_data();
   }
 
 }
