@@ -80,7 +80,7 @@
             </div>
           </div>
           <div>
-            <p><?= $logo->description ?></p>
+            <!-- <p><?= $logo->description ?></p> -->
           </div>
         </div>
         <?php endif; ?>

@@ -12,6 +12,8 @@
             <div class="img">
               <img src="<?= $activity->image ?>" alt="" class="img-fluid">
             </div>
+          <br>
+          <br>
           <?= $file_content ?>
         </div>
 

@@ -44,22 +44,25 @@
 
             <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp">
               <div>
-                <h5>Jenis Kelamin</h5>
+                <h5><b>Jenis Kelamin</b></h5>
                 <p><?php echo $student->gender ? "Laki-laki" : "Perempuan"; ?></p>
-                <h5>No HP</h5>
+                <h5><b>No HP</b></h5>
                 <p><?= $student->phone ?></p>
-                <h5>Tanggal Masuk</h5>
-                <p><?= $student->entry_date ?></p>
+                <h5><b>Tanggal Masuk</b></h5>
+                <?php
+                  $timestamp = strtotime( $student->entry_date );
+                ?>
+                <p><?= date( "d, M Y", $timestamp ) ?></p>
               </div>
             </div>
 
             <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp">
               <div>
-                <h5>Pendidikan</h5>
+                <h5><b>Pendidikan</b></h5>
                 <p><?= $student->study ?></p>
-                <h5>Nama Orang Tua/Wali</h5>
+                <h5><b>Nama Orang Tua/Wali</b></h5>
                 <p><?= $student->parent_name ?></p>
-                <h5>Pekerjaan Orang Tua/Wali</h5>
+                <h5><b>Pekerjaan Orang Tua/Wali</b></h5>
                 <p><?= $student->parent_job ?></p>
               </div>
             </div>

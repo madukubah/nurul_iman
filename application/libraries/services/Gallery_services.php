@@ -16,6 +16,7 @@ class Gallery_services
   public function get_table_config( $_page, $start_number = 1 )
   {
       $table["header"] = array(
+        '_order' => 'Urutan',
         'image' => 'Foto',
         'description' => 'Preview',
       );

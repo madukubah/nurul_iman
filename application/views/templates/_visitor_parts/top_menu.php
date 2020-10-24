@@ -4,8 +4,6 @@
     font-weight: bolder;
   }
 </style>
-
-
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li>
@@ -46,7 +44,7 @@
             </ul>
           </li>
           <li>
-            <a id="home_profile" href="<?= base_url('home/profile');?>">Profil Mesjid</a>
+            <a id="home_profile" href="<?= base_url('home/profile');?>">Profil Masjid</a>
           </li>
           <li>
             <a type="button" class="btn btn-sm mt-1" data-toggle="modal" data-target="#find_student">
@@ -99,6 +97,5 @@
         // b.children[0].classList.add("active");
         // console.log( b.children[0] );
         // document.getElementById(id).classList.add("active");
-
     }
 </script>

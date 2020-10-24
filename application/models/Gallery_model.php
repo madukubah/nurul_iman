@@ -142,7 +142,7 @@ class Gallery_model extends MY_Model
     $this->select( $this->table . '.file AS image_old' );
     $this->select('CONCAT("'.base_url('uploads/gallery/').'", "", gallery.file) AS image');
     $this->select( 'organization.name AS organization_name' );
-    if (isset($organization_id))
+      if (isset($organization_id))
       {
         $this->where($this->table.'.organization_id', $organization_id);
       }

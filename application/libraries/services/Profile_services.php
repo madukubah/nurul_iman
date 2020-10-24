@@ -21,8 +21,8 @@ class Profile_services
   public function get_table_profile_config( $_page, $start_number = 1 )
   {
       $table["header"] = array(
-        'email' => 'Email',
-        'phone' => 'Telepon',
+        // 'email' => 'Email',
+        // 'phone' => 'Telepon',
         'address' => 'Alamat',
       );
       $table["number"] = $start_number;
@@ -40,11 +40,11 @@ class Profile_services
               'label' => "id",
             ),
             "email" => array(
-              'type' => 'text',
+              'type' => 'hidden',
               'label' => "Email",
             ),
             "phone" => array(
-                'type' => 'number',
+                'type' => 'hidden',
                 'label' => "Telepon",
             ),
             "address" => array(

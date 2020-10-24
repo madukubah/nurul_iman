@@ -50,7 +50,7 @@
           </div>
         </div>
 
-        <div class="col-12">
+        <!-- <div class="col-12">
             <div class="card">
                 <div class="card-header">
                     <h5>Profil Masjid</h5>
@@ -59,7 +59,7 @@
                     <?php echo (isset($profile_table)) ? $profile_table : '';  ?>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <div class="col-12">
             <div class="card">

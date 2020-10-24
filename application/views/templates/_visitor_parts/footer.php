@@ -9,21 +9,16 @@
 
           <div class="col-lg-3 col-md-6 footer-links"></div>
 
-          <div class="col-lg-3 col-md-6 footer-contact">
+          <div class="col-lg-6 col-md-6 footer-contact">
             <h4>Kontak Kami</h4>
             <p>
               <?= $footer->address ?><br>
-              <strong>Telepon:</strong> <?= $footer->phone ?><br>
-              <strong>Email:</strong> <?= $footer->email ?><br>
+              <strong>Masjid Nurul Iman:</strong> +62852 34937590 <br>
+              <strong>TPA:</strong> nurulimantpa81@gmail.com, <strong>Telp:</strong> 0852 40022126<br>
+              <strong>RIMNIS:</strong> therimnisofficial@gmail.com, <strong>Telp:</strong>+62 822 44508937<br>
+              <strong>Majelis Taklim:</strong> +62 812 66440565<br>
             </p>
 
-            <!-- <div class="social-links">
-              <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-              <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-              <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
-              <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
-            </div> -->
           </div>
         </div>
       </div>

@@ -26,7 +26,7 @@ class Profile extends Uadmin_Controller {
 		$profile_table = $this->services->get_table_profile_config( $this->current_page );
 		$profile_table[ "rows" ] = $this->profile_model->profile()->result();
 		$profile_table = $this->load->view('templates/tables/plain_table', $profile_table, true);
-		$this->data[ "profile_table" ] = $profile_table;
+		$this->data[ "profile_table" ] = "";//$profile_table;
 
 		$main_carousels = $this->services->get_table_carousel_config( $this->current_page );
 		$main_carousels[ "rows" ] = $this->gallery_model->gallery_by_organization_id(5, 3, NULL, 0, NULL, 'main-slider')->result();

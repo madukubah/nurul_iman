@@ -126,7 +126,7 @@ class Teacher_model extends MY_Model
       }
       $this->offset( $start );
       $this->order_by($this->table.'._order', 'asc');
-      $this->order_by($this->table.'.id', 'asc');
+      // $this->order_by($this->table.'.id', 'asc');
       return $this->fetch_data();
   }
 

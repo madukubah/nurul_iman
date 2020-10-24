@@ -6,6 +6,8 @@ class Home extends Home_Controller {
 	function __construct()
 	{
 		parent::__construct();
+		$this->load->database();
+		$this->db->query("SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));");
 		$this->load->library('services/Student_services');
 		$this->services = new Student_services;
 		$this->load->model(array(
@@ -16,7 +18,6 @@ class Home extends Home_Controller {
 			'profile_model',
 			'organization_model',
 			'savings_model',
-			
 		));
 	}
 	public function index()
@@ -156,12 +157,12 @@ class Home extends Home_Controller {
 	{
 		$data['carousels'] = $this->gallery_model->gallery_by_organization_id(5, 3, NULL, 0, NULL, 'main-slider')->result();
 		
-		$this->data['carousel'] = $this->load->view('public/carousel', $data, true);
-		$this->data['carousels'] = $this->gallery_model->gallery_by_organization_id(5, 3, NULL, 0, NULL, 'second-slider')->result();
-		$this->data['profile'] = $this->profile_model->profile()->row();
-		$this->data['student'] = $this->student_model->record_count();
-		$this->data['teacher'] = $this->teacher_model->record_count();
-		$this->data['total_activity'] = $this->activities_model->activities()->num_rows();
+		// $this->data['carousel'] = $this->load->view('public/carousel', $data, true);
+		// $this->data['carousels'] = $this->gallery_model->gallery_by_organization_id(5, 3, NULL, 0, NULL, 'second-slider')->result();
+		// $this->data['profile'] = $this->profile_model->profile()->row();
+		// $this->data['student'] = $this->student_model->record_count();
+		// $this->data['teacher'] = $this->teacher_model->record_count();
+		// $this->data['total_activity'] = $this->activities_model->activities()->num_rows();
 		$this->render("public/profile");
 	}
 	public function gallery( $organization_id )
@@ -189,7 +190,7 @@ class Home extends Home_Controller {
 		
 		$table_savings 				= $this->services->get_table_config_savings_( 'home/student' );
 		$table_savings[ "rows" ] 	= $this->savings_model->savings_( 0, null, null, $student->id )->result();
-		$table_savings 				= $this->load->view('uadmin/student/savings_table', $table_savings, true);
+		$table_savings 				= $this->load->view('uadmin/student/savings_table_public', $table_savings, true);
 		$this->data[ "savings" ] 			=  $table_savings;
 		
 		if( !$this->data['student'] ){

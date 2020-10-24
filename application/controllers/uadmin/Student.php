@@ -294,7 +294,7 @@ class Student extends Uadmin_Controller {
 		$table_savings 				= $this->load->view('uadmin/student/savings_table', $table_savings, true);
 
 		$add_savings = array(
-			"name" => "Tambah Iuran",
+			"name" => "Tambah/Edit Iuran",
 			"modal_id" => "add_saving_",
 			"button_color" => "primary",
 			"url" => site_url( $this->current_page."add_saving/"),
@@ -496,7 +496,6 @@ class Student extends Uadmin_Controller {
 	{
 		if( !($_POST) ) redirect(site_url(  $this->current_page ));  
 
-		// echo var_dump( $data );return;
 		$this->form_validation->set_rules( 'nominal', 'Iuran', 'required|trim' );
 		$this->form_validation->set_rules( 'date', 'Tanggal', 'required|trim' );
         if ($this->form_validation->run() === TRUE )
@@ -508,8 +507,13 @@ class Student extends Uadmin_Controller {
 			$data['year'] 		= date("Y", strtotime( $this->input->post('date') ) ) ;
 			$data['timestamp'] 	= time();
 
-			// var_dump( $data );die;
+			$this->savings_model->delete( [ 
+				'year' => $data['year']  , 
+				'month' => $data['month'] , 
+				'student_id' 	=> $this->input->post( 'student_id' ) 
+			] );
 			if( $this->savings_model->create( $data ) ){
+				
 				$this->session->set_flashdata('alert', $this->alert->set_alert( Alert::SUCCESS, $this->savings_model->messages() ) );
 			}else{
 				$this->session->set_flashdata('alert', $this->alert->set_alert( Alert::DANGER, $this->savings_model->errors() ) );

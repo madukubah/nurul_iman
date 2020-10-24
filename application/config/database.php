@@ -100,9 +100,9 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => 'nurm5132_nurul_iman',
-	'password' => 'nurul_iman123',
-	'database' => 'nurm5132_nurul_iman',
+	'username' => 'root',
+	'password' => 'Alan!234',
+	'database' => 'nurul_iman',
 	
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',

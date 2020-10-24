@@ -71,7 +71,7 @@
   				</div>
 
           <div class="col-md-4 col-sm-12 text-center">
-            <span data-toggle="counter-up"><?= $tpa->teacher ?></span>
+            <span data-toggle="counter-up">25</span>
             <p>Pengajar</p>
   				</div>
 
