@@ -6,8 +6,8 @@ class Home extends Home_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->database();
-		$this->db->query("SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));");
+		// $this->load->database();
+		// $this->db->query("SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));");
 		$this->load->library('services/Student_services');
 		$this->services = new Student_services;
 		$this->load->model(array(
