@@ -84,11 +84,11 @@
 
 <script type="text/javascript">
     function menuActive(id) {
-        id = id.trim();
+        // id = id.trim();
         // console.log(id);
-        a = document.getElementById(id.trim())
-        a.classList.add("active");
-        console.log(a = document.getElementById(id.trim()));
+        // a = document.getElementById(id.trim())
+        // a.classList.add("active");
+        // console.log(a = document.getElementById(id.trim()));
         // // var a =document.getElementById("menu").children[num-1].className="active";
         // var a = document.getElementById(id.trim());
         // console.log(a.parentNode.parentNode);
