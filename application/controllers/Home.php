@@ -209,13 +209,19 @@ class Home extends Home_Controller {
 				'gender' => $gender[$this->input->post('gender')],
 				'phone' => strtoupper($this->input->post('phone')),
 				'address' => strtoupper($this->input->post('address')),
-				'parent_name' => strtoupper($this->input->post('parent_name')),
-				'parent_job' => strtoupper($this->input->post('parent_job')),
 				'ttl' => strtoupper($this->input->post('ttl')),
 				'study' => strtoupper($this->input->post('study')),
-				'entry_date' => date('d F Y H:i:s'),
+				'entry_date' => date('d F Y'),
 				'status' => 'Pendaftar',
 				'registration_number' => '-',
+
+
+				'parent_name' => strtoupper($this->input->post('parent_name')),
+				'parent_job' => strtoupper($this->input->post('parent_job')),
+				'parent_address' => strtoupper($this->input->post('parent_address')),
+				'parent_ttl' => strtoupper($this->input->post('parent_ttl')),
+				'parent_study' => strtoupper($this->input->post('parent_study')),
+				'parent_phone' => strtoupper($this->input->post('parent_phone')),
 			];
 
 			$this->load->library('pdf');
