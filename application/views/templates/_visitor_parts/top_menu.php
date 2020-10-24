@@ -39,7 +39,7 @@
                 <a id="home_gallery" href="<?= base_url('home/gallery/3');?>">RIMNIS</a>
               </li>
               <li>
-                <a id="home_gallery" href="<?= base_url('home/gallery/4');?>">Masjid</a>
+                <a id="home_gallery" href="<?= base_url('home/gallery/4');?>">Pengurus Masjid</a>
               </li>
             </ul>
           </li>

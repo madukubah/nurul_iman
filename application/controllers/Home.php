@@ -23,7 +23,6 @@ class Home extends Home_Controller {
 	public function index()
 	{
 		$data['carousels'] = $this->gallery_model->gallery_by_organization_id(5, 3, NULL, 0, NULL, 'main-slider')->result();
-		
 		$this->data['carousel'] = $this->load->view('public/carousel', $data, true);
 		$this->data['activities']["TPA Nurul Iman"] = $this->activities_model->activities_by_organization_id(0, 1, 1)->row();
 		$this->data['activities']["Majelis Ta'lim Nurul Iman"] = $this->activities_model->activities_by_organization_id(0, 1, 2)->row();
