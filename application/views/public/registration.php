@@ -8,7 +8,7 @@
           <h3>Daftar sebagai Santri</h3>
         </div>
 
-        <div class="row contact-info">
+        <!-- <div class="row contact-info">
 
           <div class="col-md-4">
             <div class="contact-address">
@@ -34,7 +34,7 @@
             </div>
           </div>
 
-        </div>
+        </div> -->
 
         <div class="col-12">
           <?php
