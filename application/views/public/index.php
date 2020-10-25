@@ -159,7 +159,9 @@
         </div>
 
         <div class="row portfolio-container">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-ketum wow fadeInUp">
             
+          </div>  
           <div class="col-lg-4 col-md-6 portfolio-item filter-ketum wow fadeInUp">
             <?php  if($lead_of_masjid): ?>
             <div class="portfolio-wrap">
@@ -175,6 +177,10 @@
             </div>
             <?php  endif; ?>
           </div>
+          <div class="col-lg-4 col-md-6 portfolio-item filter-ketum wow fadeInUp">
+            
+          </div>  
+
           <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp">
             <?php  if($lead_of_majelis): ?>
             <div class="portfolio-wrap">
@@ -190,6 +196,7 @@
             </div>
             <?php  endif; ?>
           </div>
+
           <div class="col-lg-4 col-md-6 portfolio-item filter-tpa wow fadeInUp">
             <?php  if($lead_of_tpa): ?>
             <div class="portfolio-wrap">
@@ -205,6 +212,7 @@
             </div>
             <?php  endif; ?>
           </div>
+          
           <div class="col-lg-4 col-md-6 portfolio-item filter-card wow fadeInUp">
             <?php  if($lead_of_rimnis): ?>
             <div class="portfolio-wrap">
