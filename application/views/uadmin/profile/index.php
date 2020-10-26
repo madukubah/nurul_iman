@@ -50,7 +50,7 @@
           </div>
         </div>
 
-        <div class="col-12">
+        <!-- <div class="col-12">
             <div class="card">
                 <div class="card-header">
                     <h5>Profil Masjid</h5>
@@ -59,7 +59,7 @@
                     <?php echo (isset($profile_table)) ? $profile_table : '';  ?>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <div class="col-12">
             <div class="card">
@@ -79,6 +79,17 @@
                 </div>
                 <div class="card-body">
                     <?php echo (isset($second_carousels)) ? $second_carousels : '';  ?>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Tabel Logo</h5>
+                </div>
+                <div class="card-body">
+                    <?php echo (isset($table_logo)) ? $table_logo : '';  ?>
                 </div>
             </div>
         </div>

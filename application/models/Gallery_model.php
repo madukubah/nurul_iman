@@ -130,7 +130,12 @@ class Gallery_model extends MY_Model
         $this->limit( $limit );
       }
       $this->offset( $start );
+<<<<<<< HEAD
       $this->order_by($this->table.'.id', 'desc');
+=======
+      // $this->order_by($this->table.'.id', 'desc');
+      // $this->order_by($this->table.'._order', 'asc');
+>>>>>>> alan-branch
       return $this->fetch_data();
   }
 
@@ -140,7 +145,7 @@ class Gallery_model extends MY_Model
     $this->select( $this->table . '.file AS image_old' );
     $this->select('CONCAT("'.base_url('uploads/gallery/').'", "", gallery.file) AS image');
     $this->select( 'organization.name AS organization_name' );
-    if (isset($organization_id))
+      if (isset($organization_id))
       {
         $this->where($this->table.'.organization_id', $organization_id);
       }
@@ -153,7 +158,16 @@ class Gallery_model extends MY_Model
         'organization.id = gallery.organization_id',
         'inner'
       );
+<<<<<<< HEAD
       $this->order_by($this->table.'.id', 'desc');
+=======
+      // $this->order_by($this->table.'.id', 'desc');
+      if( $type == 3 )
+        $this->order_by($this->table.'._order', 'desc');
+      else
+        $this->order_by($this->table.'._order', 'asc');
+
+>>>>>>> alan-branch
       if( $type == 1 ){
         $this->limit(1);
       }

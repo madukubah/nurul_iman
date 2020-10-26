@@ -76,12 +76,19 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
+<<<<<<< HEAD
 	'username' => 'root',
 	'password' => '',
 	'database' => 'nurul_iman',
 	/*'username' => 'piyocom_iorder',
 	'password' => '!sS8Bfx[)m?2',
 	'database' => 'piyocom_nuruliman',*/
+=======
+	'username' => 'nurm5132_nurul_iman',
+	'password' => 'nurul_iman123',
+	'database' => 'nurm5132_nurul_iman',
+	
+>>>>>>> alan-branch
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
@@ -97,3 +104,27 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+
+
+// $db['default'] = array(
+// 	'dsn'	=> '',
+// 	'hostname' => 'localhost',
+// 	'username' => 'root',
+// 	'password' => 'Alan!234',
+// 	'database' => 'nurul_iman',
+	
+// 	'dbdriver' => 'mysqli',
+// 	'dbprefix' => '',
+// 	'pconnect' => FALSE,
+// 	'db_debug' => (ENVIRONMENT !== 'production'),
+// 	'cache_on' => FALSE,
+// 	'cachedir' => '',
+// 	'char_set' => 'utf8',
+// 	'dbcollat' => 'utf8_general_ci',
+// 	'swap_pre' => '',
+// 	'encrypt' => FALSE,
+// 	'compress' => FALSE,
+// 	'stricton' => FALSE,
+// 	'failover' => array(),
+// 	'save_queries' => TRUE
+// );

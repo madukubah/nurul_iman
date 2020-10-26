@@ -16,6 +16,7 @@ class Teacher_services
   public function get_table_config( $_page, $start_number = 1 )
   {
       $table["header"] = array(
+        '_order' => 'Urutan',
         'name' => 'Nama Guru',
         'position' => 'Jabatan',
         'image' => 'Foto',
@@ -54,6 +55,10 @@ class Teacher_services
                     "description" => array(
                         'type' => 'textarea',
                         'label' => "Deskripsi",
+                    ),
+                    "_order" => array(
+                      'type' => 'number',
+                      'label' => "Urutan",
                     ),
                 ),
                 "title" => "Group",

@@ -62,6 +62,10 @@ class Gallery extends Uadmin_Controller {
 					'label' => "organization_name",
 					'value' => 'Galeri ' . $organization->name,
 				),
+				"_order" => array(
+					'type' => 'number',
+					'label' => "Urutan",
+				),
 			),
 			'data' => NULL
 		);
@@ -96,6 +100,7 @@ class Gallery extends Uadmin_Controller {
 			$data['name'] = $this->input->post( 'name' );
 			$data['description'] = $this->input->post( 'description' );
 			$data['file'] = $this->upload_image( $data['name'] );
+			$data['_order'] = $this->input->post( '_order' );
 
 			if( $this->gallery_model->create( $data ) ){
 				$this->session->set_flashdata('alert', $this->alert->set_alert( Alert::SUCCESS, $this->gallery_model->messages() ) );
@@ -130,6 +135,7 @@ class Gallery extends Uadmin_Controller {
 					redirect( site_url($this->current_page) . 'index/' . $organization_id );
 				}
 			}
+			$data['_order'] = $this->input->post( '_order' );
 
 			$data_param['id'] = $this->input->post( 'id' );
 
@@ -169,12 +175,14 @@ class Gallery extends Uadmin_Controller {
 	{
 		$upload = $this->config->item('upload', 'ion_auth');
 		$name = str_replace( " ", "_",   $name  ); // spasi -> _
+		$name = str_replace( ".", "_",   $name  ); // spasi -> _
+		$name = str_replace( ",", "_",   $name  ); // spasi -> _
 
 		$file = $_FILES[ 'image' ];
 		$upload_path = 'uploads/gallery/';
 
 		$config 				= $upload;
-		$config['file_name'] 	=  time() . "_" . $name;
+		$config['file_name'] 	=  time() . "_";// . $name;
 		$config['upload_path']	= './' . $upload_path;
 		// var_dump($file['name']); die;
 		$this->load->library('upload', $config);

@@ -8,7 +8,7 @@
           <h3>Daftar sebagai Santri</h3>
         </div>
 
-        <div class="row contact-info">
+        <!-- <div class="row contact-info">
 
           <div class="col-md-4">
             <div class="contact-address">
@@ -34,20 +34,34 @@
             </div>
           </div>
 
-        </div>
+        </div> -->
 
         <div class="col-12">
           <?php
           echo $alert;
           ?>
         </div>
-
         <div class="form">
           <form action="<?= base_url('home/registration') ?>" method="post">
+            <h3>Informasi Santri</h3>
             <div class="form-row">
-              <div class="form-group col-md-6">
+              <div class="form-group col-md-12">
                 <label for="name">Nama Lengkap</label>
                 <input type="text" name="name" class="form-control" id="name" placeholder="Nama Lengkap" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <label for="address">Alamat</label>
+                <input type="text" class="form-control" name="address" id="address" placeholder="Alamat" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="ttl">Tempat, tanggal lahir</label>
+                <input type="text" class="form-control" name="ttl" id="ttl" placeholder="Tempat, tanggal lahir" />
               </div>
               <div class="form-group col-md-6">
                 <label for="gender">Jenis Kelamin</label>
@@ -57,36 +71,60 @@
                 </select>
               </div>
             </div>
+
             <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="phone">Nomor Telepon</label>
-                <input type="text" name="phone" class="form-control" id="phone" placeholder="Nomor Telepon" />
-              </div>
-              <div class="form-group col-md-6">
-                <label for="ttl">Tempat, tanggal lahir</label>
-                <input type="text" class="form-control" name="ttl" id="ttl" placeholder="Tempat, tanggal lahir" />
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="address">Alamat</label>
-                <input type="text" class="form-control" name="address" id="address" placeholder="Alamat" />
-              </div>
               <div class="form-group col-md-6">
                 <label for="study">Pendidikan</label>
                 <input type="text" name="study" class="form-control" id="study" placeholder="Pendidikan" />
               </div>
-            </div>
-            <div class="form-row">
               <div class="form-group col-md-6">
+                <label for="phone">Nomor Telepon</label>
+                <input type="text" name="phone" class="form-control" id="phone" placeholder="Nomor Telepon" />
+              </div>
+            </div>
+            
+            <br>
+            <h3>Informasi Orang Tua Wali</h3>
+            
+            <div class="form-row">
+              <div class="form-group col-md-12">
                 <label for="parent_name">Nama Orang Tua/Wali</label>
                 <input type="text" class="form-control" name="parent_name" id="parent_name" placeholder="Nama Orang Tua/Wali" />
               </div>
-              <div class="form-group col-md-6">
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <label for="address">Alamat Orang Tua/Wali</label>
+                <input type="text" class="form-control" name="parent_address" id="parent_address" placeholder="Alamat" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <label for="ttl">Tempat, tanggal lahir</label>
+                <input type="text" class="form-control" name="parent_ttl" id="parent_ttl" placeholder="Tempat, tanggal lahir" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-12">
                 <label for="parent_job">Pekerjaan Orang Tua/Wali</label>
                 <input type="text" name="parent_job" class="form-control" id="parent_job" placeholder="Pekerjaan Orang Tua/Wali" />
               </div>
             </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="study">Pendidikan</label>
+                <input type="text" name="parent_study" class="form-control" id="parent_study" placeholder="Pendidikan" />
+              </div>
+              <div class="form-group col-md-6">
+                <label for="phone">Nomor Telepon</label>
+                <input type="text" name="parent_phone" class="form-control" id="parent_phone" placeholder="Nomor Telepon" />
+              </div>
+            </div>
+
             <div class="text-center"><button type="submit">Daftar</button></div>
           </form>
         </div>

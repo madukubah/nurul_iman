@@ -21,11 +21,9 @@
           </div>
         </div>
 
-        <div class="row portfolio-container">
-          <?php if( isset($student) ) : ?>
+        <?php if( isset($student) ) : ?>
+        <div class="row contact-info">
               
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp"></div>
-            
             <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp">
               <div class="portfolio-wrap">
                 <figure>
@@ -43,12 +41,43 @@
                 </div>
               </div>
             </div>
-          <?php else: ?> 
-            <p>Santri Tidak ditemukan</p>
-          <?php endif; ?>
 
+            <div class="col-lg-4 col-md-6 col-xs-6 col-sm-6 portfolio-item filter-app wow fadeInUp">
+              <div>
+                <br>
+                <h6><b>Jenis Kelamin</b></h6>
+                <p><?php echo $student->gender ? "Laki-laki" : "Perempuan"; ?></p>
+                <h6><b>No HP</b></h6>
+                <p><?= $student->phone ?></p>
+                <h6><b>Tanggal Masuk</b></h6>
+                <?php
+                  $timestamp = strtotime( $student->entry_date );
+                ?>
+                <p><?= date( "d, M Y", $timestamp ) ?></p>
+              </div>
+            </div>
 
+            <div class="col-lg-4 col-md-6 col-xs-6 col-sm-6 portfolio-item filter-app wow fadeInUp">
+              <div>
+                <br>
+                <h6><b>Pendidikan</b></h6>
+                <p><?= $student->study ?></p>
+                <h6><b>Nama Orang Tua/Wali</b></h6>
+                <p><?= $student->parent_name ?></p>
+                <h6><b>Pekerjaan Orang Tua/Wali</b></h6>
+                <p><?= $student->parent_job ?></p>
+              </div>
+            </div>
         </div>
+        <div class="mt-4">
+          <?php 
+            if(isset($savings)) echo $savings;
+          ?>
+        </div>
+
+        <?php else: ?> 
+          <p>Santri Tidak ditemukan</p>
+        <?php endif; ?>
 
       </div>
     </section><!-- #portfolio -->

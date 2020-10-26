@@ -16,6 +16,7 @@ class Caretaker_services
   public function get_table_config( $_page, $start_number = 1 )
   {
       $table["header"] = array(
+        '_order' => 'Urutan',
         'name' => 'Nama Pengurus',
         'image' => 'Foto Pengurus',
         'description' => 'Deskripsi',
@@ -37,6 +38,10 @@ class Caretaker_services
                   "organization_id" => array(
                     'type' => 'hidden',
                     'label' => "Foto Bagan Struktur",
+                  ),
+                  "_order" => array(
+                    'type' => 'number',
+                    'label' => "Urutan",
                   ),
                   "name" => array(
                     'type' => 'text',

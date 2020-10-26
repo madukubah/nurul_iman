@@ -26,7 +26,7 @@ class Profile extends Uadmin_Controller {
 		$profile_table = $this->services->get_table_profile_config( $this->current_page );
 		$profile_table[ "rows" ] = $this->profile_model->profile()->result();
 		$profile_table = $this->load->view('templates/tables/plain_table', $profile_table, true);
-		$this->data[ "profile_table" ] = $profile_table;
+		$this->data[ "profile_table" ] = "";//$profile_table;
 
 		$main_carousels = $this->services->get_table_carousel_config( $this->current_page );
 		$main_carousels[ "rows" ] = $this->gallery_model->gallery_by_organization_id(5, 3, NULL, 0, NULL, 'main-slider')->result();
@@ -38,6 +38,12 @@ class Profile extends Uadmin_Controller {
 		$second_carousels[ "rows" ] = $this->gallery_model->gallery_by_organization_id(5, 3, NULL, 0, NULL, 'second-slider')->result();
 		$second_carousels = $this->load->view('templates/tables/plain_table_image', $second_carousels, true);
 		$this->data[ "second_carousels" ] = $second_carousels;
+		#################################################################3
+		
+		$table_logo = $this->services->get_table_logo_config( $this->current_page );
+		$table_logo[ "rows" ] = $this->gallery_model->gallery_by_organization_id(NULL, 4, NULL, 0, NULL, NULL)->result();
+		$table_logo = $this->load->view('templates/tables/plain_table_image', $table_logo, true);
+		$this->data[ "table_logo" ] = $table_logo;
 		#################################################################3
 		$form_data = $this->services->get_form_data(  );
 		$form_data = $this->load->view('templates/form/plain_form', $form_data , TRUE ) ;
@@ -159,8 +165,44 @@ class Profile extends Uadmin_Controller {
         {
 			$data['type'] = 3;
 			$data['description'] = $this->input->post('description');;
+<<<<<<< HEAD
+=======
 			if(NULL != $_FILES['image']['name']){
-				$data['file'] = $this->upload_image( $data['name'] );
+				$data['file'] = $this->upload_image( $_FILES['image']['name'] );
+				if( !$data['file'] ){
+					redirect( site_url($this->current_page) );
+				}
+			}
+
+			$data_param['id'] = $this->input->post( 'id' );
+
+			if( $this->gallery_model->update( $data, $data_param  ) ){
+				$this->session->set_flashdata('alert', $this->alert->set_alert( Alert::SUCCESS, $this->gallery_model->messages() ) );
+			}else{
+				$this->session->set_flashdata('alert', $this->alert->set_alert( Alert::DANGER, $this->gallery_model->errors() ) );
+			}
+		}
+        else
+        {
+          $this->data['message'] = (validation_errors() ? validation_errors() : ($this->m_account->errors() ? $this->gallery_model->errors() : $this->session->flashdata('message')));
+          if(  validation_errors() || $this->gallery_model->errors() ) $this->session->set_flashdata('alert', $this->alert->set_alert( Alert::DANGER, $this->data['message'] ) );
+		}
+		
+		redirect( site_url($this->current_page) );
+	}
+
+	public function edit_logo(  )
+	{
+		if( !($_POST) ) redirect(site_url(  $this->current_page ));  
+		
+		$this->form_validation->set_rules( $this->services->validation_config_carousel() );
+        if ($this->form_validation->run() === TRUE )
+        {
+			$data['type'] = 4;
+			$data['description'] = $this->input->post('description');;
+>>>>>>> alan-branch
+			if(NULL != $_FILES['image']['name']){
+				$data['file'] = $this->upload_image( $_FILES['image']['name'] );
 				if( !$data['file'] ){
 					redirect( site_url($this->current_page) );
 				}

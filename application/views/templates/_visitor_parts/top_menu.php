@@ -4,8 +4,6 @@
     font-weight: bolder;
   }
 </style>
-
-
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li>
@@ -18,14 +16,20 @@
                 <a id="home_tpa" href="<?= base_url('home/tpa');?>">TPA</a>
               </li>
               <li>
-                <a id="home_majelis" href="<?= base_url('home/majelis');?>">Majelis Ta'lim</a>
+                <a id="home_majelis" href="<?= base_url('home/majelis');?>">Majelis Taklim</a>
               </li>
               <li>
                 <a id="home_rimnis" href="<?= base_url('home/rimnis');?>">RIMNIS</a>
               </li>
+<<<<<<< HEAD
               <!-- <li>
                 <a id="home_rimnis" href="<?= base_url('home/masjid');?>">Masjid</a>
               </li> -->
+=======
+              <li>
+                <a id="home_rimnis" href="<?= base_url('home/masjid');?>">Pengurus Masjid</a>
+              </li>
+>>>>>>> alan-branch
             </ul>
           </li>
           <li class="menu-has-children">
@@ -35,18 +39,18 @@
                 <a id="home_gallery" href="<?= base_url('home/gallery/1');?>">TPA</a>
               </li>
               <li>
-                <a id="home_gallery" href="<?= base_url('home/gallery/2');?>">Majelis Ta'lim</a>
+                <a id="home_gallery" href="<?= base_url('home/gallery/2');?>">Majelis Taklim</a>
               </li>
               <li>
                 <a id="home_gallery" href="<?= base_url('home/gallery/3');?>">RIMNIS</a>
               </li>
               <li>
-                <a id="home_gallery" href="<?= base_url('home/gallery/4');?>">Masjid</a>
+                <a id="home_gallery" href="<?= base_url('home/gallery/4');?>">Pengurus Masjid</a>
               </li>
             </ul>
           </li>
           <li>
-            <a id="home_profile" href="<?= base_url('home/profile');?>">Profil Mesjid</a>
+            <a id="home_profile" href="<?= base_url('home/profile');?>">Profil Masjid</a>
           </li>
           <li>
             <a type="button" class="btn btn-sm mt-1" data-toggle="modal" data-target="#find_student">
@@ -86,11 +90,11 @@
 
 <script type="text/javascript">
     function menuActive(id) {
-        id = id.trim();
+        // id = id.trim();
         // console.log(id);
-        a = document.getElementById(id.trim())
-        a.classList.add("active");
-        console.log(a = document.getElementById(id.trim()));
+        // a = document.getElementById(id.trim())
+        // a.classList.add("active");
+        // console.log(a = document.getElementById(id.trim()));
         // // var a =document.getElementById("menu").children[num-1].className="active";
         // var a = document.getElementById(id.trim());
         // console.log(a.parentNode.parentNode);
@@ -99,6 +103,5 @@
         // b.children[0].classList.add("active");
         // console.log( b.children[0] );
         // document.getElementById(id).classList.add("active");
-
     }
 </script>

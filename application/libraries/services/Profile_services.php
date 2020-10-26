@@ -21,8 +21,8 @@ class Profile_services
   public function get_table_profile_config( $_page, $start_number = 1 )
   {
       $table["header"] = array(
-        'email' => 'Email',
-        'phone' => 'Telepon',
+        // 'email' => 'Email',
+        // 'phone' => 'Telepon',
         'address' => 'Alamat',
       );
       $table["number"] = $start_number;
@@ -40,11 +40,11 @@ class Profile_services
               'label' => "id",
             ),
             "email" => array(
-              'type' => 'text',
+              'type' => 'hidden',
               'label' => "Email",
             ),
             "phone" => array(
-                'type' => 'number',
+                'type' => 'hidden',
                 'label' => "Telepon",
             ),
             "address" => array(
@@ -87,6 +87,49 @@ class Profile_services
               'type' => 'textarea',
               'label' => "Deskripsi",
             ),
+<<<<<<< HEAD
+=======
+            "image_old" => array(
+              'type' => 'hidden',
+              'label' => "Foto",
+            ),
+          ),
+          "title" => "Group",
+          "data_name" => "name",
+        ),
+    );
+    return $table;
+  }
+
+  public function get_table_logo_config( $_page, $start_number = 1 )
+  {
+      $table["header"] = array(
+        'image' => 'Logo',
+        'description' => 'Deskripsi',
+      );
+      $table["number"] = $start_number;
+      $table[ "action" ] = array(
+        array(
+          "name" => 'Edit',
+          "type" => "modal_form_multipart",
+          "modal_id" => "edit_",
+          "url" => site_url( $_page."edit_logo/"),
+          "button_color" => "primary",
+          "param" => "id",
+          "form_data" => array(
+            "id" => array(
+              'type' => 'hidden',
+              'label' => "id",
+            ),
+            "image" => array(
+              'type' => 'file',
+              'label' => "Foto",
+            ),
+            'description' => array(
+              'type' => 'textarea',
+              'label' => "Deskripsi",
+            ),
+>>>>>>> alan-branch
             "image_old" => array(
               'type' => 'hidden',
               'label' => "Foto",

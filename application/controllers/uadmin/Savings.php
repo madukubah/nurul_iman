@@ -248,8 +248,6 @@ class Savings extends Uadmin_Controller {
 					
 				];
 			}
-			// echo var_dump( $data_array );die;
-
 			$this->savings_model->delete( [ 
 				'year' => $this->input->post( 'year' ) , 
 				'student_id' 	=> $this->input->post( 'student_id' ) 

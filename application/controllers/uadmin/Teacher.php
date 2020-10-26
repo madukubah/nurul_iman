@@ -58,6 +58,10 @@ class Teacher extends Uadmin_Controller {
 					'label' => "Deskripsi",
 					'value' => "-",
 				),
+				"_order" => array(
+					'type' => 'number',
+					'label' => "Urutan",
+				),
 			),
 			'data' => NULL
 		);
@@ -92,6 +96,7 @@ class Teacher extends Uadmin_Controller {
 			$data['photo'] = $this->upload_image();
 			
 			$data['description'] = $this->input->post( 'description' );
+			$data['_order'] = $this->input->post( '_order' );
 
 			if( $this->teacher_model->create( $data ) ){
 				$this->session->set_flashdata('alert', $this->alert->set_alert( Alert::SUCCESS, $this->teacher_model->messages() ) );
@@ -122,6 +127,7 @@ class Teacher extends Uadmin_Controller {
 			if( NULL != $_FILES['image']['name'])
 				$data['photo'] = $this->upload_image();
 			$data['description'] = $this->input->post( 'description' );
+			$data['_order'] = $this->input->post( '_order' );
 
 			$data_param['id'] = $this->input->post( 'id' );
 

@@ -12,7 +12,11 @@ class Home extends Uadmin_Controller {
 			'savings_model',
 			'student_model',
 		));
+<<<<<<< HEAD
 		$this->load->database();
+=======
+		// $this->load->database();
+>>>>>>> alan-branch
 		// $this->db->query("SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));");
 
 	}
@@ -137,7 +141,9 @@ class Home extends Uadmin_Controller {
 			if( $status )
 				$table[ "rows" ] = ( $this->student_model->student_in_ids( $pagination['start_record'], $pagination['limit_per_page'], $ids )->result() );
 			else $table[ "rows" ] = ( $this->student_model->student_not_in_ids( $pagination['start_record'], $pagination['limit_per_page'], $ids )->result() );
-		else $table[ "rows" ] = [];
+		else {
+		    redirect(site_url() . "uadmin/student/");
+		}
 
 		$pagination['total_records'] = (  $status ) ? count( $ids ) : $student_counts - count( $ids ) ;
 		if ($pagination['total_records'] > 0 ) $this->data['pagination_links'] = $this->setPagination($pagination);

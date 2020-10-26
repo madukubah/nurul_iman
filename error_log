@@ -1,0 +1,7 @@
+[03-Sep-2020 23:04:25 Asia/Jakarta] PHP Warning:  "continue" targeting switch is equivalent to "break". Did you mean to use "continue 2"? in /home/nurm5132/public_html/application/third_party/tcpdf/tcpdf.php on line 17786
+[03-Sep-2020 23:06:08 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to undefined function php_info() in /home/nurm5132/public_html/index.php:2
+Stack trace:
+#0 {main}
+  thrown in /home/nurm5132/public_html/index.php on line 2
+[03-Sep-2020 23:08:38 Asia/Jakarta] PHP Warning:  "continue" targeting switch is equivalent to "break". Did you mean to use "continue 2"? in /home/nurm5132/public_html/application/third_party/tcpdf/tcpdf.php on line 17786
+[04-Sep-2020 06:17:00 Asia/Jakarta] PHP Warning:  "continue" targeting switch is equivalent to "break". Did you mean to use "continue 2"? in /home/nurm5132/public_html/application/third_party/tcpdf/tcpdf.php on line 17786

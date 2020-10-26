@@ -147,7 +147,7 @@ class Student_services
                   'label' => "ID",
                 ),
                 "year" => array(
-                  'type' => 'hidden',
+                  'type' => 'number',
                   'label' => "Tahun",
                 ),
                 "jan" => array(

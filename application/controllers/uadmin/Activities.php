@@ -134,7 +134,7 @@ class Activities extends Uadmin_Controller {
 			
 			// buat content html
 
-			$config =  $this->services->get_file_upload_config( $title );
+			$config =  $this->services->get_file_upload_config( $data['name'] );
 			if( file_put_contents( $config['upload_path'].$config['file_name'], $this->input->post( 'summernote' ))  )
 			{
 				$data['file_content'] = $config['file_name'];
@@ -215,10 +215,9 @@ class Activities extends Uadmin_Controller {
 	  
 		$data_param['id'] 	= $this->input->post('id');
 		if( $this->activities_model->delete( $data_param ) ){
-			if( !@unlink( $config['upload_path'].$this->input->post( 'file_content' ) ) )return;
-			// delete image
-			if( !@unlink( $config['upload_path'].$this->input->post( 'image_old' ) ) )return;
-			$this->session->set_flashdata('alert', $this->alert->set_alert( Alert::SUCCESS, $this->activities_model->messages() ) );
+			if( !@unlink( $config['upload_path'].$this->input->post( 'file_content' ) ) )
+				if( !@unlink( $config['upload_path'].$this->input->post( 'image_old' ) ) )
+					$this->session->set_flashdata('alert', $this->alert->set_alert( Alert::SUCCESS, $this->activities_model->messages() ) );
 		}else{
 		  $this->session->set_flashdata('alert', $this->alert->set_alert( Alert::DANGER, $this->activities_model->errors() ) );
 		}
