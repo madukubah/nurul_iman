@@ -102,16 +102,16 @@
 </p>
 <ol>
     <li>
-        Menbayar Uang Pendaftaran sebesar Rp. 50.000,-
+        Menbayar Uang Pendaftaran sebesar Rp. 75.000,-
     </li>
     <li>
-        Menbayar Uang SPP sebesar Rp. 180.000,- / Semester
+        Membayar Uang SPP sebesar Rp. 300.000,- / Semester atau Rp. 50.000,- / Bulan
     </li>
     <li>
-        Menyerahkan pas foto ukuran 3 X 4 cm 1 lembar
+        Meyerahkan pas foto ukuran 3 X 4 cm 2 Lembar
     </li>
     <li>
-        Memenuhi tata tertip yang berlaku
+        Mematuhi tata tertib yang berlaku
     </li>
 </ol>
 
@@ -156,9 +156,9 @@
 </p>
 <ol>
     <li>
-        Waktu pembayaran adalah tanggal 1 sampai 10 setiap bulan
+        Calon santri baru diantar oleh orang tua / wali pada saat pertama masuk mengaji 
     </li>
     <li>
-        Calon santri baru harus diantar oleh Orang Tua/Wali pada saat pertama masuk mengaji 
+        Perlengkapan yang harus disiapkan berupa Buku Iqra,  Alat Tulis dan  Alat Menggambar
     </li>
 </ol>
