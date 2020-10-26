@@ -90,11 +90,16 @@
             </p>
           </div>
         </div>
-        <div class="text-center" >
-          <iframe width="420" height="315"
-            src="https://www.youtube.com/embed/z8qjHeHa_uo">
-          </iframe> 
+        <div class="row">
+          <div class="col-lg-12 wow fadeInUp">
+            <div class="text-center" >
+              <iframe width="420" height="315"
+                src="https://www.youtube.com/embed/z8qjHeHa_uo">
+              </iframe> 
+            </div>
+          </div>
         </div>
+
         <div class="row">
           <div class="col-lg-12 wow fadeInUp">
             <p class="text-justify" >
