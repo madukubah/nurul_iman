@@ -42,7 +42,7 @@
               </div>
             </div>
 
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp">
+            <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp p-2">
               <div>
                 <h5><b>Jenis Kelamin</b></h5>
                 <p><?php echo $student->gender ? "Laki-laki" : "Perempuan"; ?></p>
@@ -56,7 +56,7 @@
               </div>
             </div>
 
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp">
+            <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp p-2">
               <div>
                 <h5><b>Pendidikan</b></h5>
                 <p><?= $student->study ?></p>
