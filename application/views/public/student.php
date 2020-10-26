@@ -42,13 +42,14 @@
               </div>
             </div>
 
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp p-2">
+            <div class="col-lg-4 col-md-6 col-xs-6 col-sm-6 portfolio-item filter-app wow fadeInUp">
               <div>
-                <h5><b>Jenis Kelamin</b></h5>
+                <br>
+                <h6><b>Jenis Kelamin</b></h6>
                 <p><?php echo $student->gender ? "Laki-laki" : "Perempuan"; ?></p>
-                <h5><b>No HP</b></h5>
+                <h6><b>No HP</b></h6>
                 <p><?= $student->phone ?></p>
-                <h5><b>Tanggal Masuk</b></h5>
+                <h6><b>Tanggal Masuk</b></h6>
                 <?php
                   $timestamp = strtotime( $student->entry_date );
                 ?>
@@ -56,19 +57,19 @@
               </div>
             </div>
 
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp p-2">
+            <div class="col-lg-4 col-md-6 col-xs-6 col-sm-6 portfolio-item filter-app wow fadeInUp">
               <div>
-                <h5><b>Pendidikan</b></h5>
+                <br>
+                <h6><b>Pendidikan</b></h6>
                 <p><?= $student->study ?></p>
-                <h5><b>Nama Orang Tua/Wali</b></h5>
+                <h6><b>Nama Orang Tua/Wali</b></h6>
                 <p><?= $student->parent_name ?></p>
-                <h5><b>Pekerjaan Orang Tua/Wali</b></h5>
+                <h6><b>Pekerjaan Orang Tua/Wali</b></h6>
                 <p><?= $student->parent_job ?></p>
               </div>
             </div>
         </div>
         <div class="mt-4">
-          <!-- <h5 class="text-center"><b>Iuran</b></h5> -->
           <?php 
             if(isset($savings)) echo $savings;
           ?>
