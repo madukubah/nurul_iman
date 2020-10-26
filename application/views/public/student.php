@@ -68,6 +68,7 @@
             </div>
         </div>
         <div class="mt-4">
+          <h5 class="text-center"><b>Iuran</b></h5>
           <?php 
             if(isset($savings)) echo $savings;
           ?>
