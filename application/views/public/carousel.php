@@ -10,11 +10,7 @@
                     <div class="carousel-background"><img src="<?= $carousel->image ?>" alt=""></div>
                     <div class="carousel-container">
                         <div class="carousel-content">
-                            <!-- <h2>Masjid Nurul Iman</h2> -->
-                            <!-- <p><?= $carousel->description ?></p> -->
                             <?= $carousel->description ?>
-                            <!--<br>-->
-                            <!--<a href="<?= base_url('home/registration');?>" class="btn-get-started scrollto">Daftar sebagai Santri</a>-->
                         </div>
                     </div>
                 </div>

@@ -130,9 +130,8 @@ class Gallery_model extends MY_Model
         $this->limit( $limit );
       }
       $this->offset( $start );
-       $this->order_by($this->table.'.id', 'desc');
-       $this->order_by($this->table.'._order', 'asc');
-
+      // $this->order_by($this->table.'.id', 'desc');
+      // $this->order_by($this->table.'._order', 'asc');
       return $this->fetch_data();
   }
 
@@ -155,8 +154,12 @@ class Gallery_model extends MY_Model
         'organization.id = gallery.organization_id',
         'inner'
       );
-      // $this->order_by($this->table.'._order', 'asc');
       // $this->order_by($this->table.'.id', 'desc');
+      if( $type == 3 )
+        $this->order_by($this->table.'._order', 'desc');
+      else
+        $this->order_by($this->table.'._order', 'asc');
+
       if( $type == 1 ){
         $this->limit(1);
       }

@@ -13,8 +13,8 @@ class Caretaker extends Uadmin_Controller {
 		$this->load->model(array(
 			'gallery_model',
 		));
-
 	}
+	
 	public function index( $organization_id )
 	{
 		$this->data['menu_list_id'] = 'caretaker_index_' . $organization_id ;
