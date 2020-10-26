@@ -98,6 +98,22 @@
         <div class="row">
           <div class="col-lg-12 wow fadeInUp">
             <p class="text-justify" >
+              Majelis taklim Nurul Iman didirikan pada tahun 1983. Awal mula berdirinya lembaga ini direkomendasikan oleh Kanwil Departeman Agama bidang Pendidikan Agama Islam oleh alm. Bapak H. Mustafa Husba. Dalam menjalalankan dan menjabarkan lembaga ini,  berpedoman pada buku petunjuk yang dijadikan dasar dalam menjalankan aktivitas-aktivitas Majelis Taklim. Motto dari lembaga ini yaitu “Sebaik-baik majelis adalah Majelis Taklim Nurul Iman. Sebaik-baik Manusia adalah yang Bermanfaat untuk Orang Lain”.
+            </p>
+            <p class="text-justify" >
+              Majelis Taklim Nurul Iman sebagai salah satu lembaga yang berada dibawah naungan Masjid Nurul Iman pertama kali dipimpin atau diketuai oleh ibu Hj. hamidah Yamin. Beliau memimpin organisasi ini dengan membentuk berberapa bidang dan kegiatan-kegiatan rutin yang sampai saat ini masih berjalan. Beberapa bidang yang dibentuk antara lain adalah, Bidang Muamalah, Bidang Pendidikan, dan Bidang Ekonomi. 
+            </p>
+            <p class="text-justify" >
+              Sedangkan kegiatan-kegiatan rutin yang dilakukan adalah, kegiatan mingguan, pengajian gabungan majelis taklim. Kegiatan rutin bulanan,  silaturahmi bulanan dengan mendatangkan penceramah. Kegiatan Tahunan, berpartisipasi dalam kegiatan besar Masjid Nurul Iman dan TPA Nurul Iman yaitu Peringatan 1 Muharram, Isra Mi’raj, Maulid Nabi,  Qurban  Idul Adha, dan Wisuda Akbar TPA Nurul Iman.
+            </p>
+            <p class="text-justify" >
+              Dalam kepengurusan, organisasi Majelis Taklim mengadakan pergantian kepengurusan setiap 5 tahun sekali. Setelah kurang lebih 30 tahun menjadi ketua Majelis Taklim, pada 2016 ibu Hj. Hamidah Yamin digantikan dengan kepengurusan baru yang diketuai oleh ibu Rochmiyah Kaimah. Selain aktif dalam kepengurusan Majelis Taklim dalam lingkup masjid nurul iman beliau juga aktif dalam kepengurusan BKMT ( Badan Kota Majelis Taklim) kota Kendari. Selama menjabat sebagai ketua terhitung dari tahun 2016, beliau ibu Rochmiyah Kaimah sudah banyak mengikutkan anggota-anggota Majelis Taklim dalam kegiatan-kegiatan besar yang diadakan baik dalam tingkatan kota maupun nasional seperti, Gema Islami, Lomba Gerak Jalan Majelis Pemersatu Umat, Seminar nasional dan Muktamar BKMT.
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 wow fadeInUp">
+            <p class="text-justify" >
             Dalam meningkatkan sumber daya manusia kepengurusan Masjid Nurul Iman Sanua Kendari termasuk kepengurusan lembaga yang dinaunginya, Studi Banding menjadi salah satu kegiatan yang dicanangkan oleh Masjid Nurul Iman dengan harapan melalui sumber daya manusia yang berkualitas, Masjid dapat terkelola dengan baik dan dapat menjalankan fungsinya secara efektif dan efisien yang tidak hanya sebagai pusat peribadatan melainkan juga sebagai pusat kegiatan Syiar Islam dan kegiatan muamalah ditengah masyarakat.
             </p>
           </div>
