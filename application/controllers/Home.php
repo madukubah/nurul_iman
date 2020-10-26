@@ -22,8 +22,9 @@ class Home extends Home_Controller {
 	}
 	public function index()
 	{
-		$data['carousels'] = $this->gallery_model->gallery_by_organization_id(5, 3, NULL, 0, NULL, 'main-slider')->result();
-		$this->data['carousel'] = $this->load->view('public/carousel', $data, true);
+		$this->data['carousels'] = $this->gallery_model->gallery_by_organization_id(5, 3, NULL, 0, NULL, 'main-slider')->result();
+		// $data['carousels'] = $this->gallery_model->gallery_by_organization_id(5, 3, NULL, 0, NULL, 'main-slider')->result();
+		// $this->data['carousel'] = $this->load->view('public/carousel', $data, true);
 		$this->data['activities']["TPA Nurul Iman"] = $this->activities_model->activities_by_organization_id(0, 1, 1)->row();
 		$this->data['activities']["Majelis Ta'lim Nurul Iman"] = $this->activities_model->activities_by_organization_id(0, 1, 2)->row();
 		$this->data['activities']["RIMNIS Nurul Iman"] = $this->activities_model->activities_by_organization_id(0, 1, 3)->row();
@@ -156,21 +157,12 @@ class Home extends Home_Controller {
 	{
 		$data['carousels'] = $this->gallery_model->gallery_by_organization_id(5, 3, NULL, 0, NULL, 'main-slider')->result();
 		
-<<<<<<< HEAD
-		$this->data['carousel'] = $this->load->view('public/carousel', $data, true);
-		$this->data['carousels'] = $this->gallery_model->gallery_by_organization_id(5, 3, NULL, 0, NULL, 'second-slider')->result();
-		$this->data['profile'] = $this->profile_model->profile()->row();
-		$this->data['student'] = $this->student_model->record_count();
-		$this->data['teacher'] = $this->teacher_model->record_count();
-		$this->data['total_activity'] = $this->activities_model->activities()->num_rows();
-=======
 		// $this->data['carousel'] = $this->load->view('public/carousel', $data, true);
 		// $this->data['carousels'] = $this->gallery_model->gallery_by_organization_id(5, 3, NULL, 0, NULL, 'second-slider')->result();
 		// $this->data['profile'] = $this->profile_model->profile()->row();
 		// $this->data['student'] = $this->student_model->record_count();
 		// $this->data['teacher'] = $this->teacher_model->record_count();
 		// $this->data['total_activity'] = $this->activities_model->activities()->num_rows();
->>>>>>> alan-branch
 		$this->render("public/profile");
 	}
 	public function gallery( $organization_id )
@@ -180,11 +172,7 @@ class Home extends Home_Controller {
         //pagination parameter
         $pagination['base_url'] = base_url( 'home/gallery/' ) . $organization_id . '/';
 		$pagination['total_records'] = count($this->gallery_model->gallery_by_organization_id( $organization_id, 3, null)->result());
-<<<<<<< HEAD
-        $pagination['limit_per_page'] = 6;
-=======
         $pagination['limit_per_page'] = 8;
->>>>>>> alan-branch
         $pagination['start_record'] = $page*$pagination['limit_per_page'];
         $pagination['uri_segment'] =  4;
 		//set pagination

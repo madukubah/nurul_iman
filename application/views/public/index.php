@@ -3,8 +3,36 @@
       display: none;
     }
   </style>
-  <?= $carousel ?>
+  <?php // echo $carousel ?>
+<div class="intro-container bg-dark" style="display: table; height: 5.9375rem; width: 100%;" ></div>
   <main id="main">
+    
+    <!-- carousel -->
+    <section>
+      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <?php foreach ($carousels as $key => $carousel) { ?>
+          <div class="carousel-item <?= $key == 0 ? 'active' : '' ?>">
+            <img src="<?= $carousel->image ?>" class="d-block w-100" alt="">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>
+                <?= $carousel->description ?>
+              </h5>
+            </div>
+          </div>
+          <?php } ?>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </section>
+    <!-- end carousel -->
 
     <section id="about">
       <div class="container">
