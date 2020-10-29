@@ -7,16 +7,20 @@ class Student_services
 	protected $name;
 	protected $ttl;
 	protected $address;
-	protected $parent_name;
 	protected $phone;
 	protected $gender;
 	protected $entry_date;
-	protected $parent_job;
 	protected $study;
   protected $status;
   protected $student_id;
   protected $description;
-  
+
+	protected $parent_name;
+	protected $parent_address;
+	protected $parent_job;
+	protected $parent_ttl;
+	protected $parent_study;
+	protected $parent_phone;
 
   function __construct(){
         $this->id = "";
@@ -24,15 +28,20 @@ class Student_services
         $this->name= "";
         $this->ttl= "";
         $this->address= "";
-        $this->parent_name= "";
         $this->phone= "";
         $this->gender= "";
         $this->entry_date= date("m/d/Y");
-        $this->parent_job= "";
         $this->study= "";
         $this->status= "";
         $this->student_id= "";
         $this->description= "";
+
+        $this->parent_name= "";
+        $this->parent_address= "";
+        $this->parent_job= "";
+        $this->parent_ttl= "";
+        $this->parent_study= "";
+        $this->parent_phone= "";
   }
 
   public function __get($var)
@@ -213,6 +222,11 @@ class Student_services
           'rules' =>  'trim|required|is_unique[student.registration_number]',
         ),
         array(
+          'field' => 'status',
+          'label' => 'status',
+          'rules' =>  'trim|required',
+        ),
+        array(
           'field' => 'name',
           'label' => 'name',
           'rules' =>  'trim|required',
@@ -223,8 +237,54 @@ class Student_services
           'rules' =>  'trim|required',
         ),
         array(
+          'field' => 'gender',
+          'label' => 'gender',
+          'rules' =>  'trim|required',
+        ),
+        array(
           'field' => 'address',
           'label' => 'address',
+          'rules' =>  'trim|required',
+        ),
+        array(
+          'field' => 'study',
+          'label' => 'study',
+          'rules' =>  'trim|required',
+        ),
+        array(
+          'field' => 'phone',
+          'label' => 'phone',
+          'rules' =>  'trim|required',
+        ),
+
+        array(
+          'field' => 'parent_name',
+          'label' => 'parent_name',
+          'rules' =>  'trim|required',
+        ),
+        array(
+          'field' => 'parent_address',
+          'label' => 'parent_address',
+          'rules' =>  'trim|required',
+        ),
+        array(
+          'field' => 'parent_job',
+          'label' => 'parent_job',
+          'rules' =>  'trim|required',
+        ),
+        array(
+          'field' => 'parent_ttl',
+          'label' => 'parent_ttl',
+          'rules' =>  'trim|required',
+        ),
+        array(
+          'field' => 'parent_study',
+          'label' => 'parent_study',
+          'rules' =>  'trim|required',
+        ),
+        array(
+          'field' => 'parent_phone',
+          'label' => 'parent_phone',
           'rules' =>  'trim|required',
         ),
     );
@@ -295,13 +355,18 @@ class Student_services
       $this->name                   = $student->name;
       $this->ttl                    = $student->ttl;
       $this->address                = $student->address;
-      $this->parent_name            = $student->parent_name;
       $this->phone                  = $student->phone;
       $this->gender                 = $student->gender;
       $this->entry_date             = date( 'm/d/Y', strtotime( $student->entry_date ) ) ;
-      $this->parent_job             = $student->parent_job;
       $this->study                  = $student->study;
       $this->status                  = $student->status;
+
+      $this->parent_name            = $student->parent_name;
+      $this->parent_address            = $student->parent_address;
+      $this->parent_job             = $student->parent_job;
+      $this->parent_ttl             = $student->parent_ttl;
+      $this->parent_study             = $student->parent_study;
+      $this->parent_phone             = $student->parent_phone;
 		}
 
 
@@ -310,13 +375,13 @@ class Student_services
 				'type' => 'hidden',
 				'label' => "ID",
 				'value' => $this->form_validation->set_value('id', $this->id),
-        ),
-        "status" => array(
-          'type' => 'select',
-          'label' => "Status",
-          'options' => [ 1 => 'Aktif', 0 => 'Non Aktif' ],
-          'selected' => $this->form_validation->set_value('status', $this->status),			  
-        ),
+      ),
+      "status" => array(
+        'type' => 'select',
+        'label' => "Status",
+        'options' => [ 1 => 'Aktif', 0 => 'Non Aktif' ],
+        'selected' => $this->form_validation->set_value('status', $this->status),			  
+      ),
       "registration_number" => array(
         'type' => 'text',
         'label' => "Nomor Induk",
@@ -342,16 +407,6 @@ class Student_services
 				'label' => "Alamat",
 				'value' => $this->form_validation->set_value('address', $this->address),			  
       ),
-			"parent_name" => array(
-				'type' => 'text',
-				'label' => "Nama Orang Tua / Wali",
-				'value' => $this->form_validation->set_value('parent_name', $this->parent_name),			  
-      ),
-      "parent_job" => array(
-				'type' => 'text',
-				'label' => "Pekerjaan Orang Tua / Wali",
-				'value' => $this->form_validation->set_value('parent_job', $this->parent_job),			  
-      ),
       "phone" => array(
 				'type' => 'text',
 				'label' => "No HP",
@@ -371,7 +426,39 @@ class Student_services
       "photo" => array(
 				'type' => 'file',
 				'label' => "Foto",
+      ),
+      
+
+			"parent_name" => array(
+				'type' => 'text',
+				'label' => "Nama Orang Tua / Wali",
+				'value' => $this->form_validation->set_value('parent_name', $this->parent_name),			  
+      ),
+			"parent_address" => array(
+				'type' => 'text',
+				'label' => "Alamat Orang Tua/ Wali",
+				'value' => $this->form_validation->set_value('parent_address', $this->parent_address),			  
+      ),
+      "parent_job" => array(
+				'type' => 'text',
+				'label' => "Pekerjaan Orang Tua / Wali",
+				'value' => $this->form_validation->set_value('parent_job', $this->parent_job),			  
+      ),
+			"parent_ttl" => array(
+			  'type' => 'text',
+			  'label' => "Tempat, Tanggal Lahir",
+			  'value' => $this->form_validation->set_value('parent_ttl', $this->parent_ttl),
+      ),
+      "parent_study" => array(
+			  'type' => 'text',
+			  'label' => "Pendidikan Orang Tua/ Wali",
+			  'value' => $this->form_validation->set_value('parent_study', $this->parent_study),
 			),
+      "parent_phone" => array(
+				'type' => 'text',
+				'label' => "No HP Orang Tua/ Wali",
+				'value' => $this->form_validation->set_value('parent_phone', $this->parent_phone),			  
+      ),
     );
 		return $_data;
   }

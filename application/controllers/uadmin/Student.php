@@ -185,13 +185,18 @@ class Student extends Uadmin_Controller {
 					
 					$student_data["gender"] = $_gender[ $gender ];
 					$student_data["entry_date"] = date('Y-m-d' , strtotime( $row['E'] ) ) ;
-					$student_data["parent_name"] = $row['F'];
-					$student_data["parent_job"] = $row['G'];
 					$student_data["study"] = $row['H'];
 					$student_data["address"] = $row['I'];
 					$student_data["phone"] = $row['J'];
 					$student_data["phone"] || $student_data["phone"] = '-' ;
 					$student_data["status"] = 0;
+
+					$student_data["parent_name"] = $row['F'];
+					$student_data["parent_job"] = $row['G'];
+					$student_data["parent_address"] = '-' ;
+					$student_data["parent_ttl"] = '-' ;
+					$student_data["parent_study"] = '-' ;
+					$student_data["parent_phone"] = '-' ;
 
 					$student_data['photo'] = "default.jpg";
 
@@ -220,6 +225,10 @@ class Student extends Uadmin_Controller {
 
 	public function add(  )
 	{
+		// echo json_encode( $this->input->post( ) );
+		// echo "<br>";
+		// echo "<br>";
+		// echo "<br>";
 		$this->form_validation->set_rules( $this->services->validation_config() );
 		if ($this->form_validation->run() === TRUE )
         {
@@ -228,14 +237,20 @@ class Student extends Uadmin_Controller {
 			$data['ttl'] = $this->input->post('ttl');
 
 			$data['address'] = $this->input->post('address');
-			$data['parent_name'] = $this->input->post('parent_name');
 			$data['phone'] = $this->input->post('phone');
 			$data['gender'] = $this->input->post('gender');
 			$data['entry_date'] =  date("Y-m-d", strtotime( $this->input->post('entry_date') ) ) ;
-			$data['parent_job'] = $this->input->post('parent_job');
 			$data['study'] = $this->input->post('study');
 			$data['timestamp'] = time();
 			$data['status'] = $this->input->post('status');
+
+			$data['parent_name'] = $this->input->post('parent_name');
+			$data['parent_address'] = $this->input->post('parent_address');
+			$data['parent_job'] = $this->input->post('parent_job');
+			$data['parent_ttl'] = $this->input->post('parent_ttl');
+			$data['parent_study'] = $this->input->post('parent_study');
+			$data['parent_phone'] = $this->input->post('parent_phone');
+
 
 			$this->load->library('upload'); // Load librari upload
 			$config = $this->services->get_photo_upload_config($data['name']);
@@ -273,10 +288,41 @@ class Student extends Uadmin_Controller {
 			$this->data["header"] = "Tambah Santri";
 			$this->data["sub_header"] = 'Klik Tombol Action Untuk Aksi Lebih Lanjut';
 
-            $form_data = $this->services->get_form_data();
-            $form_data = $this->load->view('templates/form/plain_form', $form_data , TRUE ) ;
+			$form_data = $this->services->get_form_data();
+			
+			$form_data_1 = [];
+			$form_data_1["form_data"] = [
+					"id" => $form_data["form_data"]["id"],
+					"status" => $form_data["form_data"]["status"],
+					"entry_date" => $form_data["form_data"]["entry_date"],
+					"registration_number" => $form_data["form_data"]["registration_number"],
+					"name" => $form_data["form_data"]["name"],
+					"ttl" => $form_data["form_data"]["ttl"],
+					"gender" => $form_data["form_data"]["gender"],
+					"address" => $form_data["form_data"]["address"],
+					"study" => $form_data["form_data"]["study"],
+					"phone" => $form_data["form_data"]["phone"],
+					"photo" => $form_data["form_data"]["photo"],
+				];
+			$form_data_2 = [];
+			$form_data_2["form_data"] = [
+					"parent_name" => $form_data["form_data"]["parent_name"],
+					"parent_address" => $form_data["form_data"]["parent_address"],
+					"parent_job" => $form_data["form_data"]["parent_job"],
+					"parent_ttl" => $form_data["form_data"]["parent_ttl"],
+					"parent_study" => $form_data["form_data"]["parent_study"],
+					"parent_phone" => $form_data["form_data"]["parent_phone"],
+				];
 
-            $this->data[ "contents" ] =  $form_data;
+            $form_data_1 = $this->load->view('templates/form/plain_form', $form_data_1 , TRUE ) ;
+            $form_data_2 = $this->load->view('templates/form/plain_form', $form_data_2 , TRUE ) ;
+
+            $this->data[ "contents" ] = "<h5><b>Informasi Santri</b></h5>";
+            $this->data[ "contents" ] .= $form_data_1;
+            $this->data[ "contents" ] .= "<br>";
+            $this->data[ "contents" ] .= "<hr>";
+            $this->data[ "contents" ] .= "<h5><b>Informasi Orang Tua / Wali</b></h5>";
+            $this->data[ "contents" ] .= $form_data_2;
             
             $this->render( "templates/contents/plain_content_form_multipart" );
 		}
@@ -345,15 +391,47 @@ class Student extends Uadmin_Controller {
 		$edit_assessment= $this->load->view('templates/actions/modal_form', $edit_assessment, true );
 
 		$form_data = $this->services->get_form_data( $student_id );
-		unset( $form_data["form_data"]["photo"] );
-		$form_data =  $this->load->view('templates/form/plain_form_readonly', $form_data , TRUE ) ;
+		$form_data_1 = [];
+		$form_data_1["form_data"] = [
+				"id" => $form_data["form_data"]["id"],
+				"status" => $form_data["form_data"]["status"],
+				"entry_date" => $form_data["form_data"]["entry_date"],
+				"registration_number" => $form_data["form_data"]["registration_number"],
+				"name" => $form_data["form_data"]["name"],
+				"ttl" => $form_data["form_data"]["ttl"],
+				"gender" => $form_data["form_data"]["gender"],
+				"address" => $form_data["form_data"]["address"],
+				"study" => $form_data["form_data"]["study"],
+				"phone" => $form_data["form_data"]["phone"],
+			];
+		$form_data_2 = [];
+		$form_data_2["form_data"] = [
+				"parent_name" => $form_data["form_data"]["parent_name"],
+				"parent_address" => $form_data["form_data"]["parent_address"],
+				"parent_job" => $form_data["form_data"]["parent_job"],
+				"parent_ttl" => $form_data["form_data"]["parent_ttl"],
+				"parent_study" => $form_data["form_data"]["parent_study"],
+				"parent_phone" => $form_data["form_data"]["parent_phone"],
+			];
+
+		$form_data_1 = $this->load->view('templates/form/plain_form_readonly', $form_data_1 , TRUE ) ;
+		$form_data_2 = $this->load->view('templates/form/plain_form_readonly', $form_data_2 , TRUE ) ;
+
+		$this->data[ "contents" ] = "<h5><b>Informasi Santri</b></h5>";
+		$this->data[ "contents" ] .= $form_data_1;
+		$this->data[ "contents" ] .= "<br>";
+		$this->data[ "contents" ] .= "<hr>";
+		$this->data[ "contents" ] .= "<h5><b>Informasi Orang Tua / Wali</b></h5>";
+		$this->data[ "contents" ] .= $form_data_2;
+		
+		// unset( $form_data["form_data"]["photo"] );
+		// $form_data =  $this->load->view('templates/form/plain_form_readonly', $form_data , TRUE ) ;
 
 		$student 				= $this->student_model->student( $student_id )->row();
 
 		$this->data[ "edit_assessment" ] 	=  $edit_assessment;
 		$this->data[ "student_assessment" ] =  $student_assessment;
 		$this->data[ "btn_saving" ] 		=  $add_savings;
-		$this->data[ "contents" ] 			=  $form_data;
 		$this->data[ "student" ] 			=  $student;
 		$this->data[ "savings" ] 			=  $table_savings;
 
@@ -374,7 +452,9 @@ class Student extends Uadmin_Controller {
 	{
 		if( $student_id == null ) redirect(site_url(  $this->current_page ));  
 
-		$this->form_validation->set_rules( $this->services->validation_config() );
+		$config = $this->services->validation_config();
+		array_shift( $config ); // remove first array item
+		$this->form_validation->set_rules( $config );
 		if ($this->form_validation->run() === TRUE )
         {
 			$data['registration_number'] = $this->input->post('registration_number');
@@ -382,15 +462,19 @@ class Student extends Uadmin_Controller {
 			$data['ttl'] = $this->input->post('ttl');
 
 			$data['address'] = $this->input->post('address');
-			$data['parent_name'] = $this->input->post('parent_name');
 			$data['phone'] = $this->input->post('phone');
 			$data['gender'] = $this->input->post('gender');
 			$data['entry_date'] =  date("Y-m-d", strtotime( $this->input->post('entry_date') ) ) ;
-			$data['parent_job'] = $this->input->post('parent_job');
 			$data['study'] = $this->input->post('study');
 			$data['timestamp'] = time();
 			$data['status'] = $this->input->post('status');
 
+			$data['parent_name'] = $this->input->post('parent_name');
+			$data['parent_address'] = $this->input->post('parent_address');
+			$data['parent_job'] = $this->input->post('parent_job');
+			$data['parent_ttl'] = $this->input->post('parent_ttl');
+			$data['parent_study'] = $this->input->post('parent_study');
+			$data['parent_phone'] = $this->input->post('parent_phone');
 			
 			$data_param['id'] = $this->input->post('id');
 
@@ -407,9 +491,43 @@ class Student extends Uadmin_Controller {
 			$this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
             if(  !empty( validation_errors() ) || $this->ion_auth->errors() ) $this->session->set_flashdata('alert', $this->alert->set_alert( Alert::DANGER, $this->data['message'] ) );
 
+			// $form_data = $this->services->get_form_data( $student_id );
+			// unset( $form_data["form_data"]["photo"] );
+			// $form_data = $this->load->view('templates/form/plain_form', $form_data , TRUE ) ;
+			// $this->data[ "contents" ] =  $form_data;
 			$form_data = $this->services->get_form_data( $student_id );
-			unset( $form_data["form_data"]["photo"] );
-			$form_data = $this->load->view('templates/form/plain_form', $form_data , TRUE ) ;
+			$form_data_1 = [];
+			$form_data_1["form_data"] = [
+					"id" => $form_data["form_data"]["id"],
+					"status" => $form_data["form_data"]["status"],
+					"entry_date" => $form_data["form_data"]["entry_date"],
+					"registration_number" => $form_data["form_data"]["registration_number"],
+					"name" => $form_data["form_data"]["name"],
+					"ttl" => $form_data["form_data"]["ttl"],
+					"gender" => $form_data["form_data"]["gender"],
+					"address" => $form_data["form_data"]["address"],
+					"study" => $form_data["form_data"]["study"],
+					"phone" => $form_data["form_data"]["phone"],
+				];
+			$form_data_2 = [];
+			$form_data_2["form_data"] = [
+					"parent_name" => $form_data["form_data"]["parent_name"],
+					"parent_address" => $form_data["form_data"]["parent_address"],
+					"parent_job" => $form_data["form_data"]["parent_job"],
+					"parent_ttl" => $form_data["form_data"]["parent_ttl"],
+					"parent_study" => $form_data["form_data"]["parent_study"],
+					"parent_phone" => $form_data["form_data"]["parent_phone"],
+				];
+
+			$form_data_1 = $this->load->view('templates/form/plain_form', $form_data_1 , TRUE ) ;
+			$form_data_2 = $this->load->view('templates/form/plain_form', $form_data_2 , TRUE ) ;
+
+			$this->data[ "contents" ] = "<h5><b>Informasi Santri</b></h5>";
+			$this->data[ "contents" ] .= $form_data_1;
+			$this->data[ "contents" ] .= "<br>";
+			$this->data[ "contents" ] .= "<hr>";
+			$this->data[ "contents" ] .= "<h5><b>Informasi Orang Tua / Wali</b></h5>";
+			$this->data[ "contents" ] .= $form_data_2;
 			
 			$student 				= $this->student_model->student( $student_id )->row();
 
@@ -455,7 +573,6 @@ class Student extends Uadmin_Controller {
 			$this->data["header"] = "Edit Santri";
 			$this->data["sub_header"] = 'Klik Tombol Action Untuk Aksi Lebih Lanjut';
 
-            $this->data[ "contents" ] =  $form_data;
             $this->render( "uadmin/student/edit" );
 		}
 	}
