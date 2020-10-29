@@ -47,7 +47,7 @@
             <a id="home_profile" href="<?= base_url('home/profile');?>">Profil Masjid</a>
           </li>
           <li>
-            <a type="button" class="btn btn-sm mt-1" data-toggle="modal" data-target="#find_student">
+            <a type="button" class="btn btn-sm mt-1" style="color:white" data-toggle="modal" data-target="#find_student">
                 Cari Santri
             </a>
           </li>

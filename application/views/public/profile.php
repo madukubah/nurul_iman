@@ -18,7 +18,7 @@
         <div class="row">
           <div class="col-lg-5 wow fadeInUp">
             <div class="facts-img">
-              <img src="<?= base_url('front-assets/') ?>img/nurul_imann.jpeg" alt="" class="img-fluid">
+              <img src="<?= base_url('front-assets/') ?>img/profil_masjid/masjid_nurul_iman.jpeg" alt="" class="img-fluid">
             </div>
           </div>
           <div class="col-lg-7 wow fadeInUp">
@@ -39,7 +39,7 @@
           </div>
           <div class="col-lg-3 wow fadeInUp float-right">
             <div class="facts-img ">
-              <img src="<?= base_url('front-assets/') ?>img/1600239221_Drs__H__Masyhur_Masie_Abunawas_M__Si_jpg.jpg" alt="" class="img-fluid">
+              <img src="<?= base_url('front-assets/') ?>img/profil_masjid/1600239221_Drs__H__Masyhur_Masie_Abunawas_M__Si_jpg.jpg" alt="" class="img-fluid">
               <p style="font-size:10px" >Drs. H. Masyhur Masie Abunawas, M.Si.</p>
             </div>
           </div>
@@ -47,8 +47,19 @@
 
         <div class="row">
           <div class="col-lg-3 wow fadeInUp">
+          </div>
+          <div class="col-lg-6 wow fadeInUp text-center">
+            <img src="<?= base_url('front-assets/') ?>img/profil_masjid/PENGMASJID.jpeg" alt="" class="img-fluid" >
+            <p style="font-size:10px" >Pengurus Masjid Nurul Iman Sanua Kendari</p>
+          </div>
+          <div class="col-lg-3 wow fadeInUp">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3 wow fadeInUp">
             <div class="facts-img ">
-              <img src="<?= base_url('front-assets/') ?>img/1599288584_Galeri_Majelis_Talim_Nurul_Iman.jpeg" alt="" class="img-fluid">
+              <img src="<?= base_url('front-assets/') ?>img/profil_masjid/1599288584_Galeri_Majelis_Talim_Nurul_Iman.jpeg" alt="" class="img-fluid">
               <p style="font-size:10px" >Majelis Ta’lim Nurul Iman.</p>
             </div>
           </div>
@@ -64,6 +75,17 @@
             <p class="text-justify" >
             Berangkat dari tahun 1982 menjadi awal berdirinya Remaja Islam Masjid Nurul Iman Sanua atau yang biasa dikenal dengan RIMNIS. Sebagai lembaga kereamajaan, RIMNIS lahir untuk mewadahi para remaja yang tak dipungkiri lagi telah memberikan sumbangsi besar, baik dalam bentuk tenaga maupun pikiran dalam melakukan pelayanan terhadap jamaah di Masjid. Sejak awal berdirinya hingga saat ini, RIMNIS telah banyak mengkader para remaja yang siap mengemban amanah dan mengabdikan dirinya dalam pelayanan. Pelayanan yang dilakukan baik dalam bentuk kegiatan keagamaan seperti kepanitiaan hari besar Islam hingga dalam kegiatan sosial seperti Bakti Sosial (BAKSOS) telah menjadi program unggulan sampai sekarang. Tak hanya itu, pengkaderan keanggotan RIMNIS terus berlanjut sampai saat ini. Sejak awal berdirinya, lembaga keremajaan ini juga memiliki berbagai program kerja lainnya yang ditangani oleh masing-masing bidang; Pendidikan dan Dakwah, pengelolaan Taman Pendidikan Al-Qur’an (TPA), pengelolaan Perpustakaan, Keputrian dan hubungan masyarakat.
             </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3 wow fadeInUp">
+          </div>
+          <div class="col-lg-6 wow fadeInUp text-center">
+            <img src="<?= base_url('front-assets/') ?>img/profil_masjid/RIMNIS.jpeg" alt="" class="img-fluid" >
+            <p style="font-size:10px" >Remaja Islam Masjid Nurul Iman Sanua (RIMNIS) Kendari</p>
+          </div>
+          <div class="col-lg-3 wow fadeInUp">
           </div>
         </div>
 
@@ -84,19 +106,34 @@
         </div>
 
         <div class="row">
+          <div class="col-lg-3 wow fadeInUp">
+          </div>
+          <div class="col-lg-6 wow fadeInUp text-center">
+            <img src="<?= base_url('front-assets/') ?>img/profil_masjid/TPA.jpeg" alt="" class="img-fluid" >
+            <p style="font-size:10px" >TPA Nurul Iman</p>
+          </div>
+          <div class="col-lg-3 wow fadeInUp">
+          </div>
+        </div>
+
+        <div class="row">
           <div class="col-lg-12 wow fadeInUp">
             <p class="text-justify" >
             Selain itu, Masjid Nurul Iman juga ikut mengembangkan lembaga Perpustakaan yang berada dibawah naungannya. Berbagai prestasi juga telah diraih oleh lembaga ini termasuk salah satunya menjadi Perpustakaan Percontohan di Kota Kendari. Pada masanya, Perpustakaan Masjid Nurul Iman (PMNI) menerapkan standar pengelolaan perpustakaan sesuai dengan standar pengelolaan yang diterapkan oleh Perpustakaan Daerah.
             </p>
           </div>
         </div>
+
+        
+
         <div class="row">
-          <div class="col-lg-12 wow fadeInUp">
-            <div class="text-center" >
-              <iframe width="420" height="315"
-                src="https://www.youtube.com/embed/z8qjHeHa_uo">
-              </iframe> 
-            </div>
+          <div class="col-lg-3 wow fadeInUp">
+          </div>
+          <div class="col-lg-6 wow fadeInUp text-center">
+            <img src="<?= base_url('front-assets/') ?>img/profil_masjid/MT.jpeg" alt="" class="img-fluid" >
+            <p style="font-size:10px" >Majelis taklim Nurul Iman</p>
+          </div>
+          <div class="col-lg-3 wow fadeInUp">
           </div>
         </div>
 
@@ -121,6 +158,16 @@
             <p class="text-justify" >
             Dalam meningkatkan sumber daya manusia kepengurusan Masjid Nurul Iman Sanua Kendari termasuk kepengurusan lembaga yang dinaunginya, Studi Banding menjadi salah satu kegiatan yang dicanangkan oleh Masjid Nurul Iman dengan harapan melalui sumber daya manusia yang berkualitas, Masjid dapat terkelola dengan baik dan dapat menjalankan fungsinya secara efektif dan efisien yang tidak hanya sebagai pusat peribadatan melainkan juga sebagai pusat kegiatan Syiar Islam dan kegiatan muamalah ditengah masyarakat.
             </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-12 wow fadeInUp">
+            <div class="text-center" >
+              <iframe width="420" height="315"
+                src="https://www.youtube.com/embed/z8qjHeHa_uo">
+              </iframe> 
+            </div>
           </div>
         </div>
 
