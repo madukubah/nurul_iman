@@ -215,7 +215,6 @@ class Home extends Home_Controller {
 				'status' => 'Pendaftar',
 				'registration_number' => '-',
 
-
 				'parent_name' => strtoupper($this->input->post('parent_name')),
 				'parent_job' => strtoupper($this->input->post('parent_job')),
 				'parent_address' => strtoupper($this->input->post('parent_address')),
